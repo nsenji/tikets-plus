@@ -253,3 +253,6 @@ class _BarItemPageState extends State<BarItemPage> {
     );
   }
 }
+Container(
+  child:SizedBox(Container())
+);
