@@ -7,7 +7,7 @@ import 'package:flutter/src/widgets/framework.dart';
 
 class Seat extends StatefulWidget {
   bool touched;
-  Color? seatSelected;
+  // Color? seatSelected;
   Color? seatEmpty;
   IconData? icon;
   int index;
@@ -16,7 +16,7 @@ class Seat extends StatefulWidget {
       {super.key,
       required this.index,
       this.touched = false,
-      this.seatSelected = Colors.orange,
+      // this.seatSelected = Colors.orange,
       this.seatEmpty = Colors.white,
       this.icon});
 
@@ -31,8 +31,8 @@ class _SeatState extends State<Seat> {
         child: IconButton(
             onPressed: () {
               setState(() {
-                widget.touched = true;
-                if (widget.touched == true) {
+                // widget.touched = true;
+                if (widget.seatEmpty == Colors.white) {
                   widget.seatEmpty = Colors.orange;
                 } else {
                   widget.seatEmpty = Colors.white;
@@ -42,8 +42,9 @@ class _SeatState extends State<Seat> {
             icon: Icon(
               Icons.chair,
               size: 50,
-              color: widget.touched == true
-                  ? widget.seatEmpty
+              color
+              // : widget.touched == true
+              //     ? widget.seatEmpty
                   : widget.seatEmpty,
             )));
   }
