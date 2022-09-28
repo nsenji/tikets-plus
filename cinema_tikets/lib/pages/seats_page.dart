@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:cinema_tikets/models/seat_number_model.dart';
 import 'package:cinema_tikets/pages/ticket_confimation.dart';
 import 'package:cinema_tikets/pages/tickets_booked_page.dart';
+import 'package:cinema_tikets/widgets/seat_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -77,34 +78,9 @@ class _BarItemPageState extends State<BarItemPage> {
                             children: List.generate(77, (index) {
                               return Container(
                                   padding: EdgeInsets.all(0.1),
-                                  child: IconButton(
-                                      padding:
-                                          EdgeInsets.only(right: 2, left: 2),
-                                      onPressed: () {
-                                        setState(() {
-                                          selectedIndex = index;
-
-                                          if (_iconColor == Colors.grey) {
-                                            _iconColor = Colors.orange;
-                                            Provider.of<SeatNumberModel>(
-                                                    context,
-                                                    listen: false)
-                                                .add(index + 1);
-                                          } else {
-                                            _iconColor = Colors.grey;
-
-                                            Provider.of<SeatNumberModel>(context,listen: false).remove();
-                                          }
-                                          ;
-                                        });
-                                      },
-                                      icon: Icon(
-                                        size: 50,
-                                        Icons.chair,
-                                        color: selectedIndex == index
-                                            ? _iconColor
-                                            : Colors.grey,
-                                      )));
+                                  child:
+                                    Seat(index: index)
+                                  );
                             })),
                       ))),
               Positioned(
@@ -130,14 +106,12 @@ class _BarItemPageState extends State<BarItemPage> {
                 right: 30,
                 left: 30,
                 top: 680,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [Container(
-                    padding: const EdgeInsets.only(left: 100),
+                child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+                  Container(
+                      padding: const EdgeInsets.only(left: 100),
                       height: 50,
                       width: 200,
-                      child:
-                      Consumer<SeatNumberModel>(
+                      child: Consumer<SeatNumberModel>(
                           builder: (context, number, child) {
                         return RichText(
                           text: TextSpan(
@@ -145,11 +119,16 @@ class _BarItemPageState extends State<BarItemPage> {
                                   color: Color.fromARGB(253, 255, 255, 255)),
                               children: <TextSpan>[
                                 TextSpan(text: 'SEAT:'),
-                                TextSpan(text:' ${number.seatNumber}',style:TextStyle(fontWeight: FontWeight.bold,fontSize: 18,color: Colors.orange))
+                                TextSpan(
+                                    text: ' ${number.seatNumber}',
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 18,
+                                        color: Colors.orange))
                               ]),
                         );
                       })),
-                  ]),
+                ]),
               ),
               Positioned(
                 right: 30,
@@ -162,7 +141,10 @@ class _BarItemPageState extends State<BarItemPage> {
                     height: 50,
                     width: 400,
                     child: ElevatedButton(
-                        onPressed: () => Navigator.push(context,MaterialPageRoute(builder: ((context) => TicketView()))),
+                        onPressed: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: ((context) => TicketView()))),
                         child: Text("BOOK SEAT"),
                         style: ElevatedButton.styleFrom(
                             padding: const EdgeInsets.all(10),
@@ -171,88 +153,74 @@ class _BarItemPageState extends State<BarItemPage> {
                 ),
               ),
               Positioned(
-                top: 660,
-                right:300,
-                child: Container(
-                  height: 80,
-                  width: 80,
-                  // color: Colors.red,
-                  child: Column(
-                    children: [
-                      Row(children: [
+                  top: 660,
+                  right: 300,
+                  child: Container(
+                    height: 80,
+                    width: 80,
+                    // color: Colors.red,
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              height: 9,
+                              width: 9,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(9),
+                                  color: Colors.orange),
+                            ),
+                            Expanded(child: Container()),
+                            Text('Selected',
+                                style: TextStyle(color: Colors.white))
+                          ],
+                        ),
+                        Expanded(
+                          child: Container(),
+                          flex: 0,
+                        ),
                         Container(
-                          height: 9,
-                          width: 9,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(9),
-                            color: Colors.orange
+                          margin: const EdgeInsets.only(top: 10),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 9,
+                                width: 9,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(9),
+                                    color: Colors.grey),
+                              ),
+                              Expanded(child: Container()),
+                              Text('Available',
+                                  style: TextStyle(color: Colors.white))
+                            ],
                           ),
-                          
-                          ),
-                        Expanded(child:Container()),
-                        Text(
-                          'Selected',
-                          style: TextStyle(
-                            color: Colors.white
-                          )
-                        )
-                      ],),
-                      Expanded(child:Container(),flex:0,),
-                      Container(
-                        margin: const EdgeInsets.only(top:10 ),
-                        child: Row(children: [
-                          Container(
-                            height: 9,
-                            width: 9,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(9),
-                              color: Colors.grey
-                            ),
-                            
-                            ),
-                          Expanded(child:Container()),
-                          Text(
-                            'Available',
-                            style: TextStyle(
-                              color: Colors.white
-                            )
-                          )
-                        ],),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.only(top: 15),
-                        child: Row(children: [
-                          Container(
-                            height: 9,
-                            width: 9,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(9),
-                              color: Colors.white
-                            ),
-                            
-                            ),
-                          Expanded(child:Container(),flex:1),
-                          Container(
-                            margin:const EdgeInsets.only(right:19),
-                            child: Text(
-                              'Taken',
-                              style: TextStyle(
-                                color: Colors.white
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 15),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 9,
+                                width: 9,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(9),
+                                    color: Colors.white),
+                              ),
+                              Expanded(child: Container(), flex: 1),
+                              Container(
+                                margin: const EdgeInsets.only(right: 19),
+                                child: Text('Taken',
+                                    style: TextStyle(color: Colors.white)),
                               )
-                            ),
-                          )
-                        ],),
-                      )
-                    ],
-                  ),
-                  )
-
-              )
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                  ))
             ],
           )),
     );
   }
 }
-Container(
-  child:SizedBox(Container())
-);
