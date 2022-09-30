@@ -1,30 +1,17 @@
-
-
 import 'package:flutter/foundation.dart';
 
-class SeatNumberModel extends ChangeNotifier {
-   List _items = [];
-  var number;
+class SeatNumberModel {
+  List items = [];
 
-
-  void add( item) {
-    _items.add(item);
-    notifyListeners();
+  void add(item) {
+    items.add(item);
   }
 
-  void remove() {
-    _items.clear();
-    notifyListeners();
+  void remove(item) {
+    items.remove(item);
   }
 
   dynamic get seatNumber {
-    if (_items.length == 0) {
-      return "choose";
-    } else {
-      return _items[0];
-    }
+    return items;
   }
 }
-
-
-

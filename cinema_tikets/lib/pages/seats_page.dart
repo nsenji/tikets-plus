@@ -102,34 +102,34 @@ class _BarItemPageState extends State<BarItemPage> {
                       }),
                     ),
                   )),
-              Positioned(
-                right: 30,
-                left: 30,
-                top: 680,
-                child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                  Container(
-                      padding: const EdgeInsets.only(left: 100),
-                      height: 50,
-                      width: 200,
-                      child: Consumer<SeatNumberModel>(
-                          builder: (context, number, child) {
-                        return RichText(
-                          text: TextSpan(
-                              style: TextStyle(
-                                  color: Color.fromARGB(253, 255, 255, 255)),
-                              children: <TextSpan>[
-                                TextSpan(text: 'SEAT:'),
-                                TextSpan(
-                                    text: ' ${number.seatNumber}',
-                                    style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 18,
-                                        color: Colors.orange))
-                              ]),
-                        );
-                      })),
-                ]),
-              ),
+              // Positioned(
+              //   right: 30,
+              //   left: 30,
+              //   top: 680,
+              //   child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
+              //     Container(
+              //         padding: const EdgeInsets.only(left: 100),
+              //         height: 50,
+              //         width: 200,
+              //         child: Consumer<SeatNumberModel>(
+              //             builder: (context, number, child) {
+              //           return RichText(
+              //             text: TextSpan(
+              //                 style: TextStyle(
+              //                     color: Color.fromARGB(253, 255, 255, 255)),
+              //                 children: <TextSpan>[
+              //                   TextSpan(text: 'SEAT:'),
+              //                   TextSpan(
+              //                       text: ' ${number.seatNumber}',
+              //                       style: TextStyle(
+              //                           fontWeight: FontWeight.bold,
+              //                           fontSize: 18,
+              //                           color: Colors.orange))
+              //                 ]),
+              //           );
+              //         })),
+              //   ]),
+              // ),
               Positioned(
                 right: 30,
                 left: 30,

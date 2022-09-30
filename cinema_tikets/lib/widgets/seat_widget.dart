@@ -4,11 +4,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
+
+import '../models/seat_number_model.dart';
 
 class Seat extends StatefulWidget {
   bool touched;
-  // Color? seatSelected;
-  Color? seatEmpty;
+  Color? seatColor;
   IconData? icon;
   int index;
 
@@ -16,8 +18,7 @@ class Seat extends StatefulWidget {
       {super.key,
       required this.index,
       this.touched = false,
-      // this.seatSelected = Colors.orange,
-      this.seatEmpty = Colors.white,
+      this.seatColor = Colors.white,
       this.icon});
 
   @override
@@ -27,25 +28,25 @@ class Seat extends StatefulWidget {
 class _SeatState extends State<Seat> {
   @override
   Widget build(BuildContext context) {
+    SeatNumberModel model = SeatNumberModel();
+
     return Container(
         child: IconButton(
             onPressed: () {
               setState(() {
-                // widget.touched = true;
-                if (widget.seatEmpty == Colors.white) {
-                  widget.seatEmpty = Colors.orange;
+                if (widget.seatColor == Colors.white) {
+                  widget.seatColor = Colors.orange;
+                  model.add(widget.index + 1);
                 } else {
-                  widget.seatEmpty = Colors.white;
+                  widget.seatColor = Colors.white;
+                  model.remove(widget.index + 1);
                 }
               });
             },
             icon: Icon(
               Icons.chair,
               size: 50,
-              color
-              // : widget.touched == true
-              //     ? widget.seatEmpty
-                  : widget.seatEmpty,
+              color: widget.seatColor,
             )));
   }
 }
