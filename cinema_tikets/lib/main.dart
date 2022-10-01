@@ -7,8 +7,10 @@ import 'package:provider/provider.dart';
 void main() {
 
   runApp(
-    const MyApp(),
-  
+    ChangeNotifierProvider(
+      create: (context) => SeatNumberModel(),
+      child:const MyApp(),
+  )
     );
     
 }

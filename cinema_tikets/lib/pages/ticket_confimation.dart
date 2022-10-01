@@ -5,15 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class TicketView extends StatelessWidget {
- 
   const TicketView({
-    
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    SeatNumberModel model = SeatNumberModel();
     final size = AppLayout.getSize(context);
     return Stack(children: [
       Positioned(
@@ -50,12 +47,24 @@ class TicketView extends StatelessWidget {
           top: 390,
           right: 25,
           left: 20,
-          child: Container(
-            height: 75,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-              color: Colors.blue,
+          child: Material(
+            color: Colors.black,
+            child: Container(
+              padding: const EdgeInsets.only(top: 10,left: 10),
+              height: 75,
+              child: Row(children: [
+                Column(
+                  children: [
+                    Text("${Provider.of<SeatNumberModel>(context, listen: false).totalPrice}")
+                  ],
+                )
+              ]),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20), topRight: Radius.circular(20)),
+                color: Colors.blue,
+                
+              ),
             ),
           )),
       Positioned(
@@ -67,7 +76,9 @@ class TicketView extends StatelessWidget {
             color: Colors.red,
             child: ListView.builder(
                 padding: EdgeInsets.only(top: 0),
-                itemCount: model.items.length,
+                itemCount: Provider.of<SeatNumberModel>(context, listen: false)
+                    .items
+                    .length,
                 itemBuilder: (_, index) {
                   return Container(
                     padding: const EdgeInsets.only(top: 0),
@@ -129,23 +140,35 @@ class TicketView extends StatelessWidget {
                           ),
                         ),
                         Center(
-                          child: Container(
-                              height: 80,
-                              color: Colors.white,
-                              child: Row(
-                                children: [
-                                  Column(
-                                    children: [
-                                      Text(
-                                        "SEAT NUMBER",
-                                        style: TextStyle(fontSize:12),
-                                      ),
-                                      Text("${model.seatNumber[index]}")
-                                    ],
-                                  ),
-                                  Column()
-                                ],
-                              )),
+                          child: Material(
+                            child: Container(
+                                height: 80,
+                                color: Colors.white,
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Column(
+                                      children: [
+                                        Text(
+                                          "SEAT NUMBER",
+                                          style: TextStyle(fontSize: 12),
+                                        ),
+                                        Text(
+                                            "${Provider.of<SeatNumberModel>(context, listen: false).seatNumber[index]}")
+                                      ],
+                                    ),
+                                    Column(
+                                      children: [
+                                        Text(
+                                          Provider.of<SeatNumberModel>(context,listen: false).seatNumber[index] <21? "Ugx 10000": "Ugx 4000",
+                                          style: TextStyle(fontSize: 15),
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                )),
+                          ),
                         )
                       ],
                     ),

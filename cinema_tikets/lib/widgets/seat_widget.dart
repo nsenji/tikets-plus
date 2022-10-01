@@ -28,18 +28,23 @@ class Seat extends StatefulWidget {
 class _SeatState extends State<Seat> {
   @override
   Widget build(BuildContext context) {
-    SeatNumberModel model = SeatNumberModel();
-
     return Container(
         child: IconButton(
             onPressed: () {
               setState(() {
                 if (widget.seatColor == Colors.white) {
                   widget.seatColor = Colors.orange;
-                  model.add(widget.index + 1);
+                  Provider.of<SeatNumberModel>(context, listen: false)
+                      .add(widget.index + 1);
+                  Provider.of<SeatNumberModel>(context, listen: false)
+                      .addPrice(widget.index +1);
                 } else {
                   widget.seatColor = Colors.white;
-                  model.remove(widget.index + 1);
+                  Provider.of<SeatNumberModel>(context, listen: false)
+                      .remove(widget.index + 1);
+                   Provider.of<SeatNumberModel>(context, listen: false)
+                      .reducePrice(widget.index +1);
+
                 }
               });
             },
