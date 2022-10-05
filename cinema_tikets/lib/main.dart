@@ -3,13 +3,16 @@ import 'package:cinema_tikets/pages/bottom_navigation_bar/main_page.dart';
 import 'package:cinema_tikets/pages/welcome_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
 
 void main() {
 
   runApp(
     ChangeNotifierProvider(
       create: (context) => SeatNumberModel(),
-      child:const MyApp(),
+      child:  const MyApp(),
   )
     );
     

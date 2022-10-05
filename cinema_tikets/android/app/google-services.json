@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1065683134046",
+    "project_id": "cinema-tikets",
+    "storage_bucket": "cinema-tikets.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1065683134046:android:84381dc1361348c2e4b6cf",
+        "android_client_info": {
+          "package_name": "com.example.cinema_tikets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1065683134046-h744s770mksdt6c068ra1tajk589magp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgOL0u25xIC9k1eaMp6h_eR5Z9iPbLnU4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1065683134046-h744s770mksdt6c068ra1tajk589magp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

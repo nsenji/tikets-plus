@@ -28,7 +28,7 @@ class TicketView extends StatelessWidget {
                 child: Text("PAYMENT"),
                 style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.all(10),
-                    backgroundColor: Colors.red)),
+                    backgroundColor: Colors.orange)),
           ),
         ),
       ),
@@ -50,20 +50,80 @@ class TicketView extends StatelessWidget {
           child: Material(
             color: Colors.black,
             child: Container(
-              padding: const EdgeInsets.only(top: 10,left: 10),
+              padding: const EdgeInsets.only(top: 10, left: 10),
               height: 75,
               child: Row(children: [
-                Column(
-                  children: [
-                    Text("${Provider.of<SeatNumberModel>(context, listen: false).totalPrice}")
-                  ],
+                Container(
+                  padding: EdgeInsets.only(right: 45),
+                  height: 60,
+                  width: 140,
+                  child: Column(
+                    children: [
+                      Text(
+                        "DATE",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w300, fontSize: 11),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "31 Feb 22",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 15),
+                      )
+                    ],
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.only(right: 15),
+                  height: 60,
+                  width: 80,
+                  child: Column(
+                    children: [
+                      Text(
+                        "TIME",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w300, fontSize: 11),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text("13:34",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 15))
+                    ],
+                  ),
+                ),
+                Container(
+                  width: 130,
+                  height: 60,
+                  padding: EdgeInsets.only(left: 35),
+                  child: Column(
+                    children: [
+                      Text(
+                        "TOTAL PRICE",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w300, fontSize: 11),
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                          "Ugx.${Provider.of<SeatNumberModel>(context, listen: false).totalPrice}",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                              color: Colors.orange))
+                    ],
+                  ),
                 )
               ]),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-                color: Colors.blue,
-                
+                    topLeft: Radius.circular(20),
+                    topRight: Radius.circular(20)),
+                color: Colors.white,
               ),
             ),
           )),
@@ -73,7 +133,6 @@ class TicketView extends StatelessWidget {
           left: 20,
           child: Container(
             height: 265,
-            color: Colors.red,
             child: ListView.builder(
                 padding: EdgeInsets.only(top: 0),
                 itemCount: Provider.of<SeatNumberModel>(context, listen: false)
@@ -145,26 +204,52 @@ class TicketView extends StatelessWidget {
                                 height: 80,
                                 color: Colors.white,
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
                                   children: [
-                                    Column(
-                                      children: [
-                                        Text(
-                                          "SEAT NUMBER",
-                                          style: TextStyle(fontSize: 12),
-                                        ),
-                                        Text(
-                                            "${Provider.of<SeatNumberModel>(context, listen: false).seatNumber[index]}")
-                                      ],
+                                    Container(
+                                      height: 60,
+                                      width: 140,
+                                      padding: EdgeInsets.only(right: 10),
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                            "SEAT NUMBER",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w300,
+                                                fontSize: 11),
+                                          ),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(
+                                              "${Provider.of<SeatNumberModel>(context, listen: false).seatNumber[index]}",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 15))
+                                        ],
+                                      ),
                                     ),
-                                    Column(
-                                      children: [
-                                        Text(
-                                          Provider.of<SeatNumberModel>(context,listen: false).seatNumber[index] <21? "Ugx 10000": "Ugx 4000",
-                                          style: TextStyle(fontSize: 15),
-                                        )
-                                      ],
+                                    Expanded(child: Container()),
+                                    Container(
+                                      padding: EdgeInsets.only(left: 25),
+                                      height: 60,
+                                      width: 140,
+                                      child: Column(
+                                        children: [
+                                          Text("PRICE",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w300,
+                                                  fontSize: 11)),
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Text(Provider.of<SeatNumberModel>(context,listen: false).seatNumber[index] <2? "Ugx 10000": "Ugx 4000",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 15,
+                                                color: Colors.orange),
+                                          )
+                                        ],
+                                      ),
                                     )
                                   ],
                                 )),
