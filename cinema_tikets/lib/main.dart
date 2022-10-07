@@ -1,4 +1,5 @@
 import 'package:cinema_tikets/models/seat_number_model.dart';
+import 'package:cinema_tikets/notifiers/movie_notifier.dart';
 import 'package:cinema_tikets/pages/bottom_navigation_bar/main_page.dart';
 import 'package:cinema_tikets/pages/welcome_page.dart';
 import 'package:flutter/material.dart';
@@ -7,11 +8,16 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(
-    ChangeNotifierProvider(
-      create: (context) => SeatNumberModel(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => SeatNumberModel()),
+         ChangeNotifierProvider(create: ((context) => MovieNotifier()),
+        )],
       child:  const MyApp(),
   )
     );
@@ -45,3 +51,4 @@ class MyApp extends StatelessWidget {
   }
 }
 
+ 

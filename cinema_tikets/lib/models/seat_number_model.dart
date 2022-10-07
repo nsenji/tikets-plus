@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+
 class SeatNumberModel extends ChangeNotifier {
   List items = [];
   int sumOfprice = 0;

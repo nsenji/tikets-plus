@@ -29,6 +29,13 @@
             {
               "client_id": "1065683134046-h744s770mksdt6c068ra1tajk589magp.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "1065683134046-3ja43mmj6a8mkbr9dmvh1oek9bus7cju.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.cinemaTikets"
+              }
             }
           ]
         }
