@@ -1,9 +1,10 @@
-import 'package:cinema_tikets/models/seat_number_model.dart';
+import 'package:cinema_tikets/notifiers/seat_number_notifier.dart';
 import 'package:cinema_tikets/utils/app_layout.dart';
-
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import '../../services/payment.dart';
 
 class TicketView extends StatelessWidget {
   const TicketView({
@@ -22,7 +23,8 @@ class TicketView extends StatelessWidget {
           left: 20,
           child: Center(
             child: Container(
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
+              decoration:
+                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
               height: 50,
               width: 400,
               child: ElevatedButton(
@@ -43,7 +45,8 @@ class TicketView extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
-                      image: AssetImage("assets/korea.jpg"), fit: BoxFit.cover)),
+                      image: AssetImage("assets/korea.jpg"),
+                      fit: BoxFit.cover)),
               height: 300,
             )),
         Positioned(
@@ -138,9 +141,10 @@ class TicketView extends StatelessWidget {
               height: 265,
               child: ListView.builder(
                   padding: EdgeInsets.only(top: 0),
-                  itemCount: Provider.of<SeatNumberModel>(context, listen: false)
-                      .items
-                      .length,
+                  itemCount:
+                      Provider.of<SeatNumberModel>(context, listen: false)
+                          .items
+                          .length,
                   itemBuilder: (_, index) {
                     return Container(
                       padding: const EdgeInsets.only(top: 0),
@@ -159,7 +163,8 @@ class TicketView extends StatelessWidget {
                                           color: Color.fromARGB(255, 0, 0, 0),
                                           borderRadius: BorderRadius.only(
                                               topRight: Radius.circular(10),
-                                              bottomRight: Radius.circular(10)))),
+                                              bottomRight:
+                                                  Radius.circular(10)))),
                                 ),
                                 Expanded(
                                     child: Padding(
@@ -196,7 +201,8 @@ class TicketView extends StatelessWidget {
                                           color: Colors.black,
                                           borderRadius: BorderRadius.only(
                                               topLeft: Radius.circular(10),
-                                              bottomLeft: Radius.circular(10)))),
+                                              bottomLeft:
+                                                  Radius.circular(10)))),
                                 )
                               ],
                             ),
@@ -245,7 +251,14 @@ class TicketView extends StatelessWidget {
                                             SizedBox(
                                               height: 10,
                                             ),
-                                            Text(Provider.of<SeatNumberModel>(context,listen: false).seatNumber[index] <2? "Ugx 10000": "Ugx 4000",
+                                            Text(
+                                              Provider.of<SeatNumberModel>(
+                                                              context,
+                                                              listen: false)
+                                                          .seatNumber[index] <
+                                                      2
+                                                  ? "Ugx 10000"
+                                                  : "Ugx 4000",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 15,

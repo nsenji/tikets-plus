@@ -1,12 +1,13 @@
 import 'dart:ui';
 
+import 'package:cinema_tikets/api/movie_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
-import '../models/seat_number_model.dart';
+import '../notifiers/seat_number_notifier.dart';
 
 class Seat extends StatefulWidget {
   bool touched;
@@ -31,22 +32,27 @@ class _SeatState extends State<Seat> {
     return Container(
         child: IconButton(
             onPressed: () {
+              
               setState(() {
                 if (widget.seatColor == Colors.white) {
                   widget.seatColor = Colors.orange;
                   Provider.of<SeatNumberModel>(context, listen: false)
                       .add(widget.index + 1);
                   Provider.of<SeatNumberModel>(context, listen: false)
-                      .addPrice(widget.index +1);
+                      .addPrice(widget.index + 1);
+                  
                 } else {
                   widget.seatColor = Colors.white;
                   Provider.of<SeatNumberModel>(context, listen: false)
                       .remove(widget.index + 1);
-                   Provider.of<SeatNumberModel>(context, listen: false)
-                      .reducePrice(widget.index +1);
-
+                  Provider.of<SeatNumberModel>(context, listen: false)
+                      .reducePrice(widget.index + 1);
                 }
-              });
+              }
+              
+              );
+
+            addSeat(Provider.of<SeatNumberModel>(context, listen: false).items);
             },
             icon: Icon(
               Icons.chair,

@@ -1,4 +1,4 @@
-import 'package:cinema_tikets/pages/seats_page.dart';
+import 'package:cinema_tikets/pages/app_pages/seats_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';

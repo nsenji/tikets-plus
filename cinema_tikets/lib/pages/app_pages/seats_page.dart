@@ -1,10 +1,10 @@
 import 'dart:math';
 
 
-import 'package:cinema_tikets/models/seat_number_model.dart';
-import 'package:cinema_tikets/pages/ticket_confimation.dart';
-import 'package:cinema_tikets/pages/tickets_booked_page.dart';
-import 'package:cinema_tikets/widgets/seat_widget.dart';
+import 'package:cinema_tikets/notifiers/seat_number_notifier.dart';
+import 'package:cinema_tikets/pages/app_pages/ticket_confimation.dart';
+// import 'package:cinema_tikets/pages/tickets_booked_page.dart';
+import 'package:cinema_tikets/models/seat_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';

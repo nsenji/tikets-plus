@@ -19,7 +19,7 @@ class _ProfilePageState extends State<ProfilePage> {
     MovieNotifier movieNotifier =
         Provider.of<MovieNotifier>(context, listen: false);
     getMovie(movieNotifier);
-    // TODO: implement initState
+    // TODO: implement initStateO 
     super.initState();
   }
 

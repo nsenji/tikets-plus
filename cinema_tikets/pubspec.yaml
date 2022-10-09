@@ -46,6 +46,10 @@ dependencies:
   firebase_core: ^1.24.0
   cloud_firestore: ^3.5.1
   firebase_storage: ^10.3.11
+  firebase_auth: ^3.11.2
+  image_picker: ^0.8.6
+  flutter_spinkit: ^5.1.0
+  # flutterwave: ^1.0.3
 
 dev_dependencies:
   flutter_test:
