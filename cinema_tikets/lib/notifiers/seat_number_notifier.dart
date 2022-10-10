@@ -1,11 +1,22 @@
+import 'dart:collection';
+
 import 'package:flutter/foundation.dart';
 
+import '../models/get_seatList_model.dart';
 
 class SeatNumberModel extends ChangeNotifier {
   List items = [];
   int sumOfprice = 0;
   int vip = 10000;
   int ordinary = 4000;
+  List _seatList = [];
+
+  UnmodifiableListView get seatList => UnmodifiableListView(_seatList);
+
+  set seatlist(List seatList) {
+    _seatList = seatList;
+    notifyListeners();
+  }
 
   void add(item) {
     items.add(item);
@@ -31,6 +42,7 @@ class SeatNumberModel extends ChangeNotifier {
       notifyListeners();
     }
   }
+
   dynamic reducePrice(item) {
     if (item < 22 && item > 0) {
       sumOfprice -= vip;
@@ -46,27 +58,3 @@ class SeatNumberModel extends ChangeNotifier {
     return sumOfprice;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

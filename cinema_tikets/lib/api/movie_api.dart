@@ -31,9 +31,35 @@ addSeat(stuff) {
 
   FirebaseFirestore.instance
       .collection("Seats")
-      .doc('82TvfV6vIksgjITayEy0')
+      .doc('82TvfV6vIksgjITayEy082TvfV6vIksgjITayEy0')
       .update(data);
 }
+
+getSeat(SeatNumberModel seatNumberModel) async {
+  QuerySnapshot snapshot =
+      await FirebaseFirestore.instance.collection('Seats').get();
+
+  List _seatList = [];
+  dynamic value;
+
+  snapshot.docs.forEach((element) {
+    {
+      _seatList.add(element);
+    }
+    print('yeah the data is comming');
+  });
+
+  seatNumberModel.seatlist = _seatList;
+}
+
+
+
+
+
+
+
+
+
 
 // final washingtonRef = FirebaseFirestore.instance.collection("cites").doc("DC");
 //     washingtonRef.update({"capital": true}).then(

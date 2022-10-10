@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import '../notifiers/seat_number_notifier.dart';
 
 class Seat extends StatefulWidget {
-  bool touched;
+  bool taken;
   Color? seatColor;
   IconData? icon;
   int index;
@@ -18,7 +18,7 @@ class Seat extends StatefulWidget {
   Seat(
       {super.key,
       required this.index,
-      this.touched = false,
+      this.taken = false,
       this.seatColor = Colors.white,
       this.icon});
 
@@ -28,11 +28,22 @@ class Seat extends StatefulWidget {
 
 class _SeatState extends State<Seat> {
   @override
+  void initState() {
+    // getSeat(Provider.of<SeatNumberModel>(context, listen: false));
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    if (Provider.of<SeatNumberModel>(context, listen: false).seatList.contains(widget.index) ){
+      widget.taken = true;
+    }
     return Container(
         child: IconButton(
+          disabledColor: Colors.blue,
+          enableFeedback: widget.taken == true?false:true,
             onPressed: () {
-              
               setState(() {
                 if (widget.seatColor == Colors.white) {
                   widget.seatColor = Colors.orange;
@@ -40,7 +51,6 @@ class _SeatState extends State<Seat> {
                       .add(widget.index + 1);
                   Provider.of<SeatNumberModel>(context, listen: false)
                       .addPrice(widget.index + 1);
-                  
                 } else {
                   widget.seatColor = Colors.white;
                   Provider.of<SeatNumberModel>(context, listen: false)
@@ -48,11 +58,10 @@ class _SeatState extends State<Seat> {
                   Provider.of<SeatNumberModel>(context, listen: false)
                       .reducePrice(widget.index + 1);
                 }
-              }
-              
-              );
+              });
 
-            addSeat(Provider.of<SeatNumberModel>(context, listen: false).items);
+              addSeat(
+                  Provider.of<SeatNumberModel>(context, listen: false).items);
             },
             icon: Icon(
               Icons.chair,

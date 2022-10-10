@@ -29,7 +29,7 @@ class TicketView extends StatelessWidget {
               width: 400,
               child: ElevatedButton(
                   onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: ((context) => TicketView()))),
+                      MaterialPageRoute(builder: ((context) => Payments()))),
                   child: Text("PAYMENT"),
                   style: ElevatedButton.styleFrom(
                       padding: const EdgeInsets.all(10),
