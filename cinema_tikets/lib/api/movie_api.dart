@@ -71,7 +71,7 @@ removeSeat(int index) async {
       .doc("82TvfV6vIksgjITayEy0");
 
   washingtonRef.update({
-    "Seats": FieldValue.arrayRemove([index]),
+    "name": FieldValue.arrayRemove([index]),
   });
 }
 

@@ -79,18 +79,22 @@ class _BarItemPageState extends State<BarItemPage> {
                   right: 30,
                   top: 120,
                   child: Container(
+
                       width: 400,
-                      height: 500,
-                      child: Container(
-                        height: 500,
-                        width: double.maxFinite,
-                        child: Wrap(
-                            spacing: 2,
-                            children: List.generate(77, (index) {
-                              return Container(
-                                  padding: EdgeInsets.all(0.1),
-                                  child: Seat(index: index));
-                            })),
+                      height: 550,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Container(
+                          height: 500,
+                          width: 510,
+                          child: Wrap(
+                              spacing: 2,
+                              children: List.generate(110, (index) {
+                                return Container(
+                                    padding: EdgeInsets.all(0.1),
+                                    child: Seat(index: index));
+                              })),
+                        ),
                       ))),
               Positioned(
                   left: 10,
@@ -169,6 +173,7 @@ class _BarItemPageState extends State<BarItemPage> {
                     width: 80,
                     // color: Colors.red,
                     child: Column(
+
                       children: [
                         Row(
                           children: [

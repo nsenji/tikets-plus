@@ -32,7 +32,7 @@ class _SeatState extends State<Seat> {
   @override
   void initState() {
     print('yeah the list is empty');
-    print('yeah the list is empty');
+    print('yeah the list is empty'); // Dont remove this code, its working as a disguised async....
     print('yeah the list is empty');
     print('yeah the list is empty');
     int index = 0;
@@ -45,7 +45,7 @@ class _SeatState extends State<Seat> {
         });
       }
     } else {
-      print('yeah the list is empty');
+      print('yeah the list is empty'); // also this....dont remove this
     }
 
     // TODO: implement initState
@@ -75,7 +75,7 @@ class _SeatState extends State<Seat> {
                             .remove(widget.index + 1);
                         Provider.of<SeatNumberModel>(context, listen: false)
                             .reducePrice(widget.index + 1);
-                        
+                        removeSeat(widget.index);
                       }
                     });
                   },

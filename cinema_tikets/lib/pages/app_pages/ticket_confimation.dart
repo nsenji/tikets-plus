@@ -256,7 +256,7 @@ class TicketView extends StatelessWidget {
                                                               context,
                                                               listen: false)
                                                           .seatNumber[index] <
-                                                      2
+                                                      20
                                                   ? "Ugx 10000"
                                                   : "Ugx 4000",
                                               style: TextStyle(
