@@ -51,14 +51,32 @@ getSeat(TakenSeat takenSeat) async {
     }
   });
 
-    takenSeat.seatList = _seatList;
+  takenSeat.seatList = _seatList;
+}
+
+addSeat(int index) async {
+  final washingtonRef = FirebaseFirestore.instance
+      .collection("Seats")
+      .doc("82TvfV6vIksgjITayEy0");
+
+// Atomically add a new region to the "regions" array field.
+  washingtonRef.update({
+    "name": FieldValue.arrayUnion([index]),
+  });
+}
+
+removeSeat(int index) async {
+  final washingtonRef = FirebaseFirestore.instance
+      .collection("Seats")
+      .doc("82TvfV6vIksgjITayEy0");
+
+  washingtonRef.update({
+    "Seats": FieldValue.arrayRemove([index]),
+  });
 }
 
 
-
-
-
-
+ 
 
 
 

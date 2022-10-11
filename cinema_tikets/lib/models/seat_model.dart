@@ -39,7 +39,7 @@ class _SeatState extends State<Seat> {
     TakenSeat takenSeat = Provider.of<TakenSeat>(context, listen: false);
     List stuff = takenSeat.seatList[index].seat;
     if (takenSeat.seatList[0].seat != null) {
-      if (stuff.contains(widget.index+1)) {
+      if (stuff.contains(widget.index + 1)) {
         setState(() {
           widget.taken = true;
         });
@@ -68,17 +68,16 @@ class _SeatState extends State<Seat> {
                             .add(widget.index + 1);
                         Provider.of<SeatNumberModel>(context, listen: false)
                             .addPrice(widget.index + 1);
+                        addSeat(widget.index);
                       } else {
                         widget.seatColor = Colors.white;
                         Provider.of<SeatNumberModel>(context, listen: false)
                             .remove(widget.index + 1);
                         Provider.of<SeatNumberModel>(context, listen: false)
                             .reducePrice(widget.index + 1);
+                        
                       }
                     });
-
-                    // addSeat(
-                    //     Provider.of<SeatNumberModel>(context, listen: false).items);
                   },
             icon: Icon(
               Icons.chair,
