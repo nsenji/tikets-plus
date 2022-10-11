@@ -9,14 +9,11 @@ class SeatNumberModel extends ChangeNotifier {
   int sumOfprice = 0;
   int vip = 10000;
   int ordinary = 4000;
-  List _seatList = [];
+  
 
-  UnmodifiableListView get seatList => UnmodifiableListView(_seatList);
+  
 
-  set seatlist(List seatList) {
-    _seatList = seatList;
-    notifyListeners();
-  }
+  
 
   void add(item) {
     items.add(item);

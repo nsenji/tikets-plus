@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:cinema_tikets/api/movie_api.dart';
+import 'package:cinema_tikets/notifiers/taken_seat_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
@@ -27,46 +28,62 @@ class Seat extends StatefulWidget {
 }
 
 class _SeatState extends State<Seat> {
+  // dynamic value;
   @override
   void initState() {
-    // getSeat(Provider.of<SeatNumberModel>(context, listen: false));
+    print('yeah the list is empty');
+    print('yeah the list is empty');
+    print('yeah the list is empty');
+    print('yeah the list is empty');
+    int index = 0;
+    TakenSeat takenSeat = Provider.of<TakenSeat>(context, listen: false);
+    List stuff = takenSeat.seatList[index].seat;
+    if (takenSeat.seatList[0].seat != null) {
+      if (stuff.contains(widget.index+1)) {
+        setState(() {
+          widget.taken = true;
+        });
+      }
+    } else {
+      print('yeah the list is empty');
+    }
+
     // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    if (Provider.of<SeatNumberModel>(context, listen: false).seatList.contains(widget.index) ){
-      widget.taken = true;
-    }
     return Container(
         child: IconButton(
-          disabledColor: Colors.blue,
-          enableFeedback: widget.taken == true?false:true,
-            onPressed: () {
-              setState(() {
-                if (widget.seatColor == Colors.white) {
-                  widget.seatColor = Colors.orange;
-                  Provider.of<SeatNumberModel>(context, listen: false)
-                      .add(widget.index + 1);
-                  Provider.of<SeatNumberModel>(context, listen: false)
-                      .addPrice(widget.index + 1);
-                } else {
-                  widget.seatColor = Colors.white;
-                  Provider.of<SeatNumberModel>(context, listen: false)
-                      .remove(widget.index + 1);
-                  Provider.of<SeatNumberModel>(context, listen: false)
-                      .reducePrice(widget.index + 1);
-                }
-              });
+            disabledColor: Colors.blue,
+            // enableFeedback: widget.taken == true?false:true,
+            onPressed: widget.taken == true
+                ? null
+                : () {
+                    setState(() {
+                      if (widget.seatColor == Colors.white) {
+                        widget.seatColor = Colors.orange;
+                        Provider.of<SeatNumberModel>(context, listen: false)
+                            .add(widget.index + 1);
+                        Provider.of<SeatNumberModel>(context, listen: false)
+                            .addPrice(widget.index + 1);
+                      } else {
+                        widget.seatColor = Colors.white;
+                        Provider.of<SeatNumberModel>(context, listen: false)
+                            .remove(widget.index + 1);
+                        Provider.of<SeatNumberModel>(context, listen: false)
+                            .reducePrice(widget.index + 1);
+                      }
+                    });
 
-              addSeat(
-                  Provider.of<SeatNumberModel>(context, listen: false).items);
-            },
+                    // addSeat(
+                    //     Provider.of<SeatNumberModel>(context, listen: false).items);
+                  },
             icon: Icon(
               Icons.chair,
               size: 50,
-              color: widget.seatColor,
+              color: widget.taken == true ? Colors.blue : widget.seatColor,
             )));
   }
 }

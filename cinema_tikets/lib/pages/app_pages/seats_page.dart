@@ -1,7 +1,7 @@
 import 'dart:math';
 
-
 import 'package:cinema_tikets/notifiers/seat_number_notifier.dart';
+import 'package:cinema_tikets/notifiers/taken_seat_notifier.dart';
 import 'package:cinema_tikets/pages/app_pages/ticket_confimation.dart';
 // import 'package:cinema_tikets/pages/tickets_booked_page.dart';
 import 'package:cinema_tikets/models/seat_model.dart';
@@ -11,6 +11,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
+import '../../api/movie_api.dart';
+
 class BarItemPage extends StatefulWidget {
   const BarItemPage({super.key});
 
@@ -19,6 +21,14 @@ class BarItemPage extends StatefulWidget {
 }
 
 class _BarItemPageState extends State<BarItemPage> {
+  @override
+  void initState() {
+    TakenSeat takenSeat = Provider.of<TakenSeat>(context, listen: false);
+    getSeat(takenSeat);
+    // TODO: implement initState
+    super.initState();
+  }
+
   int selectedIndex = -1;
   Color _iconColor = Colors.grey;
 
@@ -79,9 +89,7 @@ class _BarItemPageState extends State<BarItemPage> {
                             children: List.generate(77, (index) {
                               return Container(
                                   padding: EdgeInsets.all(0.1),
-                                  child:
-                                    Seat(index: index)
-                                  );
+                                  child: Seat(index: index));
                             })),
                       ))),
               Positioned(

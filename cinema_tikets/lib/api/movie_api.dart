@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:cinema_tikets/models/get_seatList_model.dart';
 import 'package:cinema_tikets/models/movie_model.dart';
 import 'package:cinema_tikets/notifiers/movie_notifier.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -8,6 +9,7 @@ import 'package:provider/provider.dart';
 import 'package:provider/provider.dart';
 
 import '../notifiers/seat_number_notifier.dart';
+import '../notifiers/taken_seat_notifier.dart';
 
 getMovie(MovieNotifier movieNotifier) async {
   QuerySnapshot snapshot =
@@ -25,31 +27,31 @@ getMovie(MovieNotifier movieNotifier) async {
 
 //
 
-addSeat(stuff) {
-  // Add a new document with a generated id.
-  final data = {"name": stuff};
+// addSeat(stuff) {
+//   // Add a new document with a generated id.
+//   final data = {"name": stuff};
 
-  FirebaseFirestore.instance
-      .collection("Seats")
-      .doc('82TvfV6vIksgjITayEy082TvfV6vIksgjITayEy0')
-      .update(data);
-}
+//   FirebaseFirestore.instance
+//       .collection("Seats")
+//       .doc('82TvfV6vIksgjITayEy0')
+//       .update(data);
+// }
 
-getSeat(SeatNumberModel seatNumberModel) async {
+getSeat(TakenSeat takenSeat) async {
   QuerySnapshot snapshot =
       await FirebaseFirestore.instance.collection('Seats').get();
 
-  List _seatList = [];
+  List<SeatNumber> _seatList = [];
   dynamic value;
 
   snapshot.docs.forEach((element) {
     {
-      _seatList.add(element);
+      SeatNumber seatNumber = SeatNumber.fromMap(element);
+      _seatList.add(seatNumber);
     }
-    print('yeah the data is comming');
   });
 
-  seatNumberModel.seatlist = _seatList;
+    takenSeat.seatList = _seatList;
 }
 
 

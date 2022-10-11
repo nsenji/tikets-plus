@@ -10,10 +10,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'api/movie_api.dart';
 import 'firebase_options.dart';
+import 'notifiers/taken_seat_notifier.dart';
 
 
 void main() async{
+  
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   
@@ -21,7 +24,8 @@ void main() async{
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => SeatNumberModel()),
-         ChangeNotifierProvider(create: ((context) => MovieNotifier()),
+         ChangeNotifierProvider(create: ((context) => MovieNotifier())),
+         ChangeNotifierProvider(create: ((context) => TakenSeat())
         )],
       child:  const MyApp(),
   )
@@ -38,6 +42,13 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    TakenSeat takenSeat = Provider.of<TakenSeat>(context, listen: false);
+    getSeat(takenSeat);
+    // TODO: implement initState
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return StreamProvider<User?>.value(

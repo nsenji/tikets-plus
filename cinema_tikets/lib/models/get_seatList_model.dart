@@ -1,8 +1,9 @@
-class SeatList {
-  List seatList = [];
+class SeatNumber {
+  dynamic seat= '';
 
 
-  SeatList.fromMap(things){
-    seatList = things;
+  SeatNumber.fromMap( things){
+    seat = things['name'];
   }
 }
+ 
