@@ -68,14 +68,14 @@ class _SeatState extends State<Seat> {
                             .add(widget.index + 1);
                         Provider.of<SeatNumberModel>(context, listen: false)
                             .addPrice(widget.index + 1);
-                        addSeat(widget.index);
+                        addSeat(widget.index+1);
                       } else {
                         widget.seatColor = Colors.white;
                         Provider.of<SeatNumberModel>(context, listen: false)
                             .remove(widget.index + 1);
                         Provider.of<SeatNumberModel>(context, listen: false)
                             .reducePrice(widget.index + 1);
-                        removeSeat(widget.index);
+                        removeSeat(widget.index+1);
                       }
                     });
                   },
