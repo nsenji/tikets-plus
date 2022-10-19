@@ -1,5 +1,6 @@
 // ignore_for_file: unused_import, sort_child_properties_last, prefer_const_constructors
 import 'package:cinema_tikets/pages/app_pages/cinema_location.dart';
+import 'package:cinema_tikets/pages/auth_pages/wrapper.dart';
 import 'package:flutter/material.dart';
 import 'flutterfire.dart';
 import 'package:cinema_tikets/pages/app_pages/home_page.dart';
@@ -22,7 +23,9 @@ class _LogInScreenState extends State<LogInScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return loading
+        ? Loading()
+      :Scaffold(
       appBar: AppBar(
           backgroundColor: Color.fromARGB(239, 255, 16, 16),
           title: Center(
@@ -73,7 +76,7 @@ class _LogInScreenState extends State<LogInScreen> {
                 child:OutlinedButton(
                   onPressed: () async {
                     setState(() => loading = true);
-                    bool shouldNavigate = await logIn(_emailField.text, _passwordField.text);
+                    bool shouldNavigate = await logIn(_emailField.text.trim().toString(), _passwordField.text.trim().toString());
                     if (shouldNavigate) {
                       setState(() => loading = false);
                       Navigator.push(context, MaterialPageRoute(builder: (context) =>Location(),),);

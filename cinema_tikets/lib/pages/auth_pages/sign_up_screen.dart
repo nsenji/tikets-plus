@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cinema_tikets/pages/auth_pages/auth.dart';
-import 'package:cinema_tikets/pages/auth_pages/image_controller.dart';
+
 import 'package:cinema_tikets/pages/auth_pages/wrapper.dart';
 import 'flutterfire.dart';
 import 'package:cinema_tikets/pages/app_pages/home_page.dart';
@@ -29,11 +29,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Get.lazyPut(() => ImageController());
-    return loading
-        ? Loading()
-        : GetBuilder<ImageController>(builder:(imageController){ 
-          return Scaffold(
+    return Scaffold(
             appBar: AppBar(
               backgroundColor: Color.fromARGB(239, 255, 16, 16),
               title: Padding(
@@ -52,53 +48,53 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             color: Color.fromARGB(247, 255, 9, 9),
                             fontSize: 38.0)),
                   ),
-                  Padding(
-                    padding: EdgeInsets.all(10.0),
-                    child: Column(children: [
-                      Container(
-                          padding: EdgeInsets.all(0.0),
-                          width: 270,
-                          height: 340,
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.rectangle,
-                            color: Color.fromARGB(247, 162, 157, 157),
-                          ),
-                          child: imageController.pickedFile != null
-                              ? Image.file(File(imageController.pickedFile!.path),
-                                  width: 270, height: 340, 
-                                   fit: BoxFit.fitHeight)
-                              : Center(
-                                  child: Icon(
-                                    Icons.add_a_photo,
-                                    size: 50,
-                                  ),
-                                ) //const Text('Profile Image'),),
-                          ),
-                    ]),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 10, bottom: 30),
-                    child: SizedBox(
-                      width: 180,
-                      height: 30,
-                      child: OutlinedButton(
-                        onPressed: () async => await imageController.pickImage(), 
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(
-                            Color.fromARGB(247, 162, 157, 157),
-                          ),
-                          shape: MaterialStateProperty.all(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15))),
-                        ),
-                        child: const Text(
-                          'Upload Profile Image',
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      ),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: EdgeInsets.all(10.0),
+                  //   child: Column(children: [
+                  //     // Container(
+                      //     padding: EdgeInsets.all(0.0),
+                      //     width: 270,
+                      //     height: 340,
+                      //     alignment: Alignment.center,
+                      //     decoration: BoxDecoration(
+                      //       shape: BoxShape.rectangle,
+                      //       color: Color.fromARGB(247, 162, 157, 157),
+                      //     ),
+                      //     child: imageController.pickedFile != null
+                      //         ? Image.file(File(imageController.pickedFile!.path),
+                      //             width: 270, height: 340,
+                      //              fit: BoxFit.fitHeight)
+                      //         : Center(
+                      //             child: Icon(
+                      //               Icons.add_a_photo,
+                      //               size: 50,
+                      //             ),
+                      //           ) //const Text('Profile Image'),),
+                      //     ),
+                  //   ]),
+                  // ),
+                  // Padding(
+                  //   padding: const EdgeInsets.only(top: 10, bottom: 30),
+                  //   child: SizedBox(
+                  //     width: 180,
+                  //     height: 30,
+                  //     child: OutlinedButton(
+                  //       onPressed: () async => await imageController.pickImage(),
+                  //       style: ButtonStyle(
+                  //         backgroundColor: MaterialStateProperty.all<Color>(
+                  //           Color.fromARGB(247, 162, 157, 157),
+                  //         ),
+                  //         shape: MaterialStateProperty.all(
+                  //             RoundedRectangleBorder(
+                  //                 borderRadius: BorderRadius.circular(15))),
+                  //       ),
+                  //       child: const Text(
+                  //         'Upload Profile Image',
+                  //         style: TextStyle(color: Colors.white),
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
                   Padding(
                     padding: EdgeInsets.all(20.0),
                     child: TextField(
@@ -211,6 +207,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
             ),
           );
         }
-        );
-  }
+
+  
 }

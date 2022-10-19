@@ -22,9 +22,6 @@ Future<bool> signIn(String email, String password, String name, String contact) 
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   try {
     UserCredential result = await _firebaseAuth.createUserWithEmailAndPassword(email: email,password: password);
-    // User? firebaseUser = result.user;
-    // firebaseUser?.updateDisplayName(name);
-    // firebaseUser?.reload();
     var user = FirebaseAuth.instance.currentUser;
     await FirebaseFirestore.instance.collection('users').add({
       'uniqueID': user!.uid,

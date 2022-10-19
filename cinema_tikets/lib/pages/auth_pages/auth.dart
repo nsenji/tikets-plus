@@ -1,5 +1,5 @@
 import 'dart:io';
-
+import 'package:cinema_tikets/pages/app_pages/cinema_location.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService { 
@@ -12,20 +12,13 @@ class AuthService {
   Future signOut() async {
     try{
       return await _auth.signOut();
+      
     } catch(e) {
       print(e.toString());
       return null;
     }
+    
   }
 }
 
 
-// class UploadImage extends ImageController {
-//   Future uploadFile() async {
-//     final path = 'files/${pickedFile!}';
-
-//     final ref = FirebaseStorage.instance.ref().child(path);
-//     //ref.putFile(File(_pickedFile!.path));
-//     ref.putFile(File(pickedOFile!.path));
-//   }
-// }

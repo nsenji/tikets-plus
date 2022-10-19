@@ -1,16 +1,16 @@
 import 'package:cinema_tikets/pages/app_pages/purchased_tickets.dart';
-import 'package:firebase_storage/firebase_storage.dart';
-import 'package:flutter/material.dart';
 import 'package:cinema_tikets/pages/auth_pages/auth.dart';
-import 'package:image_picker/image_picker.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../notifiers/seat_number_notifier.dart';
 import '../../utils/styles.dart';
 import 'package:flutter/services.dart';
-import 'dart:io';
+
+import '../auth_pages/log_in_screen.dart';
 
 class Profile extends StatefulWidget {
-
   Profile({super.key});
 
   @override
@@ -19,26 +19,19 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   final AuthService _auth = AuthService();
-  String imageUrl = "";
-
-  void pickProfilepic() async {
-    final image = await ImagePicker().pickImage(
-      source: ImageSource.gallery,
-      maxWidth: 512,
-      maxHeight: 512,
-      imageQuality: 90,
-    );
-    Reference ref = FirebaseStorage.instance.ref().child("profilepic.jpg");
-
-    await ref.putFile(File(image!.path));
-    ref.getDownloadURL().then((value){
-      print(value);
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-    var userName;
+    var user = FirebaseAuth.instance.currentUser;
+    var email = user?.email;
+    var uid = user?.uid;
+
+    int points(tickets) {
+      int total = tickets * 100;
+      return total;
+    }
+
+    int tickets =
+        Provider.of<SeatNumberModel>(context, listen: false).items.length;
 
     return Scaffold(
       appBar: AppBar(
@@ -51,30 +44,43 @@ class _ProfileState extends State<Profile> {
         child: SafeArea(
           child: Column(
             children: [
-              const SizedBox(height: 30),
               SizedBox(
                 width: double.infinity,
-                height: 130,
-                child: GestureDetector(
-                  onTap: (){
-                    pickProfilepic();
-                  },
-                  child: Container(
-                    alignment: const Alignment(0.0, 2.5),
-                    child:  CircleAvatar(
-                      radius: 80.0,
-                      child: imageUrl == "" ? const Icon(
-                          Icons.camera_alt_outlined, size:80, color:Colors.white
-                      ) : Image.network(imageUrl),
-                    ),
-                  ),
+                height: 50,
+                child: Container(
+                  alignment: const Alignment(0.0, 2.5),
                 ),
               ),
+              const Text(
+                "User Unique ID",
+                style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w400),
+              ),
               const SizedBox(
-                height: 60,
+                height: 5,
               ),
               Text(
-                '$userName',
+                uid.toString(),
+                style: const TextStyle(
+                    fontSize: 25.0,
+                    color: Colors.blueGrey,
+                    fontWeight: FontWeight.w400),
+              ),
+              const SizedBox(height: 25),
+              const Text(
+                "User Email",
+                style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w400),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+              Text(
+                email.toString(),
                 style: const TextStyle(
                     fontSize: 25.0,
                     color: Colors.blueGrey,
@@ -92,7 +98,7 @@ class _ProfileState extends State<Profile> {
               ),
               Card(
                 margin:
-                const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
+                    const EdgeInsets.symmetric(horizontal: 20.0, vertical: 8.0),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -100,7 +106,7 @@ class _ProfileState extends State<Profile> {
                     children: [
                       Expanded(
                         child: Column(
-                          children:[
+                          children: [
                             const Text(
                               "Tickets",
                               style: TextStyle(
@@ -109,7 +115,8 @@ class _ProfileState extends State<Profile> {
                                   fontWeight: FontWeight.w600),
                             ),
                             const SizedBox(height: 7),
-                            Text(Provider.of<SeatNumberModel>(context, listen: false).items.length.toString(),
+                            Text(
+                              tickets.toString(),
                               style: const TextStyle(
                                   color: Colors.blueGrey,
                                   fontSize: 22.0,
@@ -121,14 +128,20 @@ class _ProfileState extends State<Profile> {
                       Expanded(
                         child: Column(
                           children: [
-                            const Text("Points",
+                            const Text(
+                              "Points",
                               style: TextStyle(
                                   color: Colors.redAccent,
                                   fontSize: 22.0,
                                   fontWeight: FontWeight.w600),
                             ),
                             const SizedBox(height: 7),
-                            Text(points(Provider.of<SeatNumberModel>(context, listen: false).items.length).toString(),
+                            Text(
+                              points(Provider.of<SeatNumberModel>(context,
+                                          listen: false)
+                                      .items
+                                      .length)
+                                  .toString(),
                               style: const TextStyle(
                                   color: Colors.blueGrey,
                                   fontSize: 22.0,
@@ -200,14 +213,17 @@ class _ProfileState extends State<Profile> {
                   ElevatedButton(
                     onPressed: () {},
                     style: ElevatedButton.styleFrom(
-                      padding:  const EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(0),
                       ),
                       backgroundColor: Colors.red,
                     ),
                     child: InkWell(
-                      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context)=> const Purchased() )),
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Purchased())),
                       child: Container(
                         constraints: const BoxConstraints(
                           maxWidth: 350.0,
@@ -231,16 +247,23 @@ class _ProfileState extends State<Profile> {
                     child: ElevatedButton(
                         onPressed: () async {
                           await _auth.signOut();
+                          Navigator.of(context).pushAndRemoveUntil(
+                              new MaterialPageRoute(
+                                  builder: (context) => new LogInScreen()),
+                              (route) => false);
                         },
                         style: ElevatedButton.styleFrom(
                           elevation: 0,
-                          fixedSize: const Size(150,30),
+                          fixedSize: const Size(150, 30),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(80.0),
                           ),
                           backgroundColor: Colors.red,
                         ),
-                        child: const Text("Sign Out", style: TextStyle(fontSize: 20),)),
+                        child: const Text(
+                          "Sign Out",
+                          style: TextStyle(fontSize: 20),
+                        )),
                   ),
                 ],
               ),
@@ -283,8 +306,4 @@ alertDialog(BuildContext context) {
       );
     },
   );
-}
-points(tickets){
-  int total = tickets*100;
-  return total;
 }
