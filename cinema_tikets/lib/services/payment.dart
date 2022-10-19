@@ -46,6 +46,7 @@ class _PaymentsState extends State<Payments> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 107, 104, 104),
       appBar: AppBar(
         title: const Text("Payment"),
         backgroundColor: Styles.primaryColor,
@@ -87,7 +88,7 @@ class _PaymentsState extends State<Payments> {
           Positioned(
             left: 20,
             right: 20,
-            top: 300,
+            top: 330,
             bottom:350,
             child: GestureDetector(
               onTap: () {

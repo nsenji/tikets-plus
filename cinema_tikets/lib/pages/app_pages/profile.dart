@@ -34,6 +34,7 @@ class _ProfileState extends State<Profile> {
         Provider.of<SeatNumberModel>(context, listen: false).items.length;
 
     return Scaffold(
+      backgroundColor: Color.fromARGB(255, 63, 59, 59),
       appBar: AppBar(
         backgroundColor: Styles.primaryColor,
         title: const Text("My Profile"),
@@ -157,53 +158,53 @@ class _ProfileState extends State<Profile> {
               const SizedBox(
                 height: 50,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(80.0),
-                      ),
-                      backgroundColor: Colors.red,
-                    ),
-                    child: InkWell(
-                      onTap: () => {},
-                      child: const Text(
-                        "Contact Us",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                        ),
-                      ),
-                    ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(80.0),
-                      ),
-                      backgroundColor: Colors.red,
-                    ),
-                    child: Container(
-                      constraints: const BoxConstraints(
-                        maxWidth: 100.0,
-                        maxHeight: 40.0,
-                      ),
-                      alignment: Alignment.center,
-                      child: const Text(
-                        "Cinema Info",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18.0,
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //   children: [
+              //     ElevatedButton(
+              //       onPressed: () {},
+              //       style: ElevatedButton.styleFrom(
+              //         shape: RoundedRectangleBorder(
+              //           borderRadius: BorderRadius.circular(80.0),
+              //         ),
+              //         backgroundColor: Colors.red,
+              //       ),
+              //       child: InkWell(
+              //         onTap: () => {},
+              //         child: const Text(
+              //           "Contact Us",
+              //           style: TextStyle(
+              //             color: Colors.white,
+              //             fontSize: 18.0,
+              //           ),
+              //         ),
+              //       ),
+              //     ),
+              //     ElevatedButton(
+              //       onPressed: () {},
+              //       style: ElevatedButton.styleFrom(
+              //         shape: RoundedRectangleBorder(
+              //           borderRadius: BorderRadius.circular(80.0),
+              //         ),
+              //         backgroundColor: Colors.red,
+              //       ),
+              //       child: Container(
+              //         constraints: const BoxConstraints(
+              //           maxWidth: 100.0,
+              //           maxHeight: 40.0,
+              //         ),
+              //         alignment: Alignment.center,
+              //         child: const Text(
+              //           "Cinema Info",
+              //           style: TextStyle(
+              //             color: Colors.white,
+              //             fontSize: 18.0,
+              //           ),
+              //         ),
+              //       ),
+              //     )
+              //   ],
+              // ),
               const SizedBox(
                 height: 50,
               ),
