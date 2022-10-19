@@ -23,8 +23,22 @@ class ComingSoon extends StatelessWidget {
               margin: const EdgeInsets.only(right:30, top:15, bottom:30),
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical:17),
               decoration: BoxDecoration(
-                  color: Styles.primaryColor,
-                  borderRadius: BorderRadius.circular(24)
+                color: Styles.primaryColor,
+                gradient: LinearGradient(
+                  colors: [Colors.purple, Colors.blue],
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.topRight,
+                ),
+                border: Border.all(
+                  color: Colors.blue,
+                ),
+                boxShadow: [
+                  new BoxShadow(
+                    color: Colors.black,
+                    blurRadius: 5.0,
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(24),
               ),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

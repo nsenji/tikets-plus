@@ -2,6 +2,9 @@ import 'package:cinema_tikets/notifiers/seat_number_notifier.dart';
 import 'package:cinema_tikets/notifiers/movie_notifier.dart';
 import 'package:cinema_tikets/pages/app_pages/cinema_location.dart';
 import 'package:cinema_tikets/pages/app_pages/home_page.dart';
+import 'package:cinema_tikets/pages/app_pages/models/location.dart';
+import 'package:cinema_tikets/pages/app_pages/models/time.dart';
+import 'package:cinema_tikets/pages/app_pages/models/title_image_provider.dart';
 import 'package:cinema_tikets/pages/auth_pages/auth.dart';
 import 'package:cinema_tikets/pages/auth_pages/wrapper.dart';
 import 'package:cinema_tikets/pages/bottom_navigation_bar/main_page.dart';
@@ -25,6 +28,10 @@ void main() async{
       providers: [
         ChangeNotifierProvider(create: (context) => SeatNumberModel()),
          ChangeNotifierProvider(create: ((context) => MovieNotifier())),
+         ChangeNotifierProvider(create: (context)=> Datetime()),
+         ChangeNotifierProvider(create: (context)=> Place()),
+         ChangeNotifierProvider(create: (context)=> MovieTitle()),
+         ChangeNotifierProvider(create: (context)=> MovieImage()),
          ChangeNotifierProvider(create: ((context) => TakenSeat())
         )],
       child:  const MyApp(),

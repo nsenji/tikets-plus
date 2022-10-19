@@ -12,24 +12,61 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title:  Text(location),
-        centerTitle: false,
-        elevation: 0.0,
-        actions: [
-          ElevatedButton.icon(
-            style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(Color(0xFFF44336))),
-            onPressed: (){
-            Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context)=> const Profile()));
-          },
-            icon: const Icon(Icons.person),
-            label: const Text("Profile"),
+      extendBodyBehindAppBar: true,
+        appBar: AppBar(
+          title: Text(
+            location,
+            style: const TextStyle(color: Colors.white),
           ),
-        ],
-        backgroundColor: Styles.primaryColor,
-      ),
+          centerTitle: false,
+          elevation: 0.0,
+          backgroundColor: Colors.transparent,
+          // iconTheme: const IconThemeData(
+          //   color: Colors.black,
+          // ),
+          actions: [
+            Container(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.purple, Colors.blue],
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.topRight,
+                ),
+                // border: Border.all(
+                //   color: Colors.blue,
+                // ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black,
+                    blurRadius: 5.0,
+                  ),
+                ],
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(25),
+                  bottomLeft: Radius.circular(25),
+                ),
+              ),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                ),
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Profile()));
+                },
+                child: Text(
+                  "Profile",
+                  style: TextStyle(
+                    fontSize: 18,
+                    // fontWeight: FontWeight.w700,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ],
+          // backgroundColor: Styles.primaryColor,
+        ),
       body: ListView(
         children: [
            SingleChildScrollView(
@@ -45,7 +82,7 @@ class HomePage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Coming Soon...", style: Styles.headLineStyle2,),
+                Text("Coming Soon...", style: TextStyle(color: Colors.white, fontSize: 23),),
               ],
             ),
           ),

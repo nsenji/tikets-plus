@@ -12,6 +12,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
 import '../../api/movie_api.dart';
+import '../../utils/app_layout.dart';
 
 class BarItemPage extends StatefulWidget {
   const BarItemPage({super.key});
@@ -52,189 +53,331 @@ class _BarItemPageState extends State<BarItemPage> {
 
   @override
   Widget build(BuildContext context) {
+    final size = AppLayout.getSize(context);
     return Scaffold(
       body: Container(
           decoration: BoxDecoration(color: Colors.black87),
-          child: Stack(
+          child: Column(
             children: [
-              // this is the white cinema projectoro  screen
-              Positioned(
-                  left: 40,
-                  top: 80,
-                  right: 40,
-                  child: Container(
-                    width: 300,
-                    height: 5,
-                    decoration: BoxDecoration(boxShadow: [
-                      BoxShadow(
-                          blurRadius: 2,
-                          offset: Offset.zero,
-                          spreadRadius: 2,
-                          blurStyle: BlurStyle.normal,
-                          color: Colors.white)
-                    ], color: Colors.white70, shape: BoxShape.rectangle),
-                  )),
-              Positioned(
-                  left: 30,
-                  right: 30,
-                  top: 120,
-                  child: Container(
-
-                      width: 400,
-                      height: 550,
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.horizontal,
-                        child: Container(
-                          height: 500,
-                          width: 510,
+              Container(
+                margin: const EdgeInsets.only(left: 15, top: 55),
+                child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: 0),
+                          width: 450,
+                          height: 5,
+                          decoration: BoxDecoration(boxShadow: [
+                            BoxShadow(
+                                blurRadius: 2,
+                                offset: Offset.zero,
+                                spreadRadius: 2,
+                                blurStyle: BlurStyle.normal,
+                                color: Colors.white)
+                          ], color: Colors.white70, shape: BoxShape.rectangle),
+                        ),
+                        SizedBox(
+                          height: 40,
+                        ),
+                        Container(
+                          // color: Colors.green,
+                          height: 540,
+                          width: 460, //480,
                           child: Wrap(
-                              spacing: 2,
-                              children: List.generate(110, (index) {
-                                return Container(
-                                    padding: EdgeInsets.all(0.1),
-                                    child: Seat(index: index));
+                              spacing: AppLayout.getWidth(0),
+                              children: List.generate(99, (index) {
+                                return
+                                    // padding: EdgeInsets.all(AppLayout.getWidth(0.1)),
+                                    Seat(index: index);
                               })),
                         ),
-                      ))),
-              Positioned(
-                  left: 10,
-                  top: 120,
-                  child: Container(
-                    height: 540,
-                    width: 20,
-                    child: Column(
-                      children: List.generate(11, (index) {
-                        return Container(
-                          margin: EdgeInsets.only(bottom: 16, top: 15),
-                          child: Text(
-                            alpha[index],
-                            style: TextStyle(
-                                color: Color.fromARGB(248, 255, 255, 255)),
-                          ),
-                        );
-                      }),
+                      ],
+                    )),
+              ),
+              Container(
+                width: 360,
+                height: 45,
+                child: Row(children: [
+                  Container(
+                    height: 9,
+                    width: 9,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(9),
+                        color: Colors.grey),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text('Available', style: TextStyle(color: Colors.white)),
+                  SizedBox(
+                    width: 60,
+                  ),
+                  Container(
+                    height: 9,
+                    width: 9,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(9),
+                        color: Colors.orange),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text('Selected', style: TextStyle(color: Colors.white)),
+                  SizedBox(
+                    width: 60,
+                  ),
+                  Container(
+                    height: 9,
+                    width: 9,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(9),
+                        color: Colors.blue),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  Text('Taken', style: TextStyle(color: Colors.white))
+                ]),
+              ),
+              Center(
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Colors.purple, Colors.blue],
+                      begin: Alignment.bottomLeft,
+                      end: Alignment.topRight,
                     ),
-                  )),
-              // Positioned(
-              //   right: 30,
-              //   left: 30,
-              //   top: 680,
-              //   child: Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-              //     Container(
-              //         padding: const EdgeInsets.only(left: 100),
-              //         height: 50,
-              //         width: 200,
-              //         child: Consumer<SeatNumberModel>(
-              //             builder: (context, number, child) {
-              //           return RichText(
-              //             text: TextSpan(
-              //                 style: TextStyle(
-              //                     color: Color.fromARGB(253, 255, 255, 255)),
-              //                 children: <TextSpan>[
-              //                   TextSpan(text: 'SEAT:'),
-              //                   TextSpan(
-              //                       text: ' ${number.seatNumber}',
-              //                       style: TextStyle(
-              //                           fontWeight: FontWeight.bold,
-              //                           fontSize: 18,
-              //                           color: Colors.orange))
-              //                 ]),
-              //           );
-              //         })),
-              //   ]),
-              // ),
-              Positioned(
-                right: 30,
-                left: 30,
-                top: 750,
-                child: Center(
-                  child: Container(
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(20)),
-                    height: 50,
-                    width: 400,
-                    child: ElevatedButton(
-                        onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: ((context) => TicketView()))),
-                        child: Text("BOOK SEAT"),
-                        style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.all(10),
-                            backgroundColor: Colors.orange)),
+                    // border: Border.all(
+                    //   color: Colors.blue,
+                    // ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black,
+                        blurRadius: 5.0,
+                      ),
+                    ],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  height: 50,
+                  width: AppLayout.getWidth(350),
+                  child: ElevatedButton(
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: ((context) => TicketView()))),
+                    child: Text("BOOK SEAT"),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                    ),
                   ),
                 ),
               ),
-              Positioned(
-                  top: 660,
-                  right: 300,
-                  child: Container(
-                    height: 80,
-                    width: 80,
-                    // color: Colors.red,
-                    child: Column(
-
-                      children: [
-                        Row(
-                          children: [
-                            Container(
-                              height: 9,
-                              width: 9,
-                              decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(9),
-                                  color: Colors.orange),
-                            ),
-                            Expanded(child: Container()),
-                            Text('Selected',
-                                style: TextStyle(color: Colors.white))
-                          ],
-                        ),
-                        Expanded(
-                          child: Container(),
-                          flex: 0,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 10),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 9,
-                                width: 9,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(9),
-                                    color: Colors.grey),
-                              ),
-                              Expanded(child: Container()),
-                              Text('Available',
-                                  style: TextStyle(color: Colors.white))
-                            ],
-                          ),
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 15),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 9,
-                                width: 9,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(9),
-                                    color: Colors.white),
-                              ),
-                              Expanded(child: Container(), flex: 1),
-                              Container(
-                                margin: const EdgeInsets.only(right: 19),
-                                child: Text('Taken',
-                                    style: TextStyle(color: Colors.white)),
-                              )
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
-                  ))
             ],
           )),
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Positioned(
+              //     left: 10,
+              //     top: 120,
+              //     child: SizedBox(
+              //       height: 540,
+              //       width: 20,
+              //       child: Column(
+              //         children: List.generate(11, (index) {
+              //           return Container(
+              //             margin: EdgeInsets.only(bottom: 16, top: 15),
+              //             child: Text(
+              //               alpha[index],
+              //               style: TextStyle(
+              //                   color: Color.fromARGB(248, 255, 255, 255)),
+              //             ),
+              //           );
+              //         }),
+              //       ),
+              //     )),
+
+
+
+
+
+
+              // Positioned(
+              //     top: 660,
+              //     right: 300,
+              //     child: SizedBox(
+              //       height: 80,
+              //       width: 80,
+              //       // color: Colors.red,
+              //       child: Column(
+
+              //         children: [
+              //           Row(
+              //             children: [
+              //               Container(
+              //                 height: 9,
+              //                 width: 9,
+              //                 decoration: BoxDecoration(
+              //                     borderRadius: BorderRadius.circular(9),
+              //                     color: Colors.orange),
+              //               ),
+              //               Expanded(child: Container()),
+              //               Text('Selected',
+              //                   style: TextStyle(color: Colors.white))
+              //             ],
+              //           ),
+              //           Expanded(
+              //             child: Container(),
+              //             flex: 0,
+              //           ),
+              //           Container(
+              //             margin:  EdgeInsets.only(top: 10),
+              //             child: Row(
+              //               children: [
+              //                 Container(
+              //                   height: 9,
+              //                   width: 9,
+              //                   decoration: BoxDecoration(
+              //                       borderRadius: BorderRadius.circular(9),
+              //                       color: Colors.grey),
+              //                 ),
+              //                 Expanded(child: Container()),
+              //                 Text('Available',
+              //                     style: TextStyle(color: Colors.white))
+              //               ],
+              //             ),
+              //           ),
+              //           Container(
+              //             margin:  EdgeInsets.only(top: 15),
+              //             child: Row(
+              //               children: [
+              //                 Container(
+              //                   height: 9,
+              //                   width: 9,
+              //                   decoration: BoxDecoration(
+              //                       borderRadius: BorderRadius.circular(9),
+              //                       color: Colors.white),
+              //                 ),
+              //                 Expanded(child: Container(), flex: 1),
+              //                 Container(
+              //                   margin:  EdgeInsets.only(right: 19),
+              //                   child: Text('Taken',
+              //                       style: TextStyle(color: Colors.white)),
+              //                 )
+              //               ],
+              //             ),
+              //           )
+              //         ],
+              //       ),
+              //     ))
+     
+
+
+
+
+
+
+// this is the white cinema projectoro  screen
+              // Positioned(
+              //     left: 40,
+              //     top: 80,
+              //     right: 0,
+              //     child: SingleChildScrollView(
+              //       scrollDirection: Axis.horizontal,
+              //       child: Container(
+              //         width: 365,
+              //         height: 5,
+              //         decoration: BoxDecoration(boxShadow: [
+              //           BoxShadow(
+              //               blurRadius: 2,
+              //               offset: Offset.zero,
+              //               spreadRadius: 2,
+              //               blurStyle: BlurStyle.normal,
+              //               color: Colors.white)
+              //         ], color: Colors.white70, shape: BoxShape.rectangle),
+              //       ),
+              //     )),

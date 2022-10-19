@@ -54,35 +54,35 @@ class _SeatState extends State<Seat> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        child: IconButton(
-            disabledColor: Colors.blue,
-            // enableFeedback: widget.taken == true?false:true,
-            onPressed: widget.taken == true
-                ? null
-                : () {
-                    setState(() {
-                      if (widget.seatColor == Colors.white) {
-                        widget.seatColor = Colors.orange;
-                        Provider.of<SeatNumberModel>(context, listen: false)
-                            .add(widget.index + 1);
-                        Provider.of<SeatNumberModel>(context, listen: false)
-                            .addPrice(widget.index + 1);
-                        addSeat(widget.index+1);
-                      } else {
-                        widget.seatColor = Colors.white;
-                        Provider.of<SeatNumberModel>(context, listen: false)
-                            .remove(widget.index + 1);
-                        Provider.of<SeatNumberModel>(context, listen: false)
-                            .reducePrice(widget.index + 1);
-                        removeSeat(widget.index+1);
-                      }
-                    });
-                  },
-            icon: Icon(
-              Icons.chair,
-              size: 50,
-              color: widget.taken == true ? Colors.blue : widget.seatColor,
-            )));
+    return IconButton(
+        disabledColor: Colors.blue,
+        // enableFeedback: widget.taken == true?false:true,
+        onPressed: widget.taken == true
+            ? null
+            : () {
+                setState(() {
+                  if (widget.seatColor == Colors.white) {
+                    widget.seatColor = Colors.orange;
+                    Provider.of<SeatNumberModel>(context, listen: false)
+                        .add(widget.index + 1);
+                    Provider.of<SeatNumberModel>(context, listen: false)
+                        .addPrice(widget.index + 1);
+                    addSeat(widget.index+1);
+                  } else {
+                    widget.seatColor = Colors.white;
+                    
+                    Provider.of<SeatNumberModel>(context, listen: false)
+                        .remove(widget.index + 1);
+                    Provider.of<SeatNumberModel>(context, listen: false)
+                        .reducePrice(widget.index + 1);
+                    removeSeat(widget.index+1);
+                  }
+                });
+              },
+        icon: Icon(
+          Icons.chair,
+          size: 50,
+          color: widget.taken == true ? Colors.blue : widget.seatColor,
+        ));
   }
 }

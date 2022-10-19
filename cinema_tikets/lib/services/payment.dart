@@ -52,77 +52,96 @@ class _PaymentsState extends State<Payments> {
         centerTitle: true,
 
       ),
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: Column(
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 10),
-                    child: TextFormField(
-                      controller: _email,
-                      decoration: const InputDecoration(labelText: "Email"),
-                    ),
+      body: Stack(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(bottom: 10),
+            child: Column(
+              
+              children: [
+                SizedBox(height:40,),
+                Container(
+                  margin: const EdgeInsets.only(bottom: 10),
+                  child: TextFormField(
+                    controller: _email,
+                    decoration: const InputDecoration(labelText: "Email"),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 10),
-                    child: TextFormField(
-                      controller: _phoneNum,
-                      decoration: const InputDecoration(labelText: "Phone Number"),
-                    ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(bottom: 10),
+                  child: TextFormField(
+                    controller: _phoneNum,
+                    decoration: const InputDecoration(labelText: "Phone Number"),
                   ),
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 10),
-                    child: TextFormField(
-                      controller: _amount,
-                      decoration: const InputDecoration(labelText: "Amount"),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(bottom: 10),
+                  child: TextFormField(
+                    controller: _amount,
+                    decoration: const InputDecoration(labelText: "Amount"),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            left: 20,
+            right: 20,
+            top: 300,
+            bottom:350,
+            child: GestureDetector(
+              onTap: () {
+                final email = _email.text;
+                final phoneNum = _phoneNum.text;
+                final amount = _amount.text;
+
+                if (email.isEmpty || amount.isEmpty || phoneNum.isEmpty) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    const SnackBar(
+                      content: Text('Fields are Empty'),
                     ),
+                  );
+                } else {
+                  // flutterwave payment
+                  _makePayment(context, email.trim(), phoneNum.trim(),amount.trim());
+                }
+              },
+              child: Container(
+                decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.purple, Colors.blue],
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.topRight,
+                ),
+                // border: Border.all(
+                //   color: Colors.blue,
+                // ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black,
+                    blurRadius: 5.0,
                   ),
                 ],
+                borderRadius: BorderRadius.circular(10),
               ),
-            ),
-            Positioned(
-              top: 200,
-              bottom: 0,
-              child: GestureDetector(
-                onTap: () {
-                  final email = _email.text;
-                  final phoneNum = _phoneNum.text;
-                  final amount = _amount.text;
-
-                  if (email.isEmpty || amount.isEmpty || phoneNum.isEmpty) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        content: Text('Fields are Empty'),
-                      ),
-                    );
-                  } else {
-                    // flutterwave payment
-                    _makePayment(context, email.trim(), phoneNum.trim(),amount.trim());
-                  }
-                },
-                child: Container(
-                  padding: const EdgeInsets.all(20),
-                  width: MediaQuery.of(context).size.width,
-                  color: Colors.red,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: const [
-                      Icon(Icons.payment),
-                      Text(
-                        'Make Payments',
-                        style:
-                            TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
+                height:60,
+                padding: const EdgeInsets.all(20),
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: const [
+                    Icon(Icons.payment),
+                    Text(
+                      'Make Payments',
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

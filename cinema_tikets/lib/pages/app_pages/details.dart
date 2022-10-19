@@ -1,91 +1,219 @@
-import 'package:cinema_tikets/pages/app_pages/date_picker.dart';
-import 'package:flutter/material.dart';
-import 'package:cinema_tikets/utils/app_layout.dart';
-import 'package:cinema_tikets/utils/styles.dart';
+import 'dart:io';
+import 'dart:ui';
 
-class Details extends StatelessWidget {
-  final String title;
-  final String description;
-  final String poster;
-  const Details(
-      {Key? key,
-      required this.title,
-      required this.poster,
-      required this.description})
-      : super(key: key);
+import 'package:flutter/material.dart';
+import 'package:http/retry.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+
+import 'date_picker.dart';
+
+
+class MovieDetailsPage extends StatefulWidget {
+  String poster;
+  String clip;
+  String description;
+  String duration;
+  String genre;
+  String title;
+
+  MovieDetailsPage({
+    super.key,
+    required this.title,
+    required this.poster,
+    required this.clip,
+    required this.description,
+    required this.duration,
+    required this.genre
+    });
+
+  @override
+  // ignore: no_logic_in_create_state
+  State<MovieDetailsPage> createState() => _MovieDetailsPageState(
+    title: title,
+    poster: poster,
+    clip: clip,
+    description: description,
+    duration: duration,
+    genre: genre
+  );
+}
+
+
+class _MovieDetailsPageState extends State<MovieDetailsPage> with SingleTickerProviderStateMixin {
+
+  _MovieDetailsPageState({
+    required this.title,
+    required this.poster,
+    required this.clip,
+    required this.description,
+    required this.duration,
+    required this.genre
+    });
+
+  String title;
+  String poster;
+  String clip;
+  String description;
+  String duration;
+  String genre;
+
+  late AnimationController controller = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 1000),
+    reverseDuration: const Duration(milliseconds: 1000)
+  );
+
+  bool isPlaying = false;
+
+  // @override
+  // void initState(){
+  //   super.initState();
+
+  //   controller = AnimationController(
+  //     vsync: this,
+  //     duration: const Duration(milliseconds: 1000),
+  //     reverseDuration: const Duration(milliseconds: 1000)
+  //   ); 
+  // }
+
+  @override
+  void dispose(){
+    controller.dispose();
+    super.dispose();
+  }
+  
+  void toggleIcon(){
+    setState(() {
+      isPlaying = !isPlaying;
+      isPlaying ? controller.forward() : controller.reverse();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final size = AppLayout.getSize(context);
     return Scaffold(
-        appBar: AppBar(
-          title: Text(title),
-          elevation: 0,
-          centerTitle: true,
-          backgroundColor: Styles.primaryColor,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios) ,
-            onPressed: () =>  Navigator.of(context).pop(),
-          )
-        ),
-        body: Center(
-          child: Container(
-              width: size.width * 0.95,
-              height: 700,
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(24)),
-              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxHeight: 430),
-                  child: Container(
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: Styles.primaryColor,
-                          image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: AssetImage("assets/$poster")))),
-                ),
-                const SizedBox(height: 5),
-                Row(),
-                ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 400),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Column(
-                            children: [
-                              Text(title,
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      decoration: TextDecoration.none),
-                                  textScaleFactor: 2),
-                            ],
-                          ),
-                        ],
+       body: Stack(
+        children: [
+          ...buildBackground(context),
+          // THE MOVIE TITLE AND TIME
+          Positioned(
+            bottom: 300,
+            right: 120,
+            width: MediaQuery.of(context).size.width,
+            child: Column(
+                children:  [
+                  Container(
+                    padding : EdgeInsets.only(left:25),
+                    child: Text(
+                      title,
+                      style: const TextStyle(
+                        color: Color.fromARGB(255, 243, 244, 247),
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
                       ),
-                      const SizedBox(height: 15),
-                      Text(
+                    ),
+                  ),
+                  const SizedBox(height: 10,),
+                  Text(
+                    '2022 | $genre | $duration',
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold
+                    ),
+                  ),
+                  SizedBox(height: 10,),
+                ]
+              )
+            ),
+            // THE POSTER IN THE RIGHT CORNER
+            Positioned(
+              bottom: 230,
+              left: 260,
+              child: Container(
+                height: 150,
+                width: 110,
+                child: Image.asset('assets/$poster',
+                  fit: BoxFit.cover,
+                ),
+                )
+              ),
+            // THE PLAY BUTTON
+             Positioned(
+              top: 180,
+              left: 160,
+              child: CircleAvatar(
+                radius: 40,
+                backgroundColor: const Color.fromARGB(108, 211, 206, 206),
+                child: IconButton(
+                onPressed: () {
+                  toggleIcon();
+                },
+                iconSize: 60,
+                icon: AnimatedIcon(
+                  icon: AnimatedIcons.play_pause,
+                  progress: controller,
+                  color: const Color.fromARGB(206, 255, 255, 255),
+                ),
+              ),
+              )
+            ),
+            // THE MOVIE DESCRIPTON
+             Positioned(
+                  width: MediaQuery.of(context).size.width,
+                  bottom: 110,
+                  child: Container(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Text(
                         description,
                         style: const TextStyle(
-                            color: Colors.black, decoration: TextDecoration.none),
-                        textScaleFactor: 1.1,
-                      ),
-                      const SizedBox(
-                        height: 50,
-                      ),
-                      Center(
-                          child: SizedBox(
-                            width:size.width * 0.8,
-                            child: const Button(),
-                          ))
-                    ],
-                  ),
-                )
-              ])),
-        ),
-      );
+                          fontSize: 15,
+                          wordSpacing: 1,
+                          color: Colors.white,
+                        ),
+                    ),
+                  )
+            ),
+            // THE BOOK SEAT BUTTON
+            const Positioned(
+              left: 160,
+              bottom: 50,
+              child: Button()
+            )
+        ]
+      ),
+    );
   }
+
+
+List<Widget> buildBackground(context){
+  return [
+    Container(
+            height: double.infinity, 
+            color:  const Color.fromARGB(255, 27, 28, 32),
+            ),
+            Image.asset(
+              'assets/$clip',
+              width: double.infinity,
+              height: MediaQuery.of(context).size.height*0.5,
+              fit: BoxFit.cover,
+            ),
+            const Positioned.fill(
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                     gradient: LinearGradient(
+                      colors: [
+                        Colors.transparent,
+                        Color.fromARGB(255, 27, 28, 32),
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      stops: [0.3, 0.5]
+                      )
+                )
+                )
+            ),
+        ];
+}
+
 }

@@ -1,40 +1,49 @@
 List<Map<String, dynamic>> acacia = [
   {
     'title' :'Bullet Train',
-    'theme':['Action', 'Drama', 'Thriller'],
+    'genre': 'Action',
     'description':'Based on the 2010 novel Maria Beetle, The film stars Brad Pitt as a begrudging assassin who must battle fellow killers while riding a fictionalized version of the Takaido Shinkansen',
     'poster':'Bullet_train.jpg',
     'rating': 8.5,
+    'clip': 'bullet_train_clip.jpg',
+    'duration':'120 mins',
   },
   {
     'title':'Beast',
-    'theme':['Action', 'Horror', 'Adventure'],
+    'genre': 'Horror',
     'description':'Following a widowed father and his two daughters who visit South Africa game reserve, but must fight to survive when they are stalked and attacked by a ferocious, rogue and blood thirsty lion.',
     'poster':'beast.jpg',
-    'rating': 7.5
+    'rating': 7.5,
+    'clip':'beast_clip.jpg',
+    'duration':' 110 mins'
   },
   {
     'title':'Avatar',
-    'theme':['Action', 'Comedy', 'Adventure', 'Fantasy'],
+    'genre':'Adventure',
     'description':'A paraplegic Marine dispatched to the moon, Pandora on a unique mission becomes torn between following his orders adn protecting a world he feels is his home.',
     'poster':'avatar.jpg',
-    'rating': 8.0
+    'rating': 8.0,
+    'clip': 'avatar_clip.jpg',
+    'duration': '100 mins'
   },
   {
     'title':'Nope',
     'theme':['Horror', 'Thriller', 'Adventure'],
     'description':'Nope is an American Neo-Western Science fiction horror film directed, written and co-produced by Jordan Peele under his Monkeypaw Productions banner. It stars Daniel kaluuya and Keke Palmer',
     'poster':'nope.jpg',
-    'rating':9.0
+    'rating':9.0,
+    'clip': 'nope_clip.jpg',
+    'duration':'110 mins'
+
   }
 ];
 List<Map<String, dynamic>> acaciaComing = [
   {
-      'title' :'John Wick (Chapter 4)',
-      'theme':['Action', 'Drama', 'Thriller'],
-      'description':'Keanu Reeves as John Wick, a professional hitman and assassin who has gained legendary reputation for his set of skills and is now hunted by the High Table ',
-      'poster':'john_wick.jpg',
-      'rating':'__'
+    'title' :'John Wick (Chapter 4)',
+    'theme':['Action', 'Drama', 'Thriller'],
+    'description':'Keanu Reeves as John Wick, a professional hitman and assassin who has gained legendary reputation for his set of skills and is now hunted by the High Table ',
+    'poster':'john_wick.jpg',
+    'rating':'__'
   },
   {
     'title' :'Guardians of the Galaxy (Volume 3)',

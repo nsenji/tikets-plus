@@ -1,10 +1,12 @@
 import 'package:cinema_tikets/notifiers/seat_number_notifier.dart';
+import 'package:cinema_tikets/pages/app_pages/models/time.dart';
 import 'package:cinema_tikets/utils/app_layout.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../services/payment.dart';
+import 'models/title_image_provider.dart';
 
 class TicketView extends StatelessWidget {
   const TicketView({
@@ -18,127 +20,157 @@ class TicketView extends StatelessWidget {
       backgroundColor: Colors.black,
       body: Stack(children: [
         Positioned(
-          right: 24,
-          top: 750,
-          left: 20,
+          right: AppLayout.getWidth(24),
+          top: AppLayout.getHeight(740),
+          left: AppLayout.getWidth(20),
           child: Center(
             child: Container(
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(20)),
-              height: 50,
-              width: 400,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [Colors.purple, Colors.blue],
+                  begin: Alignment.bottomLeft,
+                  end: Alignment.topRight,
+                ),
+                // border: Border.all(
+                //   color: Colors.blue,
+                // ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black,
+                    blurRadius: 5.0,
+                  ),
+                ],
+                borderRadius: BorderRadius.circular(10),
+              ),
+              height: AppLayout.getHeight(50),
+              width: AppLayout.getWidth(400),
               child: ElevatedButton(
-                  onPressed: () => Navigator.push(context,
-                      MaterialPageRoute(builder: ((context) => Payments()))),
-                  child: Text("PAYMENT"),
-                  style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.all(10),
-                      backgroundColor: Colors.orange)),
+                onPressed: () => Navigator.push(context,
+                    MaterialPageRoute(builder: ((context) => Payments()))),
+                child: Text("PAYMENT"),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.transparent,
+                ),
+              ),
             ),
           ),
         ),
         Positioned(
-            top: 90,
-            right: 25,
-            left: 20,
+            top: AppLayout.getHeight(90),
+            right: AppLayout.getWidth(25),
+            left: AppLayout.getWidth(20),
             child: Container(
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   image: DecorationImage(
-                      image: AssetImage("assets/korea.jpg"),
-                      fit: BoxFit.cover)),
-              height: 300,
+                      image: AssetImage(
+                          "assets/${Provider.of<MovieImage>(context).image}"),
+                      fit: BoxFit.fill)),
+              height: AppLayout.getHeight(300),
             )),
         Positioned(
-            top: 390,
-            right: 25,
-            left: 20,
+            top: AppLayout.getHeight(390),
+            right: AppLayout.getWidth(25),
+            left: AppLayout.getWidth(20),
             child: Material(
               color: Colors.black,
-              child: Container(
-                padding: const EdgeInsets.only(top: 10, left: 10),
-                height: 75,
-                child: Row(children: [
-                  Container(
-                    padding: EdgeInsets.only(right: 45),
-                    height: 60,
-                    width: 140,
-                    child: Column(
+              child: LayoutBuilder(
+                  builder: (BuildContext context, BoxConstraints constraints) {
+                return Container(
+                  padding: EdgeInsets.only(
+                      top: AppLayout.getHeight(10),
+                      left: AppLayout.getWidth(10)),
+                  height: AppLayout.getHeight(75),
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text(
-                          "DATE",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w300, fontSize: 11),
+                        Container(
+                          padding:
+                              EdgeInsets.only(right: AppLayout.getWidth(45)),
+                          height: AppLayout.getHeight(60),
+                          // width: AppLayout.getWidth(140),
+                          child: Column(
+                            children: [
+                              Text(
+                                "DATE",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w300, fontSize: 11),
+                              ),
+                              SizedBox(
+                                height: AppLayout.getHeight(10),
+                              ),
+                              Text(
+                                Provider.of<Datetime>(context).date,
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 15),
+                              )
+                            ],
+                          ),
                         ),
-                        SizedBox(
-                          height: 10,
+                        // Expanded(child: Container()),
+                        Container(
+                          padding:
+                              EdgeInsets.only(right: AppLayout.getWidth(15)),
+                          height: AppLayout.getHeight(60),
+                          // width: AppLayout.getWidth(60),
+                          child: Column(
+                            children: [
+                              Text(
+                                "TIME",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w300, fontSize: 11),
+                              ),
+                              SizedBox(
+                                height: AppLayout.getHeight(10),
+                              ),
+                              Text(Provider.of<Datetime>(context).time,
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15))
+                            ],
+                          ),
                         ),
-                        Text(
-                          "31 Feb 22",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 15),
+                        // Expanded(child: Container()),
+                        Container(
+                          // width: AppLayout.getWidth(130),
+                          height: AppLayout.getHeight(60),
+                          padding:
+                              EdgeInsets.only(left: AppLayout.getWidth(35)),
+                          child: Column(
+                            children: [
+                              Text(
+                                "TOTAL PRICE",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.w300, fontSize: 11),
+                              ),
+                              SizedBox(
+                                height: AppLayout.getHeight(10),
+                              ),
+                              Text(
+                                  "Ugx.${Provider.of<SeatNumberModel>(context, listen: false).totalPrice}",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 15,
+                                      color: Colors.orange))
+                            ],
+                          ),
                         )
-                      ],
-                    ),
+                      ]),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20)),
+                    color: Colors.white,
                   ),
-                  Container(
-                    padding: EdgeInsets.only(right: 15),
-                    height: 60,
-                    width: 80,
-                    child: Column(
-                      children: [
-                        Text(
-                          "TIME",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w300, fontSize: 11),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text("13:34",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, fontSize: 15))
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 130,
-                    height: 60,
-                    padding: EdgeInsets.only(left: 35),
-                    child: Column(
-                      children: [
-                        Text(
-                          "TOTAL PRICE",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w300, fontSize: 11),
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                            "Ugx.${Provider.of<SeatNumberModel>(context, listen: false).totalPrice}",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 15,
-                                color: Colors.orange))
-                      ],
-                    ),
-                  )
-                ]),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20),
-                      topRight: Radius.circular(20)),
-                  color: Colors.white,
-                ),
-              ),
+                );
+              }),
             )),
         Positioned(
-            top: 465,
-            right: 25,
-            left: 20,
+            top: AppLayout.getHeight(465),
+            right: AppLayout.getWidth(25),
+            left: AppLayout.getWidth(20),
             child: Container(
-              height: 265,
+              height: AppLayout.getHeight(265),
               child: ListView.builder(
                   padding: EdgeInsets.only(top: 0),
                   itemCount:
@@ -147,11 +179,12 @@ class TicketView extends StatelessWidget {
                           .length,
                   itemBuilder: (_, index) {
                     return Container(
-                      padding: const EdgeInsets.only(top: 0),
+                      padding: EdgeInsets.only(top: AppLayout.getHeight(0)),
                       child: Column(
                         children: [
                           Container(
-                            padding: const EdgeInsets.only(top: 0),
+                            padding:
+                                EdgeInsets.only(top: AppLayout.getHeight(0)),
                             color: Colors.white,
                             child: Row(
                               children: [
@@ -168,21 +201,25 @@ class TicketView extends StatelessWidget {
                                 ),
                                 Expanded(
                                     child: Padding(
-                                  padding: const EdgeInsets.all(12.0),
+                                  padding:
+                                      EdgeInsets.all(AppLayout.getWidth(12.0)),
                                   child: LayoutBuilder(
                                     builder: (BuildContext context,
                                         BoxConstraints constraints) {
                                       return Flex(
                                         mainAxisAlignment:
                                             MainAxisAlignment.spaceBetween,
-                                        mainAxisSize: MainAxisSize.max,
+                                        mainAxisSize:
+                                            MainAxisSize.max, //Builder here
                                         direction: Axis.horizontal,
                                         children: List.generate(
                                             (constraints.constrainWidth() / 15)
                                                 .floor(),
-                                            (index) => const SizedBox(
-                                                  width: 5,
-                                                  height: 1,
+                                            (index) => Container(
+                                                  //try changing this back to a sized box
+                                                  width: AppLayout.getWidth(5),
+                                                  height:
+                                                      AppLayout.getHeight(1),
                                                   child: DecoratedBox(
                                                     decoration: BoxDecoration(
                                                         color: Color.fromARGB(
@@ -194,8 +231,8 @@ class TicketView extends StatelessWidget {
                                   ),
                                 )),
                                 SizedBox(
-                                  height: 20,
-                                  width: 10,
+                                  height: AppLayout.getHeight(20),
+                                  width: AppLayout.getWidth(10),
                                   child: DecoratedBox(
                                       decoration: BoxDecoration(
                                           color: Colors.black,
@@ -210,14 +247,15 @@ class TicketView extends StatelessWidget {
                           Center(
                             child: Material(
                               child: Container(
-                                  height: 80,
+                                  height: AppLayout.getHeight(80),
                                   color: Colors.white,
                                   child: Row(
                                     children: [
                                       Container(
-                                        height: 60,
-                                        width: 140,
-                                        padding: EdgeInsets.only(right: 10),
+                                        height: AppLayout.getHeight(60),
+                                        width: AppLayout.getWidth(140),
+                                        padding: EdgeInsets.only(
+                                            right: AppLayout.getWidth(10)),
                                         child: Column(
                                           children: [
                                             Text(
@@ -227,7 +265,7 @@ class TicketView extends StatelessWidget {
                                                   fontSize: 11),
                                             ),
                                             SizedBox(
-                                              height: 10,
+                                              height: AppLayout.getHeight(10),
                                             ),
                                             Text(
                                                 "${Provider.of<SeatNumberModel>(context, listen: false).seatNumber[index]}",
@@ -239,9 +277,10 @@ class TicketView extends StatelessWidget {
                                       ),
                                       Expanded(child: Container()),
                                       Container(
-                                        padding: EdgeInsets.only(left: 25),
-                                        height: 60,
-                                        width: 140,
+                                        padding: EdgeInsets.only(
+                                            left: AppLayout.getWidth(25)),
+                                        height: AppLayout.getHeight(60),
+                                        width: AppLayout.getWidth(140),
                                         child: Column(
                                           children: [
                                             Text("PRICE",
@@ -249,7 +288,7 @@ class TicketView extends StatelessWidget {
                                                     fontWeight: FontWeight.w300,
                                                     fontSize: 11)),
                                             SizedBox(
-                                              height: 10,
+                                              height: AppLayout.getHeight(10),
                                             ),
                                             Text(
                                               Provider.of<SeatNumberModel>(
