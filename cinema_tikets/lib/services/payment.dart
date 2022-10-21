@@ -1,10 +1,13 @@
 import 'dart:io';
 import 'dart:math';
+import 'package:cinema_tikets/notifiers/seat_number_notifier.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterwave/flutterwave.dart';
 import 'package:flutterwave/models/responses/charge_response.dart';
-
+import 'package:provider/provider.dart';
+import '../pages/app_pages/models/title_image_provider.dart';
 import '../utils/styles.dart';
 
 class Payments extends StatefulWidget {
@@ -15,9 +18,9 @@ class Payments extends StatefulWidget {
 }
 
 class _PaymentsState extends State<Payments> {
-  final TextEditingController _email = TextEditingController();
   final TextEditingController _phoneNum = TextEditingController();
-  final TextEditingController _amount = TextEditingController();
+
+  var user = FirebaseAuth.instance.currentUser;
 
   String? _ref;
 
@@ -36,6 +39,16 @@ class _PaymentsState extends State<Payments> {
     }
   }
 
+  dynamic discount(int amount, int points) {
+    if (Provider.of<Points>(context, listen: false).points > 500) {
+      return amount * 0.95;
+    } else if (Provider.of<Points>(context, listen: false).points > 800) {
+      return amount * 0.9;
+    } else {
+      return amount * 0.85;
+    }
+  }
+
   @override
   void initState() {
     setRef();
@@ -44,23 +57,31 @@ class _PaymentsState extends State<Payments> {
 
   @override
   Widget build(BuildContext context) {
+    dynamic points = Provider.of<Points>(context, listen: false).points;
+    final TextEditingController _amount = TextEditingController(
+        text: discount(
+                Provider.of<SeatNumberModel>(context, listen: false).sumOfprice,
+                points)
+            .toString());
+    final TextEditingController _email =
+        TextEditingController(text: user?.email);
 
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 107, 104, 104),
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: const Text("Payment"),
         backgroundColor: Styles.primaryColor,
         centerTitle: true,
-
       ),
       body: Stack(
         children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 10),
             child: Column(
-              
               children: [
-                SizedBox(height:40,),
+                SizedBox(
+                  height: 40,
+                ),
                 Container(
                   margin: const EdgeInsets.only(bottom: 10),
                   child: TextFormField(
@@ -72,7 +93,8 @@ class _PaymentsState extends State<Payments> {
                   margin: const EdgeInsets.only(bottom: 10),
                   child: TextFormField(
                     controller: _phoneNum,
-                    decoration: const InputDecoration(labelText: "Phone Number"),
+                    decoration:
+                        const InputDecoration(labelText: "Phone Number"),
                   ),
                 ),
                 Container(
@@ -89,7 +111,7 @@ class _PaymentsState extends State<Payments> {
             left: 20,
             right: 20,
             top: 330,
-            bottom:350,
+            bottom: 300,
             child: GestureDetector(
               onTap: () {
                 final email = _email.text;
@@ -104,28 +126,29 @@ class _PaymentsState extends State<Payments> {
                   );
                 } else {
                   // flutterwave payment
-                  _makePayment(context, email.trim(), phoneNum.trim(),amount.trim());
+                  _makePayment(
+                      context, email.trim(), phoneNum.trim(), amount.trim());
                 }
               },
               child: Container(
                 decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.purple, Colors.blue],
-                  begin: Alignment.bottomLeft,
-                  end: Alignment.topRight,
-                ),
-                // border: Border.all(
-                //   color: Colors.blue,
-                // ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black,
-                    blurRadius: 5.0,
+                  gradient: LinearGradient(
+                    colors: [Colors.purple, Colors.blue],
+                    begin: Alignment.bottomLeft,
+                    end: Alignment.topRight,
                   ),
-                ],
-                borderRadius: BorderRadius.circular(10),
-              ),
-                height:60,
+                  // border: Border.all(
+                  //   color: Colors.blue,
+                  // ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black,
+                      blurRadius: 5.0,
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                height: 60,
                 padding: const EdgeInsets.all(20),
                 width: MediaQuery.of(context).size.width,
                 child: Row(
@@ -134,8 +157,10 @@ class _PaymentsState extends State<Payments> {
                     Icon(Icons.payment),
                     Text(
                       'Make Payments',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.black),
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
                     ),
                   ],
                 ),
@@ -147,8 +172,8 @@ class _PaymentsState extends State<Payments> {
     );
   }
 
-  Future<void> _makePayment(
-      BuildContext context, String email, String phoneNum, String amount) async {
+  Future<void> _makePayment(BuildContext context, String email, String phoneNum,
+      String amount) async {
     try {
       Flutterwave flutterwave = Flutterwave.forUIPayment(
         context: this.context,

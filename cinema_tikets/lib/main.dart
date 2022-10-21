@@ -17,30 +17,28 @@ import 'package:firebase_core/firebase_core.dart';
 import 'api/movie_api.dart';
 import 'firebase_options.dart';
 import 'notifiers/taken_seat_notifier.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:lottie/lottie.dart';
 
-
-void main() async{
-  
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) => SeatNumberModel()),
-         ChangeNotifierProvider(create: ((context) => MovieNotifier())),
-         ChangeNotifierProvider(create: (context)=> Datetime()),
-         ChangeNotifierProvider(create: (context)=> Place()),
-         ChangeNotifierProvider(create: (context)=> MovieTitle()),
-         ChangeNotifierProvider(create: (context)=> MovieImage()),
-         ChangeNotifierProvider(create: ((context) => TakenSeat())
-        )],
-      child:  const MyApp(),
-  )
-    );
-    
-}
 
+
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => SeatNumberModel()),
+      ChangeNotifierProvider(create: ((context) => MovieNotifier())),
+      ChangeNotifierProvider(create: (context) => Datetime()),
+      ChangeNotifierProvider(create: (context) => Place()),
+      ChangeNotifierProvider(create: (context) => MovieTitle()),
+      ChangeNotifierProvider(create: (context) => MovieImage()),
+      ChangeNotifierProvider(create: ((context) => TakenSeat())),
+      ChangeNotifierProvider(create: ((context) => Points()))
+    ],
+    child: MyApp(),
+  ));
+}
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -57,27 +55,49 @@ class _MyAppState extends State<MyApp> {
     // TODO: implement initState
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return StreamProvider<User?>.value(
       value: AuthService().user,
       initialData: null,
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        // theme: ThemeData(
-        //   brightness: Brightness.dark,
-        //   appBarTheme: AppBarTheme(
-        //     systemOverlayStyle: SystemUiOverlayStyle(statusBarBrightness: Brightness.dark)
-        //   )
-        // ),
-        home:  Wrapper()
+      child: const MaterialApp(
+          debugShowCheckedModeBanner: false,
+          // theme: ThemeData(
+          //   brightness: Brightness.dark,
+          //   appBarTheme: AppBarTheme(
+          //     systemOverlayStyle: SystemUiOverlayStyle(statusBarBrightness: Brightness.dark)
+          //   )
+          // ),
+          home: SplashScreen()),
+    );
+  }
+}
+
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      child: AnimatedSplashScreen(
+        splash: Column(
+          children: [
+            Text(
+              'Tickets +',
+              style: TextStyle(fontSize: 50) ,
+            ),
+            Lottie.asset('assets/splash.json'),
+            
+          ],
+        ),
+        nextScreen: Wrapper(),
+        splashIconSize:500 ,
+        backgroundColor: Color.fromARGB(255, 192, 167, 238),
       ),
     );
   }
 }
- 
-
-
 
 
 

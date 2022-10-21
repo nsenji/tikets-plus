@@ -70,13 +70,14 @@ class ComingDetails extends StatelessWidget {
                         const SizedBox(height:15),
                         Text(description,style: const TextStyle(color: Colors.black, decoration: TextDecoration.none), textScaleFactor: 1,),
                         const SizedBox(height: 15),
-                        Center(child: SizedBox(
+                        Center(
+                          child: SizedBox(
                           width: 200,
                           child: ElevatedButton(
                             onPressed: (){},
                             style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(Color(0xFFF44336))),
                             child: const Text("COMING SOON"),),
-                        ))
+                        ),)
                       ],
                     ),
                   )

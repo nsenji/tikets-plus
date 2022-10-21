@@ -1,12 +1,12 @@
+import 'package:cinema_tikets/pages/app_pages/models/title_image_provider.dart';
 import 'package:cinema_tikets/pages/app_pages/purchased_tickets.dart';
 import 'package:cinema_tikets/pages/auth_pages/auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../notifiers/seat_number_notifier.dart';
 import '../../utils/styles.dart';
-import 'package:flutter/services.dart';
+
 
 import '../auth_pages/log_in_screen.dart';
 
@@ -27,6 +27,7 @@ class _ProfileState extends State<Profile> {
 
     int points(tickets) {
       int total = tickets * 100;
+      Provider.of<Points>(context, listen: false).count(total);
       return total;
     }
 
@@ -111,7 +112,7 @@ class _ProfileState extends State<Profile> {
                             const Text(
                               "Tickets",
                               style: TextStyle(
-                                  color: Colors.redAccent,
+                                  color: Colors.blue,
                                   fontSize: 22.0,
                                   fontWeight: FontWeight.w600),
                             ),
@@ -132,7 +133,7 @@ class _ProfileState extends State<Profile> {
                             const Text(
                               "Points",
                               style: TextStyle(
-                                  color: Colors.redAccent,
+                                  color: Colors.blue,
                                   fontSize: 22.0,
                                   fontWeight: FontWeight.w600),
                             ),
@@ -211,31 +212,47 @@ class _ProfileState extends State<Profile> {
               Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      padding: const EdgeInsets.all(10),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(0),
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Colors.purple, Colors.blue],
+                        begin: Alignment.bottomLeft,
+                        end: Alignment.topRight,
                       ),
-                      backgroundColor: Colors.red,
+                      // border: Border.all(
+                      //   color: Colors.blue,
+                      // ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black,
+                          blurRadius: 5.0,
+                        ),
+                      ],
+                      borderRadius: BorderRadius.circular(15),
                     ),
-                    child: InkWell(
-                      onTap: () => Navigator.push(
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                      ),
+                      child: InkWell(
+                        onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const Purchased())),
-                      child: Container(
-                        constraints: const BoxConstraints(
-                          maxWidth: 350.0,
-                          maxHeight: 40.0,
+                              builder: (context) => const Purchased()),
                         ),
-                        alignment: Alignment.center,
-                        child: const Text(
-                          "Tickets Purchased",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
+                        child: Container(
+                          constraints: const BoxConstraints(
+                            maxWidth: 350.0,
+                            maxHeight: 40.0,
+                          ),
+                          alignment: Alignment.center,
+                          child: const Text(
+                            "Tickets Purchased",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                            ),
                           ),
                         ),
                       ),
@@ -244,27 +261,41 @@ class _ProfileState extends State<Profile> {
                   const SizedBox(
                     height: 90,
                   ),
-                  Center(
-                    child: ElevatedButton(
-                        onPressed: () async {
-                          await _auth.signOut();
-                          Navigator.of(context).pushAndRemoveUntil(
-                              new MaterialPageRoute(
-                                  builder: (context) => new LogInScreen()),
-                              (route) => false);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          elevation: 0,
-                          fixedSize: const Size(150, 30),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(80.0),
-                          ),
-                          backgroundColor: Colors.red,
+                  Container(
+                    width: 120,
+                    decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          colors: [Colors.purple, Colors.blue],
+                          begin: Alignment.bottomLeft,
+                          end: Alignment.topRight,
                         ),
-                        child: const Text(
-                          "Sign Out",
-                          style: TextStyle(fontSize: 20),
-                        )),
+                        // border: Border.all(
+                        //   color: Colors.blue,
+                        // ),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black,
+                            blurRadius: 5.0,
+                          ),
+                        ],
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Center(
+                      child: ElevatedButton(
+                          onPressed: () async {
+                            await _auth.signOut();
+                            Navigator.of(context).pushAndRemoveUntil(
+                                new MaterialPageRoute(
+                                    builder: (context) => new LogInScreen()),
+                                (route) => false);
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.transparent,
+                          ),
+                          child: const Text(
+                            "Sign Out",
+                            style: TextStyle(fontSize: 20),
+                          )),
+                    ),
                   ),
                 ],
               ),

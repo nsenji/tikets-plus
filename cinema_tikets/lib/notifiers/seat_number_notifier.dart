@@ -7,8 +7,8 @@ import '../models/get_seatList_model.dart';
 class SeatNumberModel extends ChangeNotifier {
   List items = [];
   int sumOfprice = 0;
-  int vip = 10000;
-  int ordinary = 4000;
+  int vip = 15000;
+  int ordinary = 10000;
   
 
   

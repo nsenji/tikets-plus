@@ -1,13 +1,8 @@
-import 'dart:ui';
 
 import 'package:cinema_tikets/api/movie_api.dart';
 import 'package:cinema_tikets/notifiers/taken_seat_notifier.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
-
 import '../notifiers/seat_number_notifier.dart';
 
 class Seat extends StatefulWidget {
