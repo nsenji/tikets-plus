@@ -1,15 +1,16 @@
 import 'dart:io';
-import 'package:cinema_tikets/models/get_seatList_model.dart';
+import 'package:cinema_tikets/models/seatNumbers_from_firestore/for_acacia/get_seatList_model.dart';
 import 'package:cinema_tikets/models/movie_model.dart';
-import 'package:cinema_tikets/notifiers/movie_notifier.dart';
+import 'package:cinema_tikets/notifiers/for_acacia/movie_notifier.dart';
+import 'package:cinema_tikets/notifiers/for_acacia/taken_seat_notifier.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/provider.dart';
 
-import '../notifiers/seat_number_notifier.dart';
-import '../notifiers/taken_seat_notifier.dart';
+
+
 
 getMovie(MovieNotifier movieNotifier) async {
   QuerySnapshot snapshot =

@@ -1,4 +1,5 @@
-import 'package:cinema_tikets/notifiers/seat_number_notifier.dart';
+import 'package:cinema_tikets/notifiers/for_acacia/seat_number_notifier.dart';
+import 'package:cinema_tikets/notifiers/for_metro/seat_number_notifier-metro.dart';
 import 'package:cinema_tikets/pages/app_pages/models/time.dart';
 import 'package:cinema_tikets/utils/app_layout.dart';
 
@@ -9,8 +10,9 @@ import '../../services/payment.dart';
 import 'models/title_image_provider.dart';
 
 class TicketView extends StatelessWidget {
-  const TicketView({
-    Key? key,
+  String location;
+   TicketView({
+    Key? key,required this.location
   }) : super(key: key);
 
   @override
@@ -146,7 +148,7 @@ class TicketView extends StatelessWidget {
                               SizedBox(
                                 height: AppLayout.getHeight(10),
                               ),
-                              Text(
+                              Text( location== "METROPLEX NAALYA"?"Ugx.${Provider.of<SeatNumberModel_metro>(context, listen: false).totalPrice}":
                                   "Ugx.${Provider.of<SeatNumberModel>(context, listen: false).totalPrice}",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
@@ -173,7 +175,9 @@ class TicketView extends StatelessWidget {
               height: AppLayout.getHeight(265),
               child: ListView.builder(
                   padding: EdgeInsets.only(top: 0),
-                  itemCount:
+                  itemCount:location == "METROPLEX NAALYA"?Provider.of<SeatNumberModel_metro>(context, listen: false)
+                          .items
+                          .length:
                       Provider.of<SeatNumberModel>(context, listen: false)
                           .items
                           .length,
@@ -267,7 +271,7 @@ class TicketView extends StatelessWidget {
                                             SizedBox(
                                               height: AppLayout.getHeight(10),
                                             ),
-                                            Text(
+                                            Text(location=="METROPLEX NAALYA"?"${Provider.of<SeatNumberModel_metro>(context, listen: false).seatNumber[index]}":
                                                 "${Provider.of<SeatNumberModel>(context, listen: false).seatNumber[index]}",
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
@@ -290,7 +294,13 @@ class TicketView extends StatelessWidget {
                                             SizedBox(
                                               height: AppLayout.getHeight(10),
                                             ),
-                                            Text(
+                                            Text(location=="METROPLEX NAALYA"?Provider.of<SeatNumberModel_metro>(
+                                                              context,
+                                                              listen: false)
+                                                          .seatNumber[index] <
+                                                      20
+                                                  ? "Ugx 15000"
+                                                  : "Ugx 10000":
                                               Provider.of<SeatNumberModel>(
                                                               context,
                                                               listen: false)

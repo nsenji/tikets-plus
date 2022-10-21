@@ -1,21 +1,23 @@
 import 'dart:math';
 
-import 'package:cinema_tikets/notifiers/seat_number_notifier.dart';
-import 'package:cinema_tikets/notifiers/taken_seat_notifier.dart';
+import 'package:cinema_tikets/models/seat_models/metro_seat.dart';
+import 'package:cinema_tikets/notifiers/for_acacia/seat_number_notifier.dart';
+import 'package:cinema_tikets/notifiers/for_acacia/taken_seat_notifier.dart';
+import 'package:cinema_tikets/pages/app_pages/models/location.dart';
 import 'package:cinema_tikets/pages/app_pages/ticket_confimation.dart';
 // import 'package:cinema_tikets/pages/tickets_booked_page.dart';
-import 'package:cinema_tikets/models/seat_model.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:cinema_tikets/models/seat_models/seat_model.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:provider/provider.dart';
 
-import '../../api/movie_api.dart';
+import '../../api/for_acacia/movie_api.dart';
 import '../../utils/app_layout.dart';
 
 class BarItemPage extends StatefulWidget {
-  const BarItemPage({super.key});
+  String location;
+  BarItemPage({super.key, required this.location});
 
   @override
   State<BarItemPage> createState() => _BarItemPageState();
@@ -90,9 +92,15 @@ class _BarItemPageState extends State<BarItemPage> {
                           child: Wrap(
                               spacing: AppLayout.getWidth(0),
                               children: List.generate(99, (index) {
-                                return
-                                    // padding: EdgeInsets.all(AppLayout.getWidth(0.1)),
-                                    Seat(index: index);
+                                if (widget.location == "ACACIA") {
+                                  return Seat(
+                                    index: index,
+                                  );
+                                }
+                                if (widget.location == "METROPLEX NAALYA") {
+                                  return Seat_metro(index: index);
+                                }
+                                return Seat(index: index);
                               })),
                         ),
                       ],
@@ -168,7 +176,7 @@ class _BarItemPageState extends State<BarItemPage> {
                     onPressed: () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: ((context) => TicketView()))),
+                            builder: ((context) => TicketView(location: widget.location,)))),
                     child: Text("BOOK SEAT"),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.transparent,
@@ -228,7 +236,7 @@ class _BarItemPageState extends State<BarItemPage> {
 
 
 
-
+// print('BOOOOOOOOoooooooooooooooooooo${widget.location}');
 
 
 

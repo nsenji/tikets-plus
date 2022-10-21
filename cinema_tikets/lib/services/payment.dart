@@ -1,6 +1,6 @@
 import 'dart:io';
 import 'dart:math';
-import 'package:cinema_tikets/notifiers/seat_number_notifier.dart';
+import 'package:cinema_tikets/notifiers/for_acacia/seat_number_notifier.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';

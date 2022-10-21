@@ -74,7 +74,7 @@ class HomePage extends StatelessWidget {
             scrollDirection: Axis.horizontal,
             padding:  const EdgeInsets.only(left :20),
               child: Row(
-                children: acacia.map((singleMovie) => MovieView(acacia:singleMovie)).toList()
+                children: acacia.map((singleMovie) => MovieView(acacia:singleMovie,location: location,)).toList()
               ),
            ),
           const SizedBox(height: 30),

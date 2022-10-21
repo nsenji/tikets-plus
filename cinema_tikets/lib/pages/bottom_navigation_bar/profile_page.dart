@@ -1,6 +1,6 @@
-import 'package:cinema_tikets/api/movie_api.dart';
+import 'package:cinema_tikets/api/for_acacia/movie_api.dart';
 import 'package:cinema_tikets/models/movie_model.dart';
-import 'package:cinema_tikets/notifiers/movie_notifier.dart';
+import 'package:cinema_tikets/notifiers/for_acacia/movie_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
