@@ -16,7 +16,7 @@ class HomePage extends StatelessWidget {
       extendBodyBehindAppBar: true,
         appBar: AppBar(
           title: Text(
-            location,
+            'SHOWING-'+location,
             style: const TextStyle(color: Colors.white),
           ),
           centerTitle: false,
@@ -77,7 +77,7 @@ class HomePage extends StatelessWidget {
                 children: acacia.map((singleMovie) => MovieView(acacia:singleMovie,location: location,)).toList()
               ),
            ),
-          const SizedBox(height: 30),
+          const SizedBox(height:5),
           Container(
             padding:const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
             child: Row(

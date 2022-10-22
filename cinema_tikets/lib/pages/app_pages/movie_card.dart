@@ -10,7 +10,8 @@ import 'models/title_image_provider.dart';
 class MovieView extends StatefulWidget {
   final Map<String, dynamic> acacia;
   final String location;
-  const MovieView({Key? key, required this.acacia,required this.location}) : super(key: key);
+  const MovieView({Key? key, required this.acacia, required this.location})
+      : super(key: key);
 
   @override
   State<MovieView> createState() => _MovieViewState();
@@ -47,7 +48,7 @@ class _MovieViewState extends State<MovieView> {
               context,
               MaterialPageRoute(
                   builder: (context) => MovieDetailsPage(
-                    location: widget.location,
+                      location: widget.location,
                       title: '${widget.acacia['title']}',
                       poster: '${widget.acacia['poster']}',
                       description: '${widget.acacia['description']}',
@@ -92,7 +93,7 @@ class _MovieViewState extends State<MovieView> {
               const SizedBox(height: 20),
               Text(
                 "${widget.acacia['title']}",
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white,fontSize: 15),
                 textScaleFactor: 2,
               ),
               Row(
@@ -100,7 +101,7 @@ class _MovieViewState extends State<MovieView> {
                 children: [
                   Text(
                     "${widget.acacia['rating'].toString()}/10",
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white,fontSize: 13),
                     textScaleFactor: 1.5,
                   ),
                   const SizedBox(width: 10),
@@ -108,11 +109,16 @@ class _MovieViewState extends State<MovieView> {
                   const SizedBox(width: 10),
                   const Text(
                     "Rating",
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(color: Colors.white,fontSize: 13),
                     textScaleFactor: 1.5,
-                  )
+                  ),
                 ],
               ),
+              Text(
+                "Showing Time: ${widget.acacia['time']}",
+                style: const TextStyle(color: Colors.white,fontSize: 19),
+                textScaleFactor: 1,
+              )
             ])),
       ),
     );

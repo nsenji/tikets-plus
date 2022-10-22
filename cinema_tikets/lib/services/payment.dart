@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 import 'package:cinema_tikets/notifiers/for_acacia/seat_number_notifier.dart';
+import 'package:cinema_tikets/pages/app_pages/home_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,8 @@ import '../pages/app_pages/models/title_image_provider.dart';
 import '../utils/styles.dart';
 
 class Payments extends StatefulWidget {
-  const Payments({Key? key}) : super(key: key);
+  String location;
+   Payments({Key? key, required this.location}) : super(key: key);
 
   @override
   State<Payments> createState() => _PaymentsState();
@@ -167,6 +169,49 @@ class _PaymentsState extends State<Payments> {
               ),
             ),
           ),
+          Positioned(
+            right: 130,
+            left: 130,
+            top: 500,
+            bottom: 200,
+            child: Container(
+              width: 120,
+              decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.purple, Colors.blue],
+                    begin: Alignment.bottomLeft,
+                    end: Alignment.topRight,
+                  ),
+                  // border: Border.all(
+                  //   color: Colors.blue,
+                  // ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black,
+                      blurRadius: 5.0,
+                    ),
+                  ],
+                  borderRadius: BorderRadius.circular(15)),
+              child: Center(
+                child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).pushAndRemoveUntil(
+                          new MaterialPageRoute(
+                              builder: (context) => HomePage(
+                                    location: widget.location,
+                                  )),
+                          (route) => false);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                    ),
+                    child: const Text(
+                      "DONE",
+                      style: TextStyle(fontSize: 20),
+                    )),
+              ),
+            ),
+          )
         ],
       ),
     );

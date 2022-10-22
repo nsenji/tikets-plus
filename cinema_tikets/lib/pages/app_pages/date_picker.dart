@@ -157,7 +157,7 @@ class _Button extends State<Button> {
                         children: [
                           const Center(
                               child: Text(
-                            "Choose a Date and Time",
+                            "Choose a Date",
                             style: TextStyle(fontSize: 18, color: Colors.white),
                           )),
                           const SizedBox(height: 30),
@@ -200,20 +200,20 @@ class _Button extends State<Button> {
                                   ),
                                 ],
                               )),
-                          Container(
-                            padding: const EdgeInsets.only(top: 70),
-                            width: double.infinity,
-                            height: 130,
-                            child: ListView.separated(
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) =>
-                                    timeButton(index),
-                                separatorBuilder: (context, index) =>
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                itemCount: 7),
-                          ),
+                          // Container(
+                          //   padding: const EdgeInsets.only(top: 70),
+                          //   width: double.infinity,
+                          //   height: 130,
+                          //   child: ListView.separated(
+                          //       scrollDirection: Axis.horizontal,
+                          //       itemBuilder: (context, index) =>
+                          //           timeButton(index),
+                          //       separatorBuilder: (context, index) =>
+                          //           const SizedBox(
+                          //             width: 10,
+                          //           ),
+                          //       itemCount: 7),
+                          // ),
                           SizedBox(
                             height: 20,
                           ),

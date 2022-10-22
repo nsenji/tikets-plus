@@ -48,7 +48,7 @@ class TicketView extends StatelessWidget {
               width: AppLayout.getWidth(400),
               child: ElevatedButton(
                 onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => Payments()))),
+                    MaterialPageRoute(builder: ((context) => Payments(location: location,)))),
                 child: Text("PAYMENT"),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.transparent,
@@ -125,7 +125,7 @@ class TicketView extends StatelessWidget {
                               SizedBox(
                                 height: AppLayout.getHeight(10),
                               ),
-                              Text(Provider.of<Datetime>(context).time,
+                              Text('14:30',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15))
