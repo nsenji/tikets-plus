@@ -44,17 +44,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
           Row(
             children: [
               
-              Container(
-                margin: const EdgeInsets.only(top: 35, left: 5),
-                child: 
-                IconButton(
-                  onPressed:(() {
+              // Container(
+              //   margin: const EdgeInsets.only(top: 35, left: 5),
+              //   child: 
+              //   IconButton(
+              //     onPressed:(() {
                     
-                   Navigator.push(context, MaterialPageRoute(builder: ((context) => BarItemPage())));}),
-                  icon:Icon( Icons.view_stream_rounded),
-                  color: Colors.black,
-                ),
-              ),
+              //      Navigator.push(context, MaterialPageRoute(builder: ((context) => BarItemPage())));}),
+              //     icon:Icon( Icons.view_stream_rounded),
+              //     color: Colors.black,
+              //   ),
+              // ),
               Expanded(child: Container()),
               Container(
                 margin: const EdgeInsets.only(right: 20, top: 35),

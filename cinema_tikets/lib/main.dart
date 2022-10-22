@@ -1,5 +1,8 @@
-import 'package:cinema_tikets/notifiers/seat_number_notifier.dart';
-import 'package:cinema_tikets/notifiers/movie_notifier.dart';
+import 'package:cinema_tikets/api/for_metro/metro_api.dart';
+import 'package:cinema_tikets/notifiers/for_acacia/seat_number_notifier.dart';
+import 'package:cinema_tikets/notifiers/for_acacia/movie_notifier.dart';
+import 'package:cinema_tikets/notifiers/for_metro/seat_number_notifier-metro.dart';
+import 'package:cinema_tikets/notifiers/for_metro/taken_seat_notifier_metro.dart';
 import 'package:cinema_tikets/pages/app_pages/cinema_location.dart';
 import 'package:cinema_tikets/pages/app_pages/home_page.dart';
 import 'package:cinema_tikets/pages/app_pages/models/location.dart';
@@ -14,9 +17,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'api/movie_api.dart';
+import 'api/for_acacia/movie_api.dart';
 import 'firebase_options.dart';
-import 'notifiers/taken_seat_notifier.dart';
+import 'notifiers/for_acacia/taken_seat_notifier.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:lottie/lottie.dart';
 
@@ -28,12 +31,14 @@ void main() async {
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => SeatNumberModel()),
+      ChangeNotifierProvider(create: (context) => SeatNumberModel_metro()),
       ChangeNotifierProvider(create: ((context) => MovieNotifier())),
       ChangeNotifierProvider(create: (context) => Datetime()),
       ChangeNotifierProvider(create: (context) => Place()),
       ChangeNotifierProvider(create: (context) => MovieTitle()),
       ChangeNotifierProvider(create: (context) => MovieImage()),
       ChangeNotifierProvider(create: ((context) => TakenSeat())),
+      ChangeNotifierProvider(create: ((context) => TakenSeat_metro())),
       ChangeNotifierProvider(create: ((context) => Points()))
     ],
     child: MyApp(),
@@ -51,7 +56,9 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     TakenSeat takenSeat = Provider.of<TakenSeat>(context, listen: false);
+    TakenSeat_metro takenSeat_metro = Provider.of<TakenSeat_metro>(context, listen: false);
     getSeat(takenSeat);
+    getSeat_metro(takenSeat_metro);
     // TODO: implement initState
     super.initState();
   }

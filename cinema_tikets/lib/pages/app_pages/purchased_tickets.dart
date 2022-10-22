@@ -4,7 +4,7 @@ import 'package:cinema_tikets/pages/app_pages/models/location.dart';
 import 'package:cinema_tikets/pages/app_pages/qr_code.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../notifiers/seat_number_notifier.dart';
+import '../../notifiers/for_acacia/seat_number_notifier.dart';
 import '../../utils/app_layout.dart';
 import 'models/time.dart';
 import 'models/title_image_provider.dart';

@@ -1,9 +1,9 @@
 
-import 'package:cinema_tikets/api/movie_api.dart';
-import 'package:cinema_tikets/notifiers/taken_seat_notifier.dart';
+import 'package:cinema_tikets/api/for_acacia/movie_api.dart';
+import 'package:cinema_tikets/notifiers/for_acacia/taken_seat_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../notifiers/seat_number_notifier.dart';
+import '../../notifiers/for_acacia/seat_number_notifier.dart';
 
 class Seat extends StatefulWidget {
   bool taken;
@@ -26,10 +26,7 @@ class _SeatState extends State<Seat> {
   // dynamic value;
   @override
   void initState() {
-    print('yeah the list is empty');
-    print('yeah the list is empty'); // Dont remove this code, its working as a disguised async....
-    print('yeah the list is empty');
-    print('yeah the list is empty');
+    
     int index = 0;
     TakenSeat takenSeat = Provider.of<TakenSeat>(context, listen: false);
     List stuff = takenSeat.seatList[index].seat;
@@ -40,7 +37,7 @@ class _SeatState extends State<Seat> {
         });
       }
     } else {
-      print('yeah the list is empty'); // also this....dont remove this
+      print('yeah the list is empty'); 
     }
 
     // TODO: implement initState

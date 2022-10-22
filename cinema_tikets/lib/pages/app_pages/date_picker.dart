@@ -5,35 +5,36 @@ import 'package:provider/provider.dart';
 import '../../utils/styles.dart';
 import 'models/time.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+// void main() {
+//   runApp(const MyApp());
+// }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// class MyApp extends StatelessWidget {
+//   const MyApp({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Test',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Test'),
-        ),
-        body: Center(
-            child: Column(
-          children: const [
-            Text('Click the button'),
-            Button() // WHERE THIS IS THE CUSTOM WIDGET
-          ],
-        )),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MaterialApp(
+//       title: 'Test',
+//       home: Scaffold(
+//         appBar: AppBar(
+//           title: const Text('Test'),
+//         ),
+//         body: Center(
+//             child: Column(
+//           children: const [
+//             Text('Click the button'),
+//             Button(location:widgegt.location ,) // WHERE THIS IS THE CUSTOM WIDGET
+//           ],
+//         )),
+//       ),
+//     );
+//   }
+// }
 
 class Button extends StatefulWidget {
-  const Button({super.key});
+  String location;
+ Button({super.key,required this.location});
 
   @override
   State<Button> createState() => _Button();
@@ -156,7 +157,7 @@ class _Button extends State<Button> {
                         children: [
                           const Center(
                               child: Text(
-                            "Choose a Date and Time",
+                            "Choose a Date",
                             style: TextStyle(fontSize: 18, color: Colors.white),
                           )),
                           const SizedBox(height: 30),
@@ -199,20 +200,20 @@ class _Button extends State<Button> {
                                   ),
                                 ],
                               )),
-                          Container(
-                            padding: const EdgeInsets.only(top: 70),
-                            width: double.infinity,
-                            height: 130,
-                            child: ListView.separated(
-                                scrollDirection: Axis.horizontal,
-                                itemBuilder: (context, index) =>
-                                    timeButton(index),
-                                separatorBuilder: (context, index) =>
-                                    const SizedBox(
-                                      width: 10,
-                                    ),
-                                itemCount: 7),
-                          ),
+                          // Container(
+                          //   padding: const EdgeInsets.only(top: 70),
+                          //   width: double.infinity,
+                          //   height: 130,
+                          //   child: ListView.separated(
+                          //       scrollDirection: Axis.horizontal,
+                          //       itemBuilder: (context, index) =>
+                          //           timeButton(index),
+                          //       separatorBuilder: (context, index) =>
+                          //           const SizedBox(
+                          //             width: 10,
+                          //           ),
+                          //       itemCount: 7),
+                          // ),
                           SizedBox(
                             height: 20,
                           ),
@@ -244,7 +245,7 @@ class _Button extends State<Button> {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       //DEFINE THE PAGE TO GO WHEN BUTTON IS CLICKED
                                       builder: (context) =>
-                                          const BarItemPage()));
+                                           BarItemPage(location: widget.location,)));
                                 },
                                 child: const Text('Select Seats')),
                           )

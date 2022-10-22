@@ -27,7 +27,7 @@ class _MainPageState extends State<MainPage> {
     List pages = [
       HomePage(),
       SearchPage(),
-      BarItemPage(),
+      // BarItemPage(),
       ProfilePage(),
     ];
     return Scaffold(
