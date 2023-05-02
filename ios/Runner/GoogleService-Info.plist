@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1065683134046-3ja43mmj6a8mkbr9dmvh1oek9bus7cju.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1065683134046-3ja43mmj6a8mkbr9dmvh1oek9bus7cju</string>
+	<key>API_KEY</key>
+	<string>AIzaSyC294YXSoEagTcocWoqlxT58WIlN6FCVBc</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1065683134046</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.cinemaTikets</string>
+	<key>PROJECT_ID</key>
+	<string>cinema-tikets</string>
+	<key>STORAGE_BUCKET</key>
+	<string>cinema-tikets.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1065683134046:ios:0f63dd36468c10e9e4b6cf</string>
+</dict>
+</plist>
