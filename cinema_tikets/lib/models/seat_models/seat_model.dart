@@ -1,7 +1,7 @@
-
 import 'package:cinema_tikets/api/for_acacia/movie_api.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/taken_seat_notifier.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../notifiers/for_acacia/seat_number_notifier.dart';
 
@@ -26,7 +26,6 @@ class _SeatState extends State<Seat> {
   // dynamic value;
   @override
   void initState() {
-    
     int index = 0;
     TakenSeat takenSeat = Provider.of<TakenSeat>(context, listen: false);
     List stuff = takenSeat.seatList[index].seat;
@@ -37,7 +36,7 @@ class _SeatState extends State<Seat> {
         });
       }
     } else {
-      print('yeah the list is empty'); 
+      print('yeah the list is empty');
     }
 
     // TODO: implement initState
@@ -59,21 +58,21 @@ class _SeatState extends State<Seat> {
                         .add(widget.index + 1);
                     Provider.of<SeatNumberModel>(context, listen: false)
                         .addPrice(widget.index + 1);
-                    addSeat(widget.index+1);
+                    addSeat(widget.index + 1);
                   } else {
                     widget.seatColor = Colors.white;
-                    
+
                     Provider.of<SeatNumberModel>(context, listen: false)
                         .remove(widget.index + 1);
                     Provider.of<SeatNumberModel>(context, listen: false)
                         .reducePrice(widget.index + 1);
-                    removeSeat(widget.index+1);
+                    removeSeat(widget.index + 1);
                   }
                 });
               },
         icon: Icon(
           Icons.chair,
-          size: 50,
+          size: 50.w,
           color: widget.taken == true ? Colors.blue : widget.seatColor,
         ));
   }

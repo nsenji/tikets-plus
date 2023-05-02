@@ -11,9 +11,7 @@ import 'models/title_image_provider.dart';
 
 class TicketView extends StatelessWidget {
   String location;
-   TicketView({
-    Key? key,required this.location
-  }) : super(key: key);
+  TicketView({Key? key, required this.location}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +45,12 @@ class TicketView extends StatelessWidget {
               height: AppLayout.getHeight(50),
               width: AppLayout.getWidth(400),
               child: ElevatedButton(
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: ((context) => Payments(location: location,)))),
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: ((context) => TicketView(
+                              location: location,
+                            )))),
                 child: Text("PAYMENT"),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.transparent,
@@ -67,7 +69,7 @@ class TicketView extends StatelessWidget {
                   image: DecorationImage(
                       image: AssetImage(
                           "assets/${Provider.of<MovieImage>(context).image}"),
-                      fit: BoxFit.fill)),
+                      fit: BoxFit.cover)),
               height: AppLayout.getHeight(300),
             )),
         Positioned(
@@ -148,8 +150,10 @@ class TicketView extends StatelessWidget {
                               SizedBox(
                                 height: AppLayout.getHeight(10),
                               ),
-                              Text( location== "METROPLEX NAALYA"?"Ugx.${Provider.of<SeatNumberModel_metro>(context, listen: false).totalPrice}":
-                                  "Ugx.${Provider.of<SeatNumberModel>(context, listen: false).totalPrice}",
+                              Text(
+                                  location == "METROPLEX NAALYA"
+                                      ? "Ugx.${Provider.of<SeatNumberModel_metro>(context, listen: false).totalPrice}"
+                                      : "Ugx.${Provider.of<SeatNumberModel>(context, listen: false).totalPrice}",
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15,
@@ -175,10 +179,12 @@ class TicketView extends StatelessWidget {
               height: AppLayout.getHeight(265),
               child: ListView.builder(
                   padding: EdgeInsets.only(top: 0),
-                  itemCount:location == "METROPLEX NAALYA"?Provider.of<SeatNumberModel_metro>(context, listen: false)
+                  itemCount: location == "METROPLEX NAALYA"
+                      ? Provider.of<SeatNumberModel_metro>(context,
+                              listen: false)
                           .items
-                          .length:
-                      Provider.of<SeatNumberModel>(context, listen: false)
+                          .length
+                      : Provider.of<SeatNumberModel>(context, listen: false)
                           .items
                           .length,
                   itemBuilder: (_, index) {
@@ -271,8 +277,10 @@ class TicketView extends StatelessWidget {
                                             SizedBox(
                                               height: AppLayout.getHeight(10),
                                             ),
-                                            Text(location=="METROPLEX NAALYA"?"${Provider.of<SeatNumberModel_metro>(context, listen: false).seatNumber[index]}":
-                                                "${Provider.of<SeatNumberModel>(context, listen: false).seatNumber[index]}",
+                                            Text(
+                                                location == "METROPLEX NAALYA"
+                                                    ? "${Provider.of<SeatNumberModel_metro>(context, listen: false).seatNumber[index]}"
+                                                    : "${Provider.of<SeatNumberModel>(context, listen: false).seatNumber[index]}",
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 15))
@@ -294,20 +302,23 @@ class TicketView extends StatelessWidget {
                                             SizedBox(
                                               height: AppLayout.getHeight(10),
                                             ),
-                                            Text(location=="METROPLEX NAALYA"?Provider.of<SeatNumberModel_metro>(
-                                                              context,
-                                                              listen: false)
-                                                          .seatNumber[index] <
-                                                      20
-                                                  ? "Ugx 15000"
-                                                  : "Ugx 10000":
-                                              Provider.of<SeatNumberModel>(
-                                                              context,
-                                                              listen: false)
-                                                          .seatNumber[index] <
-                                                      20
-                                                  ? "Ugx 15000"
-                                                  : "Ugx 10000",
+                                            Text(
+                                              location == "METROPLEX NAALYA"
+                                                  ? Provider.of<SeatNumberModel_metro>(
+                                                                      context,
+                                                                      listen: false)
+                                                                  .seatNumber[
+                                                              index] <
+                                                          20
+                                                      ? "Ugx 15000"
+                                                      : "Ugx 10000"
+                                                  : Provider.of<SeatNumberModel>(
+                                                                  context,
+                                                                  listen: false)
+                                                              .seatNumber[index] <
+                                                          20
+                                                      ? "Ugx 15000"
+                                                      : "Ugx 10000",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 15,

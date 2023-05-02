@@ -93,7 +93,7 @@ class _MovieViewState extends State<MovieView> {
               const SizedBox(height: 20),
               Text(
                 "${widget.acacia['title']}",
-                style: const TextStyle(color: Colors.white,fontSize: 15),
+                style: const TextStyle(color: Colors.white, fontSize: 15),
                 textScaleFactor: 2,
               ),
               Row(
@@ -101,7 +101,7 @@ class _MovieViewState extends State<MovieView> {
                 children: [
                   Text(
                     "${widget.acacia['rating'].toString()}/10",
-                    style: const TextStyle(color: Colors.white,fontSize: 13),
+                    style: const TextStyle(color: Colors.white, fontSize: 13),
                     textScaleFactor: 1.5,
                   ),
                   const SizedBox(width: 10),
@@ -109,14 +109,14 @@ class _MovieViewState extends State<MovieView> {
                   const SizedBox(width: 10),
                   const Text(
                     "Rating",
-                    style: TextStyle(color: Colors.white,fontSize: 13),
+                    style: TextStyle(color: Colors.white, fontSize: 13),
                     textScaleFactor: 1.5,
                   ),
                 ],
               ),
               Text(
                 "Showing Time: ${widget.acacia['time']}",
-                style: const TextStyle(color: Colors.white,fontSize: 19),
+                style: const TextStyle(color: Colors.white, fontSize: 19),
                 textScaleFactor: 1,
               )
             ])),

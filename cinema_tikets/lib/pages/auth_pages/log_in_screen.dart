@@ -49,7 +49,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         //border: OutlineInputBorder(borderRadius: BorderRadius.circular(60)),
                         label: Text('Email'),
                         //hintText: 'Email',
-                        icon: Icon(Icons.person),
+                        // icon: Icon(Icons.person),
                       ),
                       keyboardType: TextInputType.name,
                     ),
@@ -62,7 +62,7 @@ class _LogInScreenState extends State<LogInScreen> {
                       decoration: InputDecoration(
                         //border: OutlineInputBorder(borderRadius: BorderRadius.circular(60)),
                         label: Text('password'),
-                        icon: Icon(Icons.lock),
+                        // icon: Icon(Icons.lock),
                       ),
                       keyboardType: TextInputType.visiblePassword,
                     ),

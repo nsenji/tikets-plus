@@ -57,135 +57,138 @@ class _BarItemPageState extends State<BarItemPage> {
   Widget build(BuildContext context) {
     final size = AppLayout.getSize(context);
     return Scaffold(
-      body: Container(
-          decoration: BoxDecoration(color: Colors.black87),
-          child: Column(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(left: 15, top: 55),
-                child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      // crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(left: 0),
-                          width: 450,
-                          height: 5,
-                          decoration: BoxDecoration(boxShadow: [
-                            BoxShadow(
-                                blurRadius: 2,
-                                offset: Offset.zero,
-                                spreadRadius: 2,
-                                blurStyle: BlurStyle.normal,
-                                color: Colors.white)
-                          ], color: Colors.white70, shape: BoxShape.rectangle),
-                        ),
-                        SizedBox(
-                          height: 40,
-                        ),
-                        Container(
-                          // color: Colors.green,
-                          height: 540,
-                          width: 460, //480,
-                          child: Wrap(
-                              spacing: AppLayout.getWidth(0),
-                              children: List.generate(99, (index) {
-                                if (widget.location == "ACACIA") {
-                                  return Seat(
-                                    index: index,
-                                  );
-                                }
-                                if (widget.location == "METROPLEX NAALYA") {
-                                  return Seat_metro(index: index);
-                                }
-                                return Seat(index: index);
-                              })),
-                        ),
-                      ],
-                    )),
-              ),
-              Container(
-                width: 360,
-                height: 45,
-                child: Row(children: [
-                  Container(
-                    height: 9,
-                    width: 9,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(9),
-                        color: Colors.grey),
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text('Available', style: TextStyle(color: Colors.white)),
-                  SizedBox(
-                    width: 60,
-                  ),
-                  Container(
-                    height: 9,
-                    width: 9,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(9),
-                        color: Colors.orange),
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text('Selected', style: TextStyle(color: Colors.white)),
-                  SizedBox(
-                    width: 60,
-                  ),
-                  Container(
-                    height: 9,
-                    width: 9,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(9),
-                        color: Colors.blue),
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  Text('Taken', style: TextStyle(color: Colors.white))
-                ]),
-              ),
-              Center(
-                child: Container(
-                  decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [Colors.purple, Colors.blue],
-                      begin: Alignment.bottomLeft,
-                      end: Alignment.topRight,
-                    ),
-                    // border: Border.all(
-                    //   color: Colors.blue,
-                    // ),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black,
-                        blurRadius: 5.0,
+      backgroundColor: Color.fromARGB(255, 0, 0, 0),
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Container(
+              margin: const EdgeInsets.only(left: 15, top: 55),
+              child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(left: 0),
+                        width: 450,
+                        height: 5,
+                        decoration: const BoxDecoration(boxShadow: [
+                          BoxShadow(
+                              blurRadius: 2,
+                              offset: Offset.zero,
+                              spreadRadius: 2,
+                              blurStyle: BlurStyle.normal,
+                              color: Color.fromRGBO(255, 255, 255, 1))
+                        ], color: Colors.white70, shape: BoxShape.rectangle),
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      SizedBox(
+                        // color: Colors.green,
+                        height: 540,
+                        width: 460, //480,
+                        child: Wrap(
+                            spacing: 7,
+                            children: List.generate(99, (index) {
+                              if (widget.location == "ACACIA") {
+                                return Seat(
+                                  index: index,
+                                );
+                              }
+                              if (widget.location == "METROPLEX NAALYA") {
+                                return Seat_metro(index: index);
+                              }
+                              return Seat(index: index);
+                            })),
                       ),
                     ],
-                    borderRadius: BorderRadius.circular(10),
+                  )),
+            ),
+            Container(
+              width: 360,
+              height: 45,
+              child: Row(children: [
+                Container(
+                  height: 9,
+                  width: 9,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(9),
+                      color: Colors.grey),
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text('Available', style: TextStyle(color: Colors.white)),
+                SizedBox(
+                  width: 60,
+                ),
+                Container(
+                  height: 9,
+                  width: 9,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(9),
+                      color: Colors.orange),
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text('Selected', style: TextStyle(color: Colors.white)),
+                SizedBox(
+                  width: 60,
+                ),
+                Container(
+                  height: 9,
+                  width: 9,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(9),
+                      color: Colors.blue),
+                ),
+                SizedBox(
+                  width: 5,
+                ),
+                Text('Taken', style: TextStyle(color: Colors.white))
+              ]),
+            ),
+            Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Colors.purple, Colors.blue],
+                    begin: Alignment.bottomLeft,
+                    end: Alignment.topRight,
                   ),
-                  height: 50,
-                  width: AppLayout.getWidth(350),
-                  child: ElevatedButton(
-                    onPressed: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: ((context) => TicketView(location: widget.location,)))),
-                    child: Text("BOOK SEAT"),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.transparent,
+                  // border: Border.all(
+                  //   color: Colors.blue,
+                  // ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black,
+                      blurRadius: 5.0,
                     ),
+                  ],
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                height: 50,
+                width: AppLayout.getWidth(350),
+                child: ElevatedButton(
+                  onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: ((context) => TicketView(
+                                location: widget.location,
+                              )))),
+                  child: Text("BOOK SEAT"),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.transparent,
                   ),
                 ),
               ),
-            ],
-          )),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

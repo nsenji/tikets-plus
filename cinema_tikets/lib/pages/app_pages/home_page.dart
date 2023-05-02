@@ -14,85 +14,93 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 22, 21, 21),
       extendBodyBehindAppBar: true,
-        appBar: AppBar(
-          title: Text(
-            'SHOWING-'+location,
-            style: const TextStyle(color: Colors.white),
-          ),
-          centerTitle: false,
-          elevation: 0.0,
-          backgroundColor: Colors.transparent,
-          // iconTheme: const IconThemeData(
-          //   color: Colors.black,
-          // ),
-          actions: [
-            Container(
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Colors.purple, Colors.blue],
-                  begin: Alignment.bottomLeft,
-                  end: Alignment.topRight,
-                ),
-                // border: Border.all(
-                //   color: Colors.blue,
-                // ),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black,
-                    blurRadius: 5.0,
-                  ),
-                ],
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(25),
-                  bottomLeft: Radius.circular(25),
-                ),
+      appBar: AppBar(
+        title: Text(
+          'SHOWING-' + location,
+          style: const TextStyle(color: Colors.white),
+        ),
+        centerTitle: false,
+        elevation: 0.0,
+        backgroundColor: Colors.transparent,
+        // iconTheme: const IconThemeData(
+        //   color: Colors.black,
+        // ),
+        actions: [
+          Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Colors.purple, Colors.blue],
+                begin: Alignment.bottomLeft,
+                end: Alignment.topRight,
               ),
-              child: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
+              // border: Border.all(
+              //   color: Colors.blue,
+              // ),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black,
+                  blurRadius: 5.0,
                 ),
-                onPressed: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Profile()));
-                },
-                child: Text(
-                  "Profile",
-                  style: TextStyle(
-                    fontSize: 18,
-                    // fontWeight: FontWeight.w700,
-                    color: Colors.white,
-                  ),
+              ],
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(25),
+                bottomLeft: Radius.circular(25),
+              ),
+            ),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.transparent,
+              ),
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Profile()));
+              },
+              child: Text(
+                "Profile",
+                style: TextStyle(
+                  fontSize: 18,
+                  // fontWeight: FontWeight.w700,
+                  color: Colors.white,
                 ),
               ),
             ),
-          ],
-          // backgroundColor: Styles.primaryColor,
-        ),
+          ),
+        ],
+        // backgroundColor: Styles.primaryColor,
+      ),
       body: ListView(
         children: [
-           SingleChildScrollView(
+          SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            padding:  const EdgeInsets.only(left :20),
-              child: Row(
-                children: acacia.map((singleMovie) => MovieView(acacia:singleMovie,location: location,)).toList()
-              ),
-           ),
-          const SizedBox(height:5),
+            padding: const EdgeInsets.only(left: 20),
+            child: Row(
+                children: acacia
+                    .map((singleMovie) => MovieView(
+                          acacia: singleMovie,
+                          location: location,
+                        ))
+                    .toList()),
+          ),
+          const SizedBox(height: 5),
           Container(
-            padding:const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 13),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Coming Soon...", style: TextStyle(color: Colors.white, fontSize: 23),),
+                Text(
+                  "Coming Soon...",
+                  style: TextStyle(color: Colors.white, fontSize: 23),
+                ),
               ],
             ),
           ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            padding:  const EdgeInsets.only(left :20),
+            padding: const EdgeInsets.only(left: 20),
             child: Row(
-                children: acaciaComing.map((movie) => ComingSoon(acaciaComing:movie)).toList()
-            ),
+                children: acaciaComing
+                    .map((movie) => ComingSoon(acaciaComing: movie))
+                    .toList()),
           ),
         ],
       ),

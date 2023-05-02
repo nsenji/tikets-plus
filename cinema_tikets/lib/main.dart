@@ -15,6 +15,7 @@ import 'package:cinema_tikets/pages/bottom_navigation_bar/welcome_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'api/for_acacia/movie_api.dart';
@@ -26,7 +27,6 @@ import 'package:lottie/lottie.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-
 
   runApp(MultiProvider(
     providers: [
@@ -56,7 +56,8 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     TakenSeat takenSeat = Provider.of<TakenSeat>(context, listen: false);
-    TakenSeat_metro takenSeat_metro = Provider.of<TakenSeat_metro>(context, listen: false);
+    TakenSeat_metro takenSeat_metro =
+        Provider.of<TakenSeat_metro>(context, listen: false);
     getSeat(takenSeat);
     getSeat_metro(takenSeat_metro);
     // TODO: implement initState
@@ -68,15 +69,20 @@ class _MyAppState extends State<MyApp> {
     return StreamProvider<User?>.value(
       value: AuthService().user,
       initialData: null,
-      child: const MaterialApp(
-          debugShowCheckedModeBanner: false,
-          // theme: ThemeData(
-          //   brightness: Brightness.dark,
-          //   appBarTheme: AppBarTheme(
-          //     systemOverlayStyle: SystemUiOverlayStyle(statusBarBrightness: Brightness.dark)
-          //   )
-          // ),
-          home: SplashScreen()),
+      child: ScreenUtilInit(
+        designSize: const Size(360, 740),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (context, child) => const MaterialApp(
+            debugShowCheckedModeBanner: false,
+            // theme: ThemeData(
+            //   brightness: Brightness.dark,
+            //   appBarTheme: AppBarTheme(
+            //     systemOverlayStyle: SystemUiOverlayStyle(statusBarBrightness: Brightness.dark)
+            //   )
+            // ),
+            home: Wrapper()),
+      ),
     );
   }
 }
@@ -92,14 +98,13 @@ class SplashScreen extends StatelessWidget {
           children: [
             Text(
               'Tickets +',
-              style: TextStyle(fontSize: 50) ,
+              style: TextStyle(fontSize: 50),
             ),
             Lottie.asset('assets/splash.json'),
-            
           ],
         ),
         nextScreen: Wrapper(),
-        splashIconSize:500 ,
+        splashIconSize: 500,
         backgroundColor: Color.fromARGB(255, 192, 167, 238),
       ),
     );
