@@ -1,4 +1,4 @@
-import 'package:cinema_tikets/api/for_acacia/movie_api.dart';
+import 'package:cinema_tikets/api/for_acacia/seat_methods.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/movie_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';

@@ -1,15 +1,15 @@
 
-import 'package:cinema_tikets/models/seat_models/metro_seat.dart';
+import 'package:cinema_tikets/Custom_widgets/metro_seat_widget.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/taken_seat_notifier.dart';
 import 'package:cinema_tikets/pages/app_pages/ticket_confimation.dart';
 // import 'package:cinema_tikets/pages/tickets_booked_page.dart';
-import 'package:cinema_tikets/models/seat_models/seat_model.dart';
+import 'package:cinema_tikets/Custom_widgets/acacia_seat_widget.dart';
 
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import '../../api/for_acacia/movie_api.dart';
+import '../../api/for_acacia/seat_methods.dart';
 import '../../utils/app_layout.dart';
 
 class BarItemPage extends StatefulWidget {

@@ -4,17 +4,16 @@ import 'package:cinema_tikets/notifiers/for_acacia/movie_notifier.dart';
 import 'package:cinema_tikets/notifiers/for_metro/seat_number_notifier-metro.dart';
 import 'package:cinema_tikets/notifiers/for_metro/taken_seat_notifier_metro.dart';
 import 'package:cinema_tikets/pages/app_pages/cinema_location.dart';
-import 'package:cinema_tikets/models/location.dart';
-import 'package:cinema_tikets/models/time.dart';
-import 'package:cinema_tikets/models/title_image_provider.dart';
+import 'package:cinema_tikets/notifiers/for_acacia/location.dart';
+import 'package:cinema_tikets/notifiers/for_acacia/time.dart';
+import 'package:cinema_tikets/notifiers/for_acacia/title_image_provider.dart';
 import 'package:cinema_tikets/pages/auth_pages/auth.dart';
 import 'package:cinema_tikets/pages/auth_pages/wrapper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'api/for_acacia/movie_api.dart';
+import 'api/for_acacia/seat_methods.dart';
 import 'firebase_options.dart';
 import 'notifiers/for_acacia/taken_seat_notifier.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
@@ -65,11 +64,8 @@ class _MyAppState extends State<MyApp> {
     return StreamProvider<User?>.value(
       value: AuthService().user,
       initialData: null,
-      child: ScreenUtilInit(
-        designSize: const Size(360, 740),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, child) => const MaterialApp(
+      child:
+        const MaterialApp(
             debugShowCheckedModeBanner: false,
             // theme: ThemeData(
             //   brightness: Brightness.dark,
@@ -78,7 +74,7 @@ class _MyAppState extends State<MyApp> {
             //   )
             // ),
             home: Location()),
-      ),
+      
     );
   }
 }

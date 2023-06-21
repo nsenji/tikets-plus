@@ -1,5 +1,5 @@
-import 'package:cinema_tikets/Custom_widgets/seatNumbers_from_firestore/for_acacia/get_seatList_model.dart';
-import 'package:cinema_tikets/models/movie_model.dart';
+import 'package:cinema_tikets/models/model_List_of_taken_seats_for_acacia/acacia_list.dart';
+import 'package:cinema_tikets/models/other_models/movie_model.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/movie_notifier.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/taken_seat_notifier.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

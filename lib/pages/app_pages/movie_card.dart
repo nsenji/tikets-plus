@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../utils/app_layout.dart';
 import '../../utils/styles.dart';
-import '../../models/title_image_provider.dart';
+import '../../notifiers/for_acacia/title_image_provider.dart';
 
 class MovieView extends StatefulWidget {
   final Map<String, dynamic> acacia;

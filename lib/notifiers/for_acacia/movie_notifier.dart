@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-import 'package:cinema_tikets/models/movie_model.dart';
+import 'package:cinema_tikets/models/other_models/movie_model.dart';
 import 'package:flutter/cupertino.dart';
 
 class MovieNotifier extends ChangeNotifier {

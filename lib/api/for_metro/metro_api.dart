@@ -1,4 +1,4 @@
-import 'package:cinema_tikets/Custom_widgets/seatNumbers_from_firestore/for_metro/seatNumber_metro.dart';
+import 'package:cinema_tikets/models/model_List_of_taken_seats_for_acacia/metro_list.dart';
 import 'package:cinema_tikets/notifiers/for_metro/taken_seat_notifier_metro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 

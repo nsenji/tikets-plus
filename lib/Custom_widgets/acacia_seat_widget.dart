@@ -1,7 +1,6 @@
-import 'package:cinema_tikets/api/for_acacia/movie_api.dart';
+import 'package:cinema_tikets/api/for_acacia/seat_methods.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/taken_seat_notifier.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import '../../notifiers/for_acacia/seat_number_notifier.dart';
 
@@ -72,7 +71,7 @@ class _SeatState extends State<Seat> {
               },
         icon: Icon(
           Icons.chair,
-          size: 50.w,
+          size: 50,
           color: widget.taken == true ? Colors.blue : widget.seatColor,
         ));
   }

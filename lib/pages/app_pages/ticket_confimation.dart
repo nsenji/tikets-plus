@@ -1,12 +1,12 @@
 import 'package:cinema_tikets/notifiers/for_acacia/seat_number_notifier.dart';
 import 'package:cinema_tikets/notifiers/for_metro/seat_number_notifier-metro.dart';
-import 'package:cinema_tikets/models/time.dart';
+import 'package:cinema_tikets/notifiers/for_acacia/time.dart';
 import 'package:cinema_tikets/utils/app_layout.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../models/title_image_provider.dart';
+import '../../notifiers/for_acacia/title_image_provider.dart';
 
 class TicketView extends StatelessWidget {
   String location;

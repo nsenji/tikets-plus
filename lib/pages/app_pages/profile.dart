@@ -1,4 +1,4 @@
-import 'package:cinema_tikets/models/title_image_provider.dart';
+import 'package:cinema_tikets/notifiers/for_acacia/title_image_provider.dart';
 import 'package:cinema_tikets/pages/app_pages/purchased_tickets.dart';
 import 'package:cinema_tikets/pages/auth_pages/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';

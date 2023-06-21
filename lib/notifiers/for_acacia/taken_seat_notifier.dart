@@ -1,6 +1,6 @@
 import 'dart:collection';
 
-import 'package:cinema_tikets/Custom_widgets/seatNumbers_from_firestore/for_acacia/get_seatList_model.dart';
+import 'package:cinema_tikets/models/model_List_of_taken_seats_for_acacia/acacia_list.dart';
 import 'package:flutter/cupertino.dart';
 
 class TakenSeat extends ChangeNotifier{
