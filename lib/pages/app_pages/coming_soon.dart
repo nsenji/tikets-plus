@@ -24,7 +24,7 @@ class ComingSoon extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical:17),
               decoration: BoxDecoration(
                 color: Styles.primaryColor,
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [Colors.purple, Colors.blue],
                   begin: Alignment.bottomLeft,
                   end: Alignment.topRight,
@@ -32,8 +32,8 @@ class ComingSoon extends StatelessWidget {
                 border: Border.all(
                   color: Colors.blue,
                 ),
-                boxShadow: [
-                  new BoxShadow(
+                boxShadow: const [
+                  BoxShadow(
                     color: Colors.black,
                     blurRadius: 5.0,
                   ),

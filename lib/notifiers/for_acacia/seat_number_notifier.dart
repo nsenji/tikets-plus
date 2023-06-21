@@ -1,8 +1,6 @@
-import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
 
-import '../../models/seatNumbers_from_firestore/for_acacia/get_seatList_model.dart';
 
 class SeatNumberModel extends ChangeNotifier {
   List items = [];

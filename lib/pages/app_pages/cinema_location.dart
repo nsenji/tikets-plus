@@ -7,7 +7,7 @@ class Location extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 22, 21, 21),
+      backgroundColor: const Color.fromARGB(255, 22, 21, 21),
       body: SingleChildScrollView(
         child: Center(
           child: Container(
@@ -17,7 +17,7 @@ class Location extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Padding(
-                  padding: EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(10.0),
                   child: Column(
                     children: [
                       Container(
@@ -41,7 +41,7 @@ class Location extends StatelessWidget {
                 const SizedBox(height: 10),
                 Container(
                   padding: const EdgeInsets.all(40),
-                  child: Text(
+                  child: const Text(
                     "Choose your location",
                     style: TextStyle(
                         color: Colors.white,
@@ -49,108 +49,100 @@ class Location extends StatelessWidget {
                         fontSize: 25),
                   ),
                 ),
-                Positioned(
-                  left: 0,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomePage(
-                                    location: 'ACACIA',
-                                  )));
-                    },
-                    child: Container(
-                      height: 150,
-                      width: 300,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/acacia_place.jpg"),
-                          fit: BoxFit.cover,
-                          repeat: ImageRepeat.noRepeat,
-                        ),
-                        borderRadius: BorderRadius.all(
-                             Radius.circular(24),
-                          ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomePage(
+                                  location: 'ACACIA',
+                                )));
+                  },
+                  child: Container(
+                    height: 150,
+                    width: 300,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/acacia_place.jpg"),
+                        fit: BoxFit.cover,
+                        repeat: ImageRepeat.noRepeat,
                       ),
-                      child: const Center(
-                        child: Text("ACACIA",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 25)),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(24),
                       ),
                     ),
-                  ),
-                ),
-                const SizedBox(height: 10),
-                Positioned(
-                  right: 0,
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomePage(
-                                    location: "METROPLEX NAALYA",
-                                  )));
-                    },
-                    child: Container(
-                      height: 150,
-                      width: 300,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/metro_place.jpg"),
-                          fit: BoxFit.cover,
-                          repeat: ImageRepeat.noRepeat,
-                        ),
-                        borderRadius: BorderRadius.all(
-                           Radius.circular(24),
-                          ),
-                      ),
-                      child: const Center(
-                        child: Text(
-                          "METROPLEX NAALYA",
+                    child: const Center(
+                      child: Text("ACACIA",
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
-                              fontSize: 25),
-                        ),
+                              fontSize: 25)),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 10),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomePage(
+                                  location: "METROPLEX NAALYA",
+                                )));
+                  },
+                  child: Container(
+                    height: 150,
+                    width: 300,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/metro_place.jpg"),
+                        fit: BoxFit.cover,
+                        repeat: ImageRepeat.noRepeat,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(24),
+                      ),
+                    ),
+                    child: const Center(
+                      child: Text(
+                        "METROPLEX NAALYA",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 25),
                       ),
                     ),
                   ),
                 ),
                 const SizedBox(height: 10),
-                Positioned(
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const HomePage(
-                                    location: 'ARENA MALL',
-                                  )));
-                    },
-                    child: Container(
-                      height: 150,
-                      width: 300,
-                      decoration: const BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/arena_place.jpg"),
-                          fit: BoxFit.cover,
-                          repeat: ImageRepeat.noRepeat,
-                        ),
-                        borderRadius: BorderRadius.all(
-                           Radius.circular(24),
-                          ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const HomePage(
+                                  location: 'ARENA MALL',
+                                )));
+                  },
+                  child: Container(
+                    height: 150,
+                    width: 300,
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/arena_place.jpg"),
+                        fit: BoxFit.cover,
+                        repeat: ImageRepeat.noRepeat,
                       ),
-                      child: const Center(
-                        child: Text("ARENA MALL",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 25)),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(24),
                       ),
+                    ),
+                    child: const Center(
+                      child: Text("ARENA MALL",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 25)),
                     ),
                   ),
                 ),

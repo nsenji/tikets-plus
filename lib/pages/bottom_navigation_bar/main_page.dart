@@ -1,10 +1,7 @@
 import 'package:cinema_tikets/pages/bottom_navigation_bar/home_page.dart';
 import 'package:cinema_tikets/pages/bottom_navigation_bar/profile_page.dart';
 import 'package:cinema_tikets/pages/bottom_navigation_bar/search_page.dart';
-import 'package:cinema_tikets/pages/app_pages/seats_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 
 class MainPage extends StatefulWidget {
@@ -25,10 +22,10 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     List pages = [
-      HomePage(),
-      SearchPage(),
+      const HomePage(),
+      const SearchPage(),
       // BarItemPage(),
-      ProfilePage(),
+      const ProfilePage(),
     ];
     return Scaffold(
       backgroundColor:Colors.white,
@@ -45,7 +42,7 @@ class _MainPageState extends State<MainPage> {
           showUnselectedLabels: false,
           selectedItemColor: Colors.black54,
           unselectedItemColor: Colors.grey.withOpacity(0.5),
-          items: [
+          items: const [
             BottomNavigationBarItem(label: "home", icon: Icon(Icons.home)),
             BottomNavigationBarItem(label: "search", icon: Icon(Icons.search)),
             BottomNavigationBarItem(label: "chart", icon: Icon(Icons.chair_sharp)),

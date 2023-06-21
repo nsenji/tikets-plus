@@ -1,5 +1,3 @@
-import 'dart:io';
-import 'package:cinema_tikets/pages/app_pages/cinema_location.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService { 

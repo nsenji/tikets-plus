@@ -17,11 +17,11 @@ Future<bool> logIn(String email, String password) async{
 }
 
 Future<bool> signIn(String email, String password, String name, String contact) async{
-  TextEditingController _usernameField = TextEditingController();
-  TextEditingController _contactField = TextEditingController();
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  TextEditingController usernameField = TextEditingController();
+  TextEditingController contactField = TextEditingController();
+  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
   try {
-    UserCredential result = await _firebaseAuth.createUserWithEmailAndPassword(email: email,password: password);
+    UserCredential result = await firebaseAuth.createUserWithEmailAndPassword(email: email,password: password);
     var user = FirebaseAuth.instance.currentUser;
     await FirebaseFirestore.instance.collection('users').add({
       'uniqueID': user!.uid,

@@ -1,8 +1,4 @@
-import 'package:cinema_tikets/pages/app_pages/seats_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 
 import '../../tools/major_font.dart';
@@ -36,7 +32,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    TabController _tabCoctroller = TabController(length: 3, vsync: this);
+    TabController tabCoctroller = TabController(length: 3, vsync: this);
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -68,7 +64,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               )
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
@@ -78,28 +74,28 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
               size: 30,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
             child: TabBar(
-                indicatorColor: Color.fromARGB(255, 146, 138, 43),
+                indicatorColor: const Color.fromARGB(255, 146, 138, 43),
                 indicatorSize: TabBarIndicatorSize.tab,
                 indicatorPadding: const EdgeInsets.only(left: 20, right: 20),
                 labelColor: Colors.black87,
                 unselectedLabelColor: Colors.black38,
                 // isScrollable: true,
-                controller: _tabCoctroller,
-                tabs: [Text("Category"), Text("Places"), Text("Food")]),
+                controller: tabCoctroller,
+                tabs: const [Text("Category"), Text("Places"), Text("Food")]),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Container(
             margin: const EdgeInsets.only(left: 20, top: 10),
             height: 300,
             width: double.maxFinite,
-            child: TabBarView(controller: _tabCoctroller, children: [
+            child: TabBarView(controller: tabCoctroller, children: [
               // Container(
               ListView.builder(
                 scrollDirection: Axis.horizontal,
@@ -110,7 +106,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                     height: 300,
                     width: 200,
                     decoration: BoxDecoration(
-                      image: DecorationImage(
+                      image: const DecorationImage(
                           fit: BoxFit.cover,
                           image: AssetImage("assets/cyber.jpg")),
                       borderRadius: BorderRadius.circular(20),
@@ -119,15 +115,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                 },
               ),
               // ),
-              Text("how"),
-              Text("are"),
+              const Text("how"),
+              const Text("are"),
             ]),
           ),
-          SizedBox(
+          const SizedBox(
             height: 15,
           ),
           Container(
-            margin: EdgeInsets.only(left: 20),
+            margin: const EdgeInsets.only(left: 20),
             height: 120,
             width: double.maxFinite,
             child: ListView.builder(
@@ -147,9 +143,9 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                   );
                 }),
           ),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           Container(
-            margin: EdgeInsets.only(left: 20),
+            margin: const EdgeInsets.only(left: 20),
             height: 120,
             width: double.maxFinite,
             child: ListView.builder(

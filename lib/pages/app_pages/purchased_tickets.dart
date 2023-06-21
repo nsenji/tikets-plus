@@ -1,13 +1,13 @@
 
 
-import 'package:cinema_tikets/pages/app_pages/models/location.dart';
+import 'package:cinema_tikets/models/location.dart';
 import 'package:cinema_tikets/pages/app_pages/qr_code.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../notifiers/for_acacia/seat_number_notifier.dart';
 import '../../utils/app_layout.dart';
-import 'models/time.dart';
-import 'models/title_image_provider.dart';
+import '../../models/time.dart';
+import '../../models/title_image_provider.dart';
 
 class Purchased extends StatefulWidget {
   const Purchased({Key? key}) : super(key: key);
@@ -47,7 +47,7 @@ class _PurchasedState extends State<Purchased> {
                   child: Container(
                     padding: const EdgeInsets.only(top: 10, left: 10),
                     height: 75,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(20)),
@@ -55,17 +55,17 @@ class _PurchasedState extends State<Purchased> {
                     ),
                     child: Row(children: [
                       Container(
-                        padding: EdgeInsets.only(right: 45),
+                        padding: const EdgeInsets.only(right: 45),
                         height: 60,
                         width: 140,
                         child: Column(
                           children: [
-                            Text(
+                            const Text(
                               "DATE",
                               style: TextStyle(
                                   fontWeight: FontWeight.w300, fontSize: 11),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Text(
@@ -77,7 +77,7 @@ class _PurchasedState extends State<Purchased> {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.only(right: 15),
+                        padding: const EdgeInsets.only(right: 15),
                         height: 60,
                         width: 80,
                         child: Column(

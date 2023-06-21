@@ -1,9 +1,6 @@
 import 'package:cinema_tikets/api/for_acacia/movie_api.dart';
-import 'package:cinema_tikets/models/movie_model.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/movie_notifier.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -28,7 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
     MovieNotifier movieNotifier = Provider.of<MovieNotifier>(context);
     return Container(
         child: Center(
-            child: Container(
+            child: SizedBox(
                 width: 500,
                 height: 700,
                 child: ListView.builder(
@@ -37,8 +34,8 @@ class _ProfilePageState extends State<ProfilePage> {
                   return Container(
                     child:Column(
                       children: [
-                        Text("${movieNotifier.movieList[index].name}"),
-                        Text("${movieNotifier.movieList[index].description}"),
+                        Text(movieNotifier.movieList[index].name),
+                        Text(movieNotifier.movieList[index].description),
                         Image.network(movieNotifier.movieList[index].image)
                       ],
                     )

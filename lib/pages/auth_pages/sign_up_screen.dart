@@ -228,10 +228,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
 }
 
 final gradient = LinearGradient(
-  colors: <Color>[Colors.purple, Colors.blue],
+  colors: const <Color>[Colors.purple, Colors.blue],
 );
 final Shader linearGradient = LinearGradient(
-  colors: <Color>[Colors.purple, Colors.blue],
+  colors: const <Color>[Colors.purple, Colors.blue],
 ).createShader(
   Rect.fromLTWH(0.0, 0.0, 200.0, 70.0),
 );

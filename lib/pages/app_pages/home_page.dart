@@ -1,7 +1,6 @@
 import 'package:cinema_tikets/mapping/mapping.dart';
 import 'package:cinema_tikets/pages/app_pages/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:cinema_tikets/utils/styles.dart';
 import 'movie_card.dart';
 import 'package:cinema_tikets/pages/app_pages/coming_soon.dart';
 
@@ -12,11 +11,11 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 22, 21, 21),
+      backgroundColor: const Color.fromARGB(255, 22, 21, 21),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text(
-          'SHOWING-' + location,
+          'SHOWING-$location',
           style: const TextStyle(color: Colors.white),
         ),
         centerTitle: false,
@@ -53,9 +52,9 @@ class HomePage extends StatelessWidget {
               ),
               onPressed: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Profile()));
+                    MaterialPageRoute(builder: (context) => const Profile()));
               },
-              child: Text(
+              child: const Text(
                 "Profile",
                 style: TextStyle(
                   fontSize: 18,
@@ -86,7 +85,7 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.symmetric(horizontal: 13, vertical: 13),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
+              children: const [
                 Text(
                   "Coming Soon...",
                   style: TextStyle(color: Colors.white, fontSize: 23),

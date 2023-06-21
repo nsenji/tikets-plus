@@ -1,22 +1,22 @@
-import 'package:cinema_tikets/models/seatNumbers_from_firestore/for_metro/seatNumber_metro.dart';
+import 'package:cinema_tikets/Custom_widgets/seatNumbers_from_firestore/for_metro/seatNumber_metro.dart';
 import 'package:cinema_tikets/notifiers/for_metro/taken_seat_notifier_metro.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-getSeat_metro(TakenSeat_metro takenSeat_metro) async {
+getSeat_metro(TakenSeat_metro takenseatMetro) async {
   QuerySnapshot snapshot =
       await FirebaseFirestore.instance.collection('Seats_metro').get();
 
-  List<SeatNumber_metro> _seatList = [];
+  List<SeatNumber_metro> seatList = [];
   dynamic value;
 
-  snapshot.docs.forEach((element) {
+  for (var element in snapshot.docs) {
     {
       SeatNumber_metro seatNumber = SeatNumber_metro.fromMap(element);
-      _seatList.add(seatNumber);
+      seatList.add(seatNumber);
     }
-  });
+  }
 
-  takenSeat_metro.seatList = _seatList;
+  takenseatMetro.seatList = seatList;
 }
 
 addSeat_metro(int index) async {

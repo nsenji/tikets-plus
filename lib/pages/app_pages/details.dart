@@ -1,9 +1,5 @@
-import 'dart:io';
-import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:http/retry.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 
 import 'date_picker.dart';
 
@@ -98,7 +94,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
             width: MediaQuery.of(context).size.width,
             child: Column(children: [
               Container(
-                padding: EdgeInsets.only(left: 25),
+                padding: const EdgeInsets.only(left: 25),
                 child: Text(
                   title,
                   style: const TextStyle(
@@ -118,7 +114,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
                     fontSize: 10,
                     fontWeight: FontWeight.bold),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
             ])),
@@ -126,7 +122,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
         Positioned(
             bottom: 230,
             left: 260,
-            child: Container(
+            child: SizedBox(
               height: 150,
               width: 110,
               child: Image.asset(

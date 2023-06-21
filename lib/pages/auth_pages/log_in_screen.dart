@@ -19,11 +19,11 @@ class _LogInScreenState extends State<LogInScreen> {
   @override
   Widget build(BuildContext context) {
     return loading
-        ? Loading()
+        ? const Loading()
         : Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.transparent,
-              title: Center(
+              title: const Center(
                 child: Text('Log In'),
               ),
             ),
@@ -32,7 +32,7 @@ class _LogInScreenState extends State<LogInScreen> {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(20.0),
                     child: Text(
                       'Tickets+ ',
                       style: TextStyle(
@@ -42,10 +42,10 @@ class _LogInScreenState extends State<LogInScreen> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(20.0),
                     child: TextField(
                       controller: _emailField,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         //border: OutlineInputBorder(borderRadius: BorderRadius.circular(60)),
                         label: Text('Email'),
                         //hintText: 'Email',
@@ -55,11 +55,11 @@ class _LogInScreenState extends State<LogInScreen> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(20.0),
                     child: TextField(
                       controller: _passwordField,
                       obscureText: true,
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         //border: OutlineInputBorder(borderRadius: BorderRadius.circular(60)),
                         label: Text('password'),
                         // icon: Icon(Icons.lock),
@@ -98,7 +98,7 @@ class _LogInScreenState extends State<LogInScreen> {
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => Location(),
+                                  builder: (context) => const Location(),
                                 ),
                               );
                             } else {
@@ -134,13 +134,14 @@ class _LogInScreenState extends State<LogInScreen> {
                     // ),
                   ),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       const Text(
                         'Does not have account?',
                         style: TextStyle(fontSize: 18.0),
                       ),
                       TextButton(
-                          child: Text(
+                          child: const Text(
                             'Sign Up',
                             style: TextStyle(
                                 fontSize: 19,
@@ -150,9 +151,8 @@ class _LogInScreenState extends State<LogInScreen> {
                           onPressed: () => Navigator.push(
                               context,
                               MaterialPageRoute(
-                                  builder: ((context) => SignUpScreen()))))
+                                  builder: ((context) => const SignUpScreen()))))
                     ],
-                    mainAxisAlignment: MainAxisAlignment.center,
                   ),
                 ],
               ),

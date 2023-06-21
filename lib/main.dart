@@ -4,17 +4,13 @@ import 'package:cinema_tikets/notifiers/for_acacia/movie_notifier.dart';
 import 'package:cinema_tikets/notifiers/for_metro/seat_number_notifier-metro.dart';
 import 'package:cinema_tikets/notifiers/for_metro/taken_seat_notifier_metro.dart';
 import 'package:cinema_tikets/pages/app_pages/cinema_location.dart';
-import 'package:cinema_tikets/pages/app_pages/home_page.dart';
-import 'package:cinema_tikets/pages/app_pages/models/location.dart';
-import 'package:cinema_tikets/pages/app_pages/models/time.dart';
-import 'package:cinema_tikets/pages/app_pages/models/title_image_provider.dart';
+import 'package:cinema_tikets/models/location.dart';
+import 'package:cinema_tikets/models/time.dart';
+import 'package:cinema_tikets/models/title_image_provider.dart';
 import 'package:cinema_tikets/pages/auth_pages/auth.dart';
 import 'package:cinema_tikets/pages/auth_pages/wrapper.dart';
-import 'package:cinema_tikets/pages/bottom_navigation_bar/main_page.dart';
-import 'package:cinema_tikets/pages/bottom_navigation_bar/welcome_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -41,7 +37,7 @@ void main() async {
       ChangeNotifierProvider(create: ((context) => TakenSeat_metro())),
       ChangeNotifierProvider(create: ((context) => Points()))
     ],
-    child: MyApp(),
+    child: const MyApp(),
   ));
 }
 
@@ -56,10 +52,10 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     TakenSeat takenSeat = Provider.of<TakenSeat>(context, listen: false);
-    TakenSeat_metro takenSeat_metro =
+    TakenSeat_metro takenseatMetro =
         Provider.of<TakenSeat_metro>(context, listen: false);
     getSeat(takenSeat);
-    getSeat_metro(takenSeat_metro);
+    getSeat_metro(takenseatMetro);
     // TODO: implement initState
     super.initState();
   }
@@ -81,7 +77,7 @@ class _MyAppState extends State<MyApp> {
             //     systemOverlayStyle: SystemUiOverlayStyle(statusBarBrightness: Brightness.dark)
             //   )
             // ),
-            home: Wrapper()),
+            home: Location()),
       ),
     );
   }
@@ -96,16 +92,16 @@ class SplashScreen extends StatelessWidget {
       child: AnimatedSplashScreen(
         splash: Column(
           children: [
-            Text(
+            const Text(
               'Tickets +',
               style: TextStyle(fontSize: 50),
             ),
             Lottie.asset('assets/splash.json'),
           ],
         ),
-        nextScreen: Wrapper(),
+        nextScreen: const Wrapper(),
         splashIconSize: 500,
-        backgroundColor: Color.fromARGB(255, 192, 167, 238),
+        backgroundColor: const Color.fromARGB(255, 192, 167, 238),
       ),
     );
   }

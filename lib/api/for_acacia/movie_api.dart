@@ -1,13 +1,8 @@
-import 'dart:io';
-import 'package:cinema_tikets/models/seatNumbers_from_firestore/for_acacia/get_seatList_model.dart';
+import 'package:cinema_tikets/Custom_widgets/seatNumbers_from_firestore/for_acacia/get_seatList_model.dart';
 import 'package:cinema_tikets/models/movie_model.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/movie_notifier.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/taken_seat_notifier.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:provider/provider.dart';
-import 'package:provider/provider.dart';
 
 
 
@@ -16,14 +11,14 @@ getMovie(MovieNotifier movieNotifier) async {
   QuerySnapshot snapshot =
       await FirebaseFirestore.instance.collection('Movies').get();
 
-  List<Movie> _movieList = [];
+  List<Movie> movieList = [];
 
-  snapshot.docs.forEach((document) {
+  for (var document in snapshot.docs) {
     Movie movie = Movie.fromMap(document);
-    _movieList.add(movie);
-  });
+    movieList.add(movie);
+  }
 
-  movieNotifier.movieList = _movieList;
+  movieNotifier.movieList = movieList;
 }
 
 //
@@ -42,17 +37,17 @@ getSeat(TakenSeat takenSeat) async {
   QuerySnapshot snapshot =
       await FirebaseFirestore.instance.collection('Seats').get();
 
-  List<SeatNumber> _seatList = [];
+  List<SeatNumber> seatList = [];
   dynamic value;
 
-  snapshot.docs.forEach((element) {
+  for (var element in snapshot.docs) {
     {
       SeatNumber seatNumber = SeatNumber.fromMap(element);
-      _seatList.add(seatNumber);
+      seatList.add(seatNumber);
     }
-  });
+  }
 
-  takenSeat.seatList = _seatList;
+  takenSeat.seatList = seatList;
 }
 
 addSeat(int index) async {

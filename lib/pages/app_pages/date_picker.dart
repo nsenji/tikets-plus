@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../utils/styles.dart';
-import 'models/time.dart';
+import '../../models/time.dart';
 
 // void main() {
 //   runApp(const MyApp());
@@ -107,7 +107,7 @@ class _Button extends State<Button> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
+        gradient: const LinearGradient(
           colors: [Colors.purple, Colors.blue],
           begin: Alignment.bottomLeft,
           end: Alignment.topRight,
@@ -115,7 +115,7 @@ class _Button extends State<Button> {
         // border: Border.all(
         //   color: Colors.blue,
         // ),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Colors.black,
             blurRadius: 5.0,
@@ -214,14 +214,14 @@ class _Button extends State<Button> {
                           //           ),
                           //       itemCount: 7),
                           // ),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           // THIS CONTAINER IS THE "VIEW TICKET" BUTTON
                           Container(
                             // padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
-                              gradient: LinearGradient(
+                              gradient: const LinearGradient(
                                 colors: [Colors.purple, Colors.blue],
                                 begin: Alignment.bottomLeft,
                                 end: Alignment.topRight,
@@ -229,7 +229,7 @@ class _Button extends State<Button> {
                               // border: Border.all(
                               //   color: Colors.blue,
                               // ),
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                   color: Colors.black,
                                   blurRadius: 5.0,

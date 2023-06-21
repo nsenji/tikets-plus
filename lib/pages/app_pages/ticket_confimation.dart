@@ -1,13 +1,12 @@
 import 'package:cinema_tikets/notifiers/for_acacia/seat_number_notifier.dart';
 import 'package:cinema_tikets/notifiers/for_metro/seat_number_notifier-metro.dart';
-import 'package:cinema_tikets/pages/app_pages/models/time.dart';
+import 'package:cinema_tikets/models/time.dart';
 import 'package:cinema_tikets/utils/app_layout.dart';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../services/payment.dart';
-import 'models/title_image_provider.dart';
+import '../../models/title_image_provider.dart';
 
 class TicketView extends StatelessWidget {
   String location;
@@ -26,7 +25,7 @@ class TicketView extends StatelessWidget {
           child: Center(
             child: Container(
               decoration: BoxDecoration(
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [Colors.purple, Colors.blue],
                   begin: Alignment.bottomLeft,
                   end: Alignment.topRight,
@@ -34,7 +33,7 @@ class TicketView extends StatelessWidget {
                 // border: Border.all(
                 //   color: Colors.blue,
                 // ),
-                boxShadow: [
+                boxShadow: const [
                   BoxShadow(
                     color: Colors.black,
                     blurRadius: 5.0,
@@ -51,10 +50,10 @@ class TicketView extends StatelessWidget {
                         builder: ((context) => TicketView(
                               location: location,
                             )))),
-                child: Text("PAYMENT"),
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.transparent,
                 ),
+                child: const Text("PAYMENT"),
               ),
             ),
           ),
@@ -85,6 +84,12 @@ class TicketView extends StatelessWidget {
                       top: AppLayout.getHeight(10),
                       left: AppLayout.getWidth(10)),
                   height: AppLayout.getHeight(75),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20)),
+                    color: Colors.white,
+                  ),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -95,7 +100,7 @@ class TicketView extends StatelessWidget {
                           // width: AppLayout.getWidth(140),
                           child: Column(
                             children: [
-                              Text(
+                              const Text(
                                 "DATE",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w300, fontSize: 11),
@@ -105,7 +110,7 @@ class TicketView extends StatelessWidget {
                               ),
                               Text(
                                 Provider.of<Datetime>(context).date,
-                                style: TextStyle(
+                                style: const TextStyle(
                                     fontWeight: FontWeight.bold, fontSize: 15),
                               )
                             ],
@@ -119,7 +124,7 @@ class TicketView extends StatelessWidget {
                           // width: AppLayout.getWidth(60),
                           child: Column(
                             children: [
-                              Text(
+                              const Text(
                                 "TIME",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w300, fontSize: 11),
@@ -127,7 +132,7 @@ class TicketView extends StatelessWidget {
                               SizedBox(
                                 height: AppLayout.getHeight(10),
                               ),
-                              Text('14:30',
+                              const Text('14:30',
                                   style: TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15))
@@ -142,7 +147,7 @@ class TicketView extends StatelessWidget {
                               EdgeInsets.only(left: AppLayout.getWidth(35)),
                           child: Column(
                             children: [
-                              Text(
+                              const Text(
                                 "TOTAL PRICE",
                                 style: TextStyle(
                                     fontWeight: FontWeight.w300, fontSize: 11),
@@ -154,7 +159,7 @@ class TicketView extends StatelessWidget {
                                   location == "METROPLEX NAALYA"
                                       ? "Ugx.${Provider.of<SeatNumberModel_metro>(context, listen: false).totalPrice}"
                                       : "Ugx.${Provider.of<SeatNumberModel>(context, listen: false).totalPrice}",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15,
                                       color: Colors.orange))
@@ -162,12 +167,6 @@ class TicketView extends StatelessWidget {
                           ),
                         )
                       ]),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20)),
-                    color: Colors.white,
-                  ),
                 );
               }),
             )),
@@ -175,10 +174,10 @@ class TicketView extends StatelessWidget {
             top: AppLayout.getHeight(465),
             right: AppLayout.getWidth(25),
             left: AppLayout.getWidth(20),
-            child: Container(
+            child: SizedBox(
               height: AppLayout.getHeight(265),
               child: ListView.builder(
-                  padding: EdgeInsets.only(top: 0),
+                  padding: const EdgeInsets.only(top: 0),
                   itemCount: location == "METROPLEX NAALYA"
                       ? Provider.of<SeatNumberModel_metro>(context,
                               listen: false)
@@ -201,7 +200,7 @@ class TicketView extends StatelessWidget {
                                 SizedBox(
                                   height: AppLayout.getHeight(20),
                                   width: AppLayout.getWidth(10),
-                                  child: DecoratedBox(
+                                  child: const DecoratedBox(
                                       decoration: BoxDecoration(
                                           color: Color.fromARGB(255, 0, 0, 0),
                                           borderRadius: BorderRadius.only(
@@ -225,12 +224,12 @@ class TicketView extends StatelessWidget {
                                         children: List.generate(
                                             (constraints.constrainWidth() / 15)
                                                 .floor(),
-                                            (index) => Container(
+                                            (index) => SizedBox(
                                                   //try changing this back to a sized box
                                                   width: AppLayout.getWidth(5),
                                                   height:
                                                       AppLayout.getHeight(1),
-                                                  child: DecoratedBox(
+                                                  child: const DecoratedBox(
                                                     decoration: BoxDecoration(
                                                         color: Color.fromARGB(
                                                             255, 0, 0, 0)),
@@ -243,7 +242,7 @@ class TicketView extends StatelessWidget {
                                 SizedBox(
                                   height: AppLayout.getHeight(20),
                                   width: AppLayout.getWidth(10),
-                                  child: DecoratedBox(
+                                  child: const DecoratedBox(
                                       decoration: BoxDecoration(
                                           color: Colors.black,
                                           borderRadius: BorderRadius.only(
@@ -268,7 +267,7 @@ class TicketView extends StatelessWidget {
                                             right: AppLayout.getWidth(10)),
                                         child: Column(
                                           children: [
-                                            Text(
+                                            const Text(
                                               "SEAT NUMBER",
                                               style: TextStyle(
                                                   fontWeight: FontWeight.w300,
@@ -281,7 +280,7 @@ class TicketView extends StatelessWidget {
                                                 location == "METROPLEX NAALYA"
                                                     ? "${Provider.of<SeatNumberModel_metro>(context, listen: false).seatNumber[index]}"
                                                     : "${Provider.of<SeatNumberModel>(context, listen: false).seatNumber[index]}",
-                                                style: TextStyle(
+                                                style: const TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                     fontSize: 15))
                                           ],
@@ -295,7 +294,7 @@ class TicketView extends StatelessWidget {
                                         width: AppLayout.getWidth(140),
                                         child: Column(
                                           children: [
-                                            Text("PRICE",
+                                            const Text("PRICE",
                                                 style: TextStyle(
                                                     fontWeight: FontWeight.w300,
                                                     fontSize: 11)),
@@ -319,7 +318,7 @@ class TicketView extends StatelessWidget {
                                                           20
                                                       ? "Ugx 15000"
                                                       : "Ugx 10000",
-                                              style: TextStyle(
+                                              style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 15,
                                                   color: Colors.orange),

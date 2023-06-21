@@ -1,4 +1,4 @@
-import 'package:cinema_tikets/pages/app_pages/models/title_image_provider.dart';
+import 'package:cinema_tikets/models/title_image_provider.dart';
 import 'package:cinema_tikets/pages/app_pages/purchased_tickets.dart';
 import 'package:cinema_tikets/pages/auth_pages/auth.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,7 +11,7 @@ import '../../utils/styles.dart';
 import '../auth_pages/log_in_screen.dart';
 
 class Profile extends StatefulWidget {
-  Profile({super.key});
+  const Profile({super.key});
 
   @override
   State<Profile> createState() => _ProfileState();
@@ -35,7 +35,7 @@ class _ProfileState extends State<Profile> {
         Provider.of<SeatNumberModel>(context, listen: false).items.length;
 
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 63, 59, 59),
+      backgroundColor: const Color.fromARGB(255, 63, 59, 59),
       appBar: AppBar(
         backgroundColor: Styles.primaryColor,
         title: const Text("My Profile"),
@@ -214,7 +214,7 @@ class _ProfileState extends State<Profile> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
+                      gradient: const LinearGradient(
                         colors: [Colors.purple, Colors.blue],
                         begin: Alignment.bottomLeft,
                         end: Alignment.topRight,
@@ -222,7 +222,7 @@ class _ProfileState extends State<Profile> {
                       // border: Border.all(
                       //   color: Colors.blue,
                       // ),
-                      boxShadow: [
+                      boxShadow: const [
                         BoxShadow(
                           color: Colors.black,
                           blurRadius: 5.0,
@@ -264,7 +264,7 @@ class _ProfileState extends State<Profile> {
                   Container(
                     width: 120,
                     decoration: BoxDecoration(
-                        gradient: LinearGradient(
+                        gradient: const LinearGradient(
                           colors: [Colors.purple, Colors.blue],
                           begin: Alignment.bottomLeft,
                           end: Alignment.topRight,
@@ -272,7 +272,7 @@ class _ProfileState extends State<Profile> {
                         // border: Border.all(
                         //   color: Colors.blue,
                         // ),
-                        boxShadow: [
+                        boxShadow: const [
                           BoxShadow(
                             color: Colors.black,
                             blurRadius: 5.0,
@@ -284,8 +284,8 @@ class _ProfileState extends State<Profile> {
                           onPressed: () async {
                             await _auth.signOut();
                             Navigator.of(context).pushAndRemoveUntil(
-                                new MaterialPageRoute(
-                                    builder: (context) => new LogInScreen()),
+                                MaterialPageRoute(
+                                    builder: (context) => const LogInScreen()),
                                 (route) => false);
                           },
                           style: ElevatedButton.styleFrom(

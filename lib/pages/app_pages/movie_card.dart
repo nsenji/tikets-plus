@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../../utils/app_layout.dart';
 import '../../utils/styles.dart';
-import 'models/title_image_provider.dart';
+import '../../models/title_image_provider.dart';
 
 class MovieView extends StatefulWidget {
   final Map<String, dynamic> acacia;
@@ -63,7 +63,7 @@ class _MovieViewState extends State<MovieView> {
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
             decoration: BoxDecoration(
               color: Styles.primaryColor,
-              gradient: LinearGradient(
+              gradient: const LinearGradient(
                 colors: [Colors.purple, Colors.blue],
                 begin: Alignment.bottomLeft,
                 end: Alignment.topRight,
@@ -71,8 +71,8 @@ class _MovieViewState extends State<MovieView> {
               border: Border.all(
                 color: Colors.blue,
               ),
-              boxShadow: [
-                new BoxShadow(
+              boxShadow: const [
+                BoxShadow(
                   color: Colors.black,
                   blurRadius: 5.0,
                 ),
