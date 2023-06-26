@@ -24,47 +24,47 @@ class HomePage extends StatelessWidget {
         // iconTheme: const IconThemeData(
         //   color: Colors.black,
         // ),
-        actions: [
-          Container(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.purple, Colors.blue],
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight,
-              ),
-              // border: Border.all(
-              //   color: Colors.blue,
-              // ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black,
-                  blurRadius: 5.0,
-                ),
-              ],
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(25),
-                bottomLeft: Radius.circular(25),
-              ),
-            ),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.transparent,
-              ),
-              onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Profile()));
-              },
-              child: const Text(
-                "Profile",
-                style: TextStyle(
-                  fontSize: 18,
-                  // fontWeight: FontWeight.w700,
-                  color: Colors.white,
-                ),
-              ),
-            ),
-          ),
-        ],
+        // actions: [
+        //   Container(
+        //     decoration: const BoxDecoration(
+        //       gradient: LinearGradient(
+        //         colors: [Colors.purple, Colors.blue],
+        //         begin: Alignment.bottomLeft,
+        //         end: Alignment.topRight,
+        //       ),
+        //       // border: Border.all(
+        //       //   color: Colors.blue,
+        //       // ),
+        //       boxShadow: [
+        //         BoxShadow(
+        //           color: Colors.black,
+        //           blurRadius: 5.0,
+        //         ),
+        //       ],
+        //       borderRadius: BorderRadius.only(
+        //         topLeft: Radius.circular(25),
+        //         bottomLeft: Radius.circular(25),
+        //       ),
+        //     ),
+        //     child: ElevatedButton(
+        //       style: ElevatedButton.styleFrom(
+        //         backgroundColor: Colors.transparent,
+        //       ),
+        //       onPressed: () {
+        //         Navigator.push(context,
+        //             MaterialPageRoute(builder: (context) => const Profile()));
+        //       },
+        //       child: const Text(
+        //         "Profile",
+        //         style: TextStyle(
+        //           fontSize: 18,
+        //           // fontWeight: FontWeight.w700,
+        //           color: Colors.white,
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ],
         // backgroundColor: Styles.primaryColor,
       ),
       body: ListView(

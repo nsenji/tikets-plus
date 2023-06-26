@@ -7,12 +7,9 @@ import 'package:cinema_tikets/pages/app_pages/cinema_location.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/location.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/time.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/title_image_provider.dart';
-import 'package:cinema_tikets/pages/auth_pages/auth.dart';
 import 'package:cinema_tikets/pages/auth_pages/wrapper.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'api/for_acacia/seat_methods.dart';
 import 'firebase_options.dart';
 import 'notifiers/for_acacia/taken_seat_notifier.dart';
@@ -20,8 +17,8 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:lottie/lottie.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   runApp(MultiProvider(
     providers: [
@@ -53,55 +50,42 @@ class _MyAppState extends State<MyApp> {
     TakenSeat takenSeat = Provider.of<TakenSeat>(context, listen: false);
     TakenSeat_metro takenseatMetro =
         Provider.of<TakenSeat_metro>(context, listen: false);
-    getSeat(takenSeat);
-    getSeat_metro(takenseatMetro);
+    // getSeat(takenSeat);
+    // getSeat_metro(takenseatMetro);
     // TODO: implement initState
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return StreamProvider<User?>.value(
-      value: AuthService().user,
-      initialData: null,
-      child:
-        const MaterialApp(
-            debugShowCheckedModeBanner: false,
-            // theme: ThemeData(
-            //   brightness: Brightness.dark,
-            //   appBarTheme: AppBarTheme(
-            //     systemOverlayStyle: SystemUiOverlayStyle(statusBarBrightness: Brightness.dark)
-            //   )
-            // ),
-            home: Location()),
-      
-    );
+    return const MaterialApp(
+        debugShowCheckedModeBanner: false, home: Location());
   }
 }
 
-class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
+// class SplashScreen extends StatelessWidget {
+//   const SplashScreen({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      child: AnimatedSplashScreen(
-        splash: Column(
-          children: [
-            const Text(
-              'Tickets +',
-              style: TextStyle(fontSize: 50),
-            ),
-            Lottie.asset('assets/splash.json'),
-          ],
-        ),
-        nextScreen: const Wrapper(),
-        splashIconSize: 500,
-        backgroundColor: const Color.fromARGB(255, 192, 167, 238),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return Material(
+//       child: AnimatedSplashScreen(
+//         splash: Column(
+//           children: [
+//             const Text(
+//               'Tickets +',
+//               style: TextStyle(fontSize: 50),
+//             ),
+//             Lottie.asset('assets/splash.json'),
+//           ],
+//         ),
+//         nextScreen: const Wrapper(),
+//         splashIconSize: 500,
+//         backgroundColor: const Color.fromARGB(255, 192, 167, 238),
+//       ),
+//     );
+//   }
+// }
 
 
 

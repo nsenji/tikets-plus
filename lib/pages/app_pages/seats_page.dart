@@ -24,7 +24,7 @@ class _BarItemPageState extends State<BarItemPage> {
   @override
   void initState() {
     TakenSeat takenSeat = Provider.of<TakenSeat>(context, listen: false);
-    getSeat(takenSeat);
+    // getSeat(takenSeat);
     // TODO: implement initState
     super.initState();
   }

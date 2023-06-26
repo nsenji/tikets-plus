@@ -23,7 +23,7 @@ class Seat_metro extends StatefulWidget {
 }
 
 class _SeatState extends State<Seat_metro> {
-  // dynamic value;
+  dynamic value;
   @override
   void initState() {
     print('yeah the list is empty');
@@ -62,7 +62,7 @@ class _SeatState extends State<Seat_metro> {
                         .add(widget.index + 1);
                     Provider.of<SeatNumberModel_metro>(context, listen: false)
                         .addPrice(widget.index + 1);
-                    addSeat_metro(widget.index+1);
+                    // addSeat_metro(widget.index+1);
                   } else {
                     widget.seatColor = Colors.white;
                     
@@ -70,7 +70,7 @@ class _SeatState extends State<Seat_metro> {
                         .remove(widget.index + 1);
                     Provider.of<SeatNumberModel_metro>(context, listen: false)
                         .reducePrice(widget.index + 1);
-                    removeSeat_metro(widget.index+1);
+                    // removeSeat_metro(widget.index+1);
                   }
                 });
               },

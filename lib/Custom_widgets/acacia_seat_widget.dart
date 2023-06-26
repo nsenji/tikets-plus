@@ -22,7 +22,7 @@ class Seat extends StatefulWidget {
 }
 
 class _SeatState extends State<Seat> {
-  // dynamic value;
+  dynamic value;
   @override
   void initState() {
     int index = 0;
@@ -57,7 +57,7 @@ class _SeatState extends State<Seat> {
                         .add(widget.index + 1);
                     Provider.of<SeatNumberModel>(context, listen: false)
                         .addPrice(widget.index + 1);
-                    addSeat(widget.index + 1);
+                    // addSeat(widget.index + 1);
                   } else {
                     widget.seatColor = Colors.white;
 
@@ -65,7 +65,7 @@ class _SeatState extends State<Seat> {
                         .remove(widget.index + 1);
                     Provider.of<SeatNumberModel>(context, listen: false)
                         .reducePrice(widget.index + 1);
-                    removeSeat(widget.index + 1);
+                    // removeSeat(widget.index + 1);
                   }
                 });
               },
