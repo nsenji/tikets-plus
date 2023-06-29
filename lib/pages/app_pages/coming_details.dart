@@ -16,7 +16,6 @@ class ComingDetails extends StatelessWidget {
         title: Text(title),
         elevation: 0,
         centerTitle: true,
-        backgroundColor: Styles.primaryColor,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios), onPressed: () => Navigator.of(context).pop(),
         ),
@@ -27,7 +26,6 @@ class ComingDetails extends StatelessWidget {
             height: 700,
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical:15),
             decoration: BoxDecoration(
-                color: Colors.white,
                 borderRadius: BorderRadius.circular(24)
             ),
             child: Column(
@@ -38,7 +36,6 @@ class ComingDetails extends StatelessWidget {
                     child: Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
-                            color: Styles.primaryColor,
                             image: DecorationImage(
                                 fit: BoxFit.cover,
                                 image: AssetImage(
@@ -60,7 +57,6 @@ class ComingDetails extends StatelessWidget {
                                 Flexible(
                                   child: Text(title,
                                       style: const TextStyle(
-                                          color: Colors.black,
                                           decoration: TextDecoration.none),
                                       textScaleFactor: 1.5,
                                   overflow: TextOverflow.clip,),
@@ -68,14 +64,14 @@ class ComingDetails extends StatelessWidget {
                           ],
                         ),
                         const SizedBox(height:15),
-                        Text(description,style: const TextStyle(color: Colors.black, decoration: TextDecoration.none), textScaleFactor: 1,),
+                        Text(description,style: const TextStyle( decoration: TextDecoration.none), textScaleFactor: 1,),
                         const SizedBox(height: 15),
                         Center(
                           child: SizedBox(
                           width: 200,
                           child: ElevatedButton(
                             onPressed: (){},
-                            style: const ButtonStyle(backgroundColor: MaterialStatePropertyAll(Color(0xFFF44336))),
+                            style: const ButtonStyle(),
                             child: const Text("COMING SOON"),),
                         ),)
                       ],

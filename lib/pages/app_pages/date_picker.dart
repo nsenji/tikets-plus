@@ -107,30 +107,14 @@ class _Button extends State<Button> {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        gradient: const LinearGradient(
-          colors: [Colors.purple, Colors.blue],
-          begin: Alignment.bottomLeft,
-          end: Alignment.topRight,
-        ),
-        // border: Border.all(
-        //   color: Colors.blue,
-        // ),
-        boxShadow: const [
-          BoxShadow(
-            color: Colors.black,
-            blurRadius: 5.0,
-          ),
-        ],
+       
         borderRadius: BorderRadius.circular(10),
       ),
       child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.transparent,
-          ),
+         
           child: const Text('PICK A DATE'),
           onPressed: () {
             showModalBottomSheet(
-                backgroundColor: Colors.black38,
                 shape: const RoundedRectangleBorder(
                     borderRadius:
                         BorderRadius.vertical(top: Radius.circular(30))),
@@ -148,8 +132,7 @@ class _Button extends State<Button> {
                             height: 7,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(5),
-                                color: Colors
-                                    .white //THE COLOR OF THAT HORIZONTAL BAR ABOVE THE BOTTOM POP UP
+                                    //THE COLOR OF THAT HORIZONTAL BAR ABOVE THE BOTTOM POP UP
                                 ),
                           )),
                       Column(
@@ -158,7 +141,7 @@ class _Button extends State<Button> {
                           const Center(
                               child: Text(
                             "Choose a Date",
-                            style: TextStyle(fontSize: 18, color: Colors.white),
+                            style: TextStyle(fontSize: 18, ),
                           )),
                           const SizedBox(height: 30),
                           SizedBox(
@@ -221,26 +204,11 @@ class _Button extends State<Button> {
                           Container(
                             // padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
-                              gradient: const LinearGradient(
-                                colors: [Colors.purple, Colors.blue],
-                                begin: Alignment.bottomLeft,
-                                end: Alignment.topRight,
-                              ),
-                              // border: Border.all(
-                              //   color: Colors.blue,
-                              // ),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: Colors.black,
-                                  blurRadius: 5.0,
-                                ),
-                              ],
+                              
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.transparent,
-                                ),
+                                
                                 onPressed: () {
                                   Navigator.of(context).push(MaterialPageRoute(
                                       //DEFINE THE PAGE TO GO WHEN BUTTON IS CLICKED

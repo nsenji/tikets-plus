@@ -62,21 +62,7 @@ class _MovieViewState extends State<MovieView> {
             margin: const EdgeInsets.only(right: 30, top: 15, bottom: 30),
             padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
             decoration: BoxDecoration(
-              color: Styles.primaryColor,
-              gradient: const LinearGradient(
-                colors: [Colors.purple, Colors.blue],
-                begin: Alignment.bottomLeft,
-                end: Alignment.topRight,
-              ),
-              border: Border.all(
-                color: Colors.blue,
-              ),
-              boxShadow: const [
-                BoxShadow(
-                  color: Colors.black,
-                  blurRadius: 5.0,
-                ),
-              ],
+              
               borderRadius: BorderRadius.circular(24),
             ),
             child:
@@ -85,7 +71,6 @@ class _MovieViewState extends State<MovieView> {
                   height: 300,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      color: Styles.primaryColor,
                       image: DecorationImage(
                           fit: BoxFit.cover,
                           image: AssetImage(
@@ -93,7 +78,7 @@ class _MovieViewState extends State<MovieView> {
               const SizedBox(height: 20),
               Text(
                 "${widget.acacia['title']}",
-                style: const TextStyle(color: Colors.white, fontSize: 15),
+                style: const TextStyle( fontSize: 15),
                 textScaleFactor: 2,
               ),
               Row(
@@ -101,22 +86,22 @@ class _MovieViewState extends State<MovieView> {
                 children: [
                   Text(
                     "${widget.acacia['rating'].toString()}/10",
-                    style: const TextStyle(color: Colors.white, fontSize: 13),
+                    style: const TextStyle( fontSize: 13),
                     textScaleFactor: 1.5,
                   ),
                   const SizedBox(width: 10),
-                  const Icon(Icons.star, color: Colors.yellow),
+                  const Icon(Icons.star),
                   const SizedBox(width: 10),
                   const Text(
                     "Rating",
-                    style: TextStyle(color: Colors.white, fontSize: 13),
+                    style: TextStyle( fontSize: 13),
                     textScaleFactor: 1.5,
                   ),
                 ],
               ),
               Text(
                 "Showing Time: ${widget.acacia['time']}",
-                style: const TextStyle(color: Colors.white, fontSize: 19),
+                style: const TextStyle( fontSize: 19),
                 textScaleFactor: 1,
               )
             ])),

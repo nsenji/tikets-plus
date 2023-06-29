@@ -24,17 +24,14 @@ class _PurchasedState extends State<Purchased> {
         appBar: AppBar(
           title: const Text("Purchased Tickets"),
           centerTitle: true,
-          backgroundColor: Colors.deepPurple,
         ),
         body: const Center(child: Text("You have not purchased any tickets yet !", style: TextStyle(fontSize: 20),)),
       );
     } else {
       return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
         title: const Text("Purchased Tickets"),
         centerTitle: true,
-        backgroundColor: Colors.deepPurple,
       ),
       body: Stack(
           children: [
@@ -43,7 +40,6 @@ class _PurchasedState extends State<Purchased> {
                 right: 25,
                 left: 20,
                 child: Material(
-                  color: Colors.black,
                   child: Container(
                     padding: const EdgeInsets.only(top: 10, left: 10),
                     height: 75,
@@ -51,7 +47,6 @@ class _PurchasedState extends State<Purchased> {
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(20),
                           topRight: Radius.circular(20)),
-                      color: Colors.white,
                     ),
                     child: Row(children: [
                       Container(
@@ -115,7 +110,7 @@ class _PurchasedState extends State<Purchased> {
                                 style: const TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 15,
-                                    color: Colors.orange))
+                                    ))
                           ],
                         ),
                       )
@@ -140,7 +135,6 @@ class _PurchasedState extends State<Purchased> {
                             children: [
                               Container(
                                 padding: const EdgeInsets.only(top: 0),
-                                color: Colors.white,
                                 child: Row(
                                   children: [
                                     SizedBox(
@@ -148,7 +142,6 @@ class _PurchasedState extends State<Purchased> {
                                       width: AppLayout.getWidth(10),
                                       child: const DecoratedBox(
                                           decoration: BoxDecoration(
-                                              color: Color.fromARGB(255, 0, 0, 0),
                                               borderRadius: BorderRadius.only(
                                                   topRight: Radius.circular(10),
                                                   bottomRight: Radius.circular(10)))),
@@ -197,7 +190,6 @@ class _PurchasedState extends State<Purchased> {
                                 child: Material(
                                   child: Container(
                                       height: 80,
-                                      color: Colors.white,
                                       child: Row(
                                         children: [
                                           Container(
@@ -226,8 +218,7 @@ class _PurchasedState extends State<Purchased> {
                                           Expanded(child:
                                             Container(
                                               child: ElevatedButton(
-                                                style: const ButtonStyle(
-                                                 backgroundColor: MaterialStatePropertyAll<Color>(Colors.redAccent),),
+                                                
                                                 child: const Text("View QR Code", textAlign: TextAlign.center),
                                                 onPressed: () => showDialog(
                                                   context: context,
@@ -262,7 +253,7 @@ class _PurchasedState extends State<Purchased> {
                                                     style: const TextStyle(
                                                         fontWeight: FontWeight.bold,
                                                         fontSize: 15,
-                                                        color: Colors.orange),
+                                                        ),
                                                   )
                                                 ],
                                               ),

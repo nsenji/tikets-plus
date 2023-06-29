@@ -30,7 +30,6 @@ class LocationCard extends StatelessWidget {
           child: Center(
             child: Text("$locationName",
                 style: TextStyle(
-                    color: Colors.white,
                     fontWeight: FontWeight.bold,
                     fontSize: 25)),
           ),

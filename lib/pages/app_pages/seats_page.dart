@@ -54,7 +54,13 @@ class _BarItemPageState extends State<BarItemPage> {
   Widget build(BuildContext context) {
     final size = AppLayout.getSize(context);
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back)),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -112,12 +118,12 @@ class _BarItemPageState extends State<BarItemPage> {
                   width: 9,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(9),
-                      color: Colors.grey),
+                      ),
                 ),
                 const SizedBox(
                   width: 5,
                 ),
-                const Text('Available', style: TextStyle(color: Colors.white)),
+                const Text('Available',),
                 const SizedBox(
                   width: 60,
                 ),
@@ -126,12 +132,12 @@ class _BarItemPageState extends State<BarItemPage> {
                   width: 9,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(9),
-                      color: Colors.orange),
+                      ),
                 ),
                 const SizedBox(
                   width: 5,
                 ),
-                const Text('Selected', style: TextStyle(color: Colors.white)),
+                const Text('Selected'),
                 const SizedBox(
                   width: 60,
                 ),
@@ -140,31 +146,18 @@ class _BarItemPageState extends State<BarItemPage> {
                   width: 9,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(9),
-                      color: Colors.blue),
+                      ),
                 ),
                 const SizedBox(
                   width: 5,
                 ),
-                const Text('Taken', style: TextStyle(color: Colors.white))
+                const Text('Taken',)
               ]),
             ),
             Center(
               child: Container(
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    colors: [Colors.purple, Colors.blue],
-                    begin: Alignment.bottomLeft,
-                    end: Alignment.topRight,
-                  ),
-                  // border: Border.all(
-                  //   color: Colors.blue,
-                  // ),
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.black,
-                      blurRadius: 5.0,
-                    ),
-                  ],
+                  
                   borderRadius: BorderRadius.circular(10),
                 ),
                 height: 50,
@@ -176,9 +169,7 @@ class _BarItemPageState extends State<BarItemPage> {
                           builder: ((context) => TicketView(
                                 location: widget.location,
                               )))),
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.transparent,
-                  ),
+                  
                   child: const Text("BOOK SEAT"),
                 ),
               ),

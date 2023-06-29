@@ -11,61 +11,13 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 22, 21, 21),
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text(
           'SHOWING-$location',
-          style: const TextStyle(color: Colors.white),
         ),
         centerTitle: false,
         elevation: 0.0,
-        backgroundColor: Colors.transparent,
-        // iconTheme: const IconThemeData(
-        //   color: Colors.black,
-        // ),
-        // actions: [
-        //   Container(
-        //     decoration: const BoxDecoration(
-        //       gradient: LinearGradient(
-        //         colors: [Colors.purple, Colors.blue],
-        //         begin: Alignment.bottomLeft,
-        //         end: Alignment.topRight,
-        //       ),
-        //       // border: Border.all(
-        //       //   color: Colors.blue,
-        //       // ),
-        //       boxShadow: [
-        //         BoxShadow(
-        //           color: Colors.black,
-        //           blurRadius: 5.0,
-        //         ),
-        //       ],
-        //       borderRadius: BorderRadius.only(
-        //         topLeft: Radius.circular(25),
-        //         bottomLeft: Radius.circular(25),
-        //       ),
-        //     ),
-        //     child: ElevatedButton(
-        //       style: ElevatedButton.styleFrom(
-        //         backgroundColor: Colors.transparent,
-        //       ),
-        //       onPressed: () {
-        //         Navigator.push(context,
-        //             MaterialPageRoute(builder: (context) => const Profile()));
-        //       },
-        //       child: const Text(
-        //         "Profile",
-        //         style: TextStyle(
-        //           fontSize: 18,
-        //           // fontWeight: FontWeight.w700,
-        //           color: Colors.white,
-        //         ),
-        //       ),
-        //     ),
-        //   ),
-        // ],
-        // backgroundColor: Styles.primaryColor,
       ),
       body: ListView(
         children: [
@@ -88,7 +40,7 @@ class HomePage extends StatelessWidget {
               children: const [
                 Text(
                   "Coming Soon...",
-                  style: TextStyle(color: Colors.white, fontSize: 23),
+                  style: TextStyle(fontSize: 23),
                 ),
               ],
             ),

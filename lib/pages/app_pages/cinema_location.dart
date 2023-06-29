@@ -9,7 +9,6 @@ class Location extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(255, 22, 21, 21),
       body: SingleChildScrollView(
         child: Center(
           child: Padding(
@@ -19,11 +18,10 @@ class Location extends StatelessWidget {
               children: [
                 const SizedBox(height: 10),
                 Container(
-                  padding: const EdgeInsets.all(40),
+                  padding: const EdgeInsets.all(20),
                   child: const Text(
                     "Choose your location",
                     style: TextStyle(
-                        color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 25),
                   ),

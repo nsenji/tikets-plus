@@ -11,68 +11,58 @@ class ComingSoon extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = AppLayout.getSize(context);
     return SizedBox(
-        child: InkWell(
-          onTap: (){
-            Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context)=> ComingDetails(title: '${acaciaComing['title']}', poster: '${acaciaComing['poster']}', description: '${acaciaComing['description']}')));
-          },
-          child: Container(
-              width: size.width*0.6,
-              height: 450,
-              margin: const EdgeInsets.only(right:30, top:15, bottom:30),
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical:17),
-              decoration: BoxDecoration(
-                color: Styles.primaryColor,
-                gradient: const LinearGradient(
-                  colors: [Colors.purple, Colors.blue],
-                  begin: Alignment.bottomLeft,
-                  end: Alignment.topRight,
-                ),
-                border: Border.all(
-                  color: Colors.blue,
-                ),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black,
-                    blurRadius: 5.0,
-                  ),
-                ],
-                borderRadius: BorderRadius.circular(24),
+      child: InkWell(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => ComingDetails(
+                      title: '${acaciaComing['title']}',
+                      poster: '${acaciaComing['poster']}',
+                      description: '${acaciaComing['description']}')));
+        },
+        child: Container(
+            width: size.width * 0.6,
+            height: 450,
+            margin: const EdgeInsets.only(right: 30, top: 15, bottom: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 17),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(24),
+            ),
+            child:
+                Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+              Container(
+                  height: 300,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(12),
+                      image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image:
+                              AssetImage("assets/${acaciaComing['poster']}")))),
+              const SizedBox(height: 20),
+              Text(
+                "${acaciaComing['title']}",
+                textScaleFactor: 1.3,
               ),
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Container(
-                        height: 300,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(12),
-                            color: Styles.primaryColor,
-                            image: DecorationImage(
-                                fit: BoxFit.cover,
-                                image: AssetImage(
-                                    "assets/${acaciaComing['poster']}")
-                            )
-                        )
-                    ),
-                    const SizedBox(height:20),
-                    Text("${acaciaComing['title']}", style: const TextStyle(color: Colors.white), textScaleFactor: 1.3,),
-                    const SizedBox(height: 20),
-                    Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text("${acaciaComing['rating'].toString()}/10", style:
-                        const TextStyle(color: Colors.white), textScaleFactor: 1.1,),
-                        const SizedBox(width:10),
-                        const Icon(Icons.star, color:Colors.yellow),
-                        const SizedBox(width:10),
-                        const Text("Rating", style: TextStyle(color: Colors.white), textScaleFactor: 1,)
-                      ],
-                    ),
-                  ]
-              )
-          ),
-        ),
+              const SizedBox(height: 20),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "${acaciaComing['rating'].toString()}/10",
+                    textScaleFactor: 1.1,
+                  ),
+                  const SizedBox(width: 10),
+                  const Icon(Icons.star),
+                  const SizedBox(width: 10),
+                  const Text(
+                    "Rating",
+                    textScaleFactor: 1,
+                  )
+                ],
+              ),
+            ])),
+      ),
     );
   }
 }

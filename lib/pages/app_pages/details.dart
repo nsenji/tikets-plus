@@ -69,11 +69,11 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
   //   );
   // }
 
-  @override
-  void dispose() {
-    controller.dispose();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   controller.dispose();
+  //   super.dispose();
+  // }
 
   void toggleIcon() {
     setState(() {
@@ -85,8 +85,15 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back)),
+      ),
       body: Stack(children: [
-        ...buildBackground(context),
+        // ...buildBackground(context),
         // THE MOVIE TITLE AND TIME
         Positioned(
             bottom: 300,
@@ -98,7 +105,6 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
                 child: Text(
                   title,
                   style: const TextStyle(
-                    color: Color.fromARGB(255, 243, 244, 247),
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                   ),
@@ -110,7 +116,6 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
               Text(
                 '2022 | $genre | $duration',
                 style: const TextStyle(
-                    color: Colors.white,
                     fontSize: 10,
                     fontWeight: FontWeight.bold),
               ),
@@ -119,36 +124,19 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
               ),
             ])),
         // THE POSTER IN THE RIGHT CORNER
-        Positioned(
-            bottom: 230,
-            left: 260,
-            child: SizedBox(
-              height: 150,
-              width: 110,
-              child: Image.asset(
-                'assets/$poster',
-                fit: BoxFit.cover,
-              ),
-            )),
+        // Positioned(
+        //     bottom: 230,
+        //     left: 260,
+        //     child: SizedBox(
+        //       height: 150,
+        //       width: 110,
+        //       child: Image.asset(
+        //         'assets/$poster',
+        //         fit: BoxFit.cover,
+        //       ),
+        //     )),
         // THE PLAY BUTTON
-        Positioned(
-            top: 180,
-            left: 160,
-            child: CircleAvatar(
-              radius: 40,
-              backgroundColor: const Color.fromARGB(108, 211, 206, 206),
-              child: IconButton(
-                onPressed: () {
-                  toggleIcon();
-                },
-                iconSize: 60,
-                icon: AnimatedIcon(
-                  icon: AnimatedIcons.play_pause,
-                  progress: controller,
-                  color: const Color.fromARGB(206, 255, 255, 255),
-                ),
-              ),
-            )),
+        
         // THE MOVIE DESCRIPTON
         Positioned(
             width: MediaQuery.of(context).size.width,
@@ -160,7 +148,6 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
                 style: const TextStyle(
                   fontSize: 15,
                   wordSpacing: 1,
-                  color: Colors.white,
                 ),
               ),
             )),
@@ -174,7 +161,6 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
     return [
       Container(
         height: double.infinity,
-        color: const Color.fromARGB(255, 27, 28, 32),
       ),
       Image.asset(
         'assets/$clip',
@@ -182,7 +168,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
         height: MediaQuery.of(context).size.height * 0.5,
         fit: BoxFit.cover,
       ),
-      const Positioned.fill(
+       Positioned.fill(
           child: DecoratedBox(
               decoration: BoxDecoration(
                   gradient: LinearGradient(
