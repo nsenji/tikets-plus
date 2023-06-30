@@ -6,4 +6,5 @@ class Constants {
 
   static  TextStyle appFont =
      GoogleFonts.roboto().copyWith(color: const Color(0xFF4D4C4C));
+  
 }

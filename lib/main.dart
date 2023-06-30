@@ -74,7 +74,7 @@ class _MyAppState extends State<MyApp> {
   ColorScheme lightThemeColors(context) {
     return const ColorScheme(
       brightness: Brightness.light,
-      primary:  Color(0xFFEF5B6B),
+      primary: Color(0xFFEF5B6B),
       onPrimary: Color(0xFFFFFFFF),
       secondary: Colors.grey,
       onSecondary: Color(0xFFFFFFFF),
@@ -105,9 +105,9 @@ class _MyAppState extends State<MyApp> {
 
   ThemeData lightThemeData(BuildContext context) {
     return ThemeData(
-      primaryColor:const Color(0xFFEF5B6B) ,
+      primaryColor: const Color(0xFFEF5B6B),
       useMaterial3: true,
-      dialogBackgroundColor:const Color(0xFFFFFFFF) ,
+      dialogBackgroundColor: const Color(0xFFFFFFFF),
       cardColor: const Color(0xFFFFFFFF),
       fontFamily: Constants.appFont.fontFamily,
       scaffoldBackgroundColor: lightThemeColors(context).background,
@@ -115,11 +115,6 @@ class _MyAppState extends State<MyApp> {
       appBarTheme: appBarTheme(context),
       colorScheme: lightThemeColors(context),
       iconTheme: const IconThemeData(color: Color(0xFF4D4C4C)),
-      elevatedButtonTheme:  ElevatedButtonThemeData(
-        style: ElevatedButton.styleFrom(
-          backgroundColor: const Color(0xFFEF5B6B)
-        )
-      )
     );
   }
 
@@ -141,20 +136,21 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
-  
-
   TextTheme textTheme(context) {
     return TextTheme(
-      labelLarge:
-          Constants.appFont.copyWith(fontWeight: FontWeight.bold, fontSize: 24),
-      labelMedium:
-          Constants.appFont.copyWith(fontWeight: FontWeight.normal, fontSize: 14),
-      labelSmall:
-          Constants.appFont.copyWith(fontWeight: FontWeight.normal, fontSize: 10),
+      bodyLarge: Constants.appFont
+          .copyWith(fontWeight: FontWeight.bold, fontSize: 24),
+      bodyMedium: Constants.appFont
+          .copyWith(fontWeight: FontWeight.normal, fontSize: 15),
       bodySmall: Constants.appFont.copyWith(
-          fontWeight: FontWeight.bold,
+          fontWeight: FontWeight.normal,
           fontSize: 10,
           color: const Color(0x2983FFFF)),
+      labelMedium: Constants.appFont
+          .copyWith(fontWeight: FontWeight.normal, fontSize: 14),
+      labelSmall: Constants.appFont
+          .copyWith(fontWeight: FontWeight.normal, fontSize: 10),
+      
     );
   }
 }

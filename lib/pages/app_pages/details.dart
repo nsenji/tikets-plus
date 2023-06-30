@@ -145,10 +145,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
               padding: const EdgeInsets.all(15.0),
               child: Text(
                 description,
-                style: const TextStyle(
-                  fontSize: 15,
-                  wordSpacing: 1,
-                ),
+                style: Theme.of(context).textTheme.bodyMedium
               ),
             )),
         // THE BOOK SEAT BUTTON
