@@ -2,7 +2,7 @@ import 'package:cinema_tikets/notifiers/for_acacia/seat_number_notifier.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/movie_notifier.dart';
 import 'package:cinema_tikets/notifiers/for_metro/seat_number_notifier-metro.dart';
 import 'package:cinema_tikets/notifiers/for_metro/taken_seat_notifier_metro.dart';
-import 'package:cinema_tikets/pages/app_pages/cinema_location.dart';
+import 'package:cinema_tikets/pages/app_pages/home.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/location.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/time.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/title_image_provider.dart';
@@ -60,7 +60,7 @@ class _MyAppState extends State<MyApp> {
         darkTheme: darkThemeData(context),
         themeMode: ThemeMode.light,
         debugShowCheckedModeBanner: false,
-        home: const Location());
+        home: const Home());
   }
 
   

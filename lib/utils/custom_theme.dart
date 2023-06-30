@@ -36,6 +36,7 @@ ColorScheme lightThemeColors(context) {
   ThemeData lightThemeData(BuildContext context) {
     return ThemeData(
       primaryColor: const Color(0xFFEF5B6B),
+      disabledColor: Color.fromARGB(255, 221, 218, 218),
       useMaterial3: true,
       dialogBackgroundColor: const Color(0xFFFFFFFF),
       cardColor: const Color(0xFFFFFFFF),
@@ -56,6 +57,11 @@ ColorScheme lightThemeColors(context) {
       textTheme: textTheme(context),
       appBarTheme: appBarTheme(context),
       colorScheme: darkThemeColors(context),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: Color(0xFFEF5B6B)
+        )
+      )
     );
   }
 
@@ -76,10 +82,12 @@ ColorScheme lightThemeColors(context) {
           fontWeight: FontWeight.normal,
           fontSize: 10,
           color: const Color(0x2983FFFF)),
+      labelLarge: Constants.appFont
+          .copyWith(fontWeight: FontWeight.bold, fontSize: 17,color: Colors.white),
       labelMedium: Constants.appFont
-          .copyWith(fontWeight: FontWeight.normal, fontSize: 14),
+          .copyWith(fontWeight: FontWeight.normal, fontSize: 15,color: Colors.white),
       labelSmall: Constants.appFont
-          .copyWith(fontWeight: FontWeight.normal, fontSize: 10),
+          .copyWith(fontWeight: FontWeight.normal, fontSize: 15, color: Color(0xFF4D4C4C)),
       
     );
   }
