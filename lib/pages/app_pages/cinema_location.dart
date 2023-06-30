@@ -32,7 +32,7 @@ class Location extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  HomePage(location: 'ACACIA')));
+                                  const HomePage(location: 'ACACIA')));
                     },
                     child: const LocationCard(
                       locationName: 'ACACIA',
@@ -45,7 +45,7 @@ class Location extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  HomePage(location: 'METROPLEX')));
+                                  const HomePage(location: 'METROPLEX')));
                     },
                     child: const LocationCard(
                       locationName: 'METROPLEX',
@@ -58,7 +58,7 @@ class Location extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                                  HomePage(location: 'ARENA MALL')));
+                                  const HomePage(location: 'ARENA MALL')));
                     },
                     child: const LocationCard(
                       locationName: 'ARENA MALL',

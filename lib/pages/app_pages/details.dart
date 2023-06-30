@@ -90,7 +90,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back)),
+            icon: const Icon(Icons.arrow_back)),
       ),
       body: Stack(children: [
         // ...buildBackground(context),
@@ -165,7 +165,7 @@ class _MovieDetailsPageState extends State<MovieDetailsPage>
         height: MediaQuery.of(context).size.height * 0.5,
         fit: BoxFit.cover,
       ),
-       Positioned.fill(
+       const Positioned.fill(
           child: DecoratedBox(
               decoration: BoxDecoration(
                   gradient: LinearGradient(

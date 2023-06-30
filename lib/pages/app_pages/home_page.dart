@@ -1,5 +1,4 @@
 import 'package:cinema_tikets/mapping/mapping.dart';
-import 'package:cinema_tikets/pages/app_pages/profile.dart';
 import 'package:flutter/material.dart';
 import 'movie_card.dart';
 import 'package:cinema_tikets/pages/app_pages/coming_soon.dart';

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:cinema_tikets/utils/app_layout.dart';
-import 'package:cinema_tikets/utils/styles.dart';
 
 class ComingDetails extends StatelessWidget {
   final String title;

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class LocationCard extends StatelessWidget {
   final String image;
@@ -28,8 +26,8 @@ class LocationCard extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(50),
           child: Center(
-            child: Text("$locationName",
-                style: TextStyle(
+            child: Text(locationName,
+                style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25)),
           ),

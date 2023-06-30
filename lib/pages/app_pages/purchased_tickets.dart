@@ -188,7 +188,7 @@ class _PurchasedState extends State<Purchased> {
                               ),
                               Center(
                                 child: Material(
-                                  child: Container(
+                                  child: SizedBox(
                                       height: 80,
                                       child: Row(
                                         children: [

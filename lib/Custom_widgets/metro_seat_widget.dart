@@ -1,7 +1,5 @@
 
-import 'package:cinema_tikets/api/for_metro/metro_api.dart';
 import 'package:cinema_tikets/notifiers/for_metro/seat_number_notifier-metro.dart';
-import 'package:cinema_tikets/notifiers/for_metro/taken_seat_notifier_metro.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

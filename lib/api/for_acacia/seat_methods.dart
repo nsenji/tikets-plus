@@ -1,7 +1,3 @@
-import 'package:cinema_tikets/models/model_List_of_taken_seats_for_acacia/acacia_list.dart';
-import 'package:cinema_tikets/models/other_models/movie_model.dart';
-import 'package:cinema_tikets/notifiers/for_acacia/movie_notifier.dart';
-import 'package:cinema_tikets/notifiers/for_acacia/taken_seat_notifier.dart';
 
 
 

@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
 
-import '../../api/for_acacia/seat_methods.dart';
 import '../../utils/app_layout.dart';
 
 class BarItemPage extends StatefulWidget {
@@ -59,7 +58,7 @@ class _BarItemPageState extends State<BarItemPage> {
             onPressed: () {
               Navigator.pop(context);
             },
-            icon: Icon(Icons.arrow_back)),
+            icon: const Icon(Icons.arrow_back)),
       ),
       body: SingleChildScrollView(
         child: Column(

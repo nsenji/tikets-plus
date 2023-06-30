@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../utils/app_layout.dart';
-import '../../utils/styles.dart';
 import '../../notifiers/for_acacia/title_image_provider.dart';
 
 class MovieView extends StatefulWidget {
