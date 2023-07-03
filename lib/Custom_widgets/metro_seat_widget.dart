@@ -1,7 +1,5 @@
 
-import 'package:cinema_tikets/api/for_metro/metro_api.dart';
 import 'package:cinema_tikets/notifiers/for_metro/seat_number_notifier-metro.dart';
-import 'package:cinema_tikets/notifiers/for_metro/taken_seat_notifier_metro.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +13,7 @@ class Seat_metro extends StatefulWidget {
       {super.key,
       required this.index,
       this.taken = false,
-      this.seatColor = Colors.white,
+      this.seatColor = Colors.green,
       this.icon});
 
   @override
@@ -23,29 +21,29 @@ class Seat_metro extends StatefulWidget {
 }
 
 class _SeatState extends State<Seat_metro> {
-  // dynamic value;
-  @override
-  void initState() {
-    print('yeah the list is empty');
-    print('yeah the list is empty'); // Dont remove this code, its working as a disguised async....
-    print('yeah the list is empty');
-    print('yeah the list is empty');
-    int index = 0;
-    TakenSeat_metro takenSeat = Provider.of<TakenSeat_metro>(context, listen: false);
-    List stuff = takenSeat.seatList[index].seat;
-    if (takenSeat.seatList[0].seat != null) {
-      if (stuff.contains(widget.index + 1)) {
-        setState(() {
-          widget.taken = true;
-        });
-      }
-    } else {
-      print('yeah the list is empty'); // also this....dont remove this
-    }
+  dynamic value;
+  // @override
+  // void initState() {
+  //   print('yeah the list is empty');
+  //   print('yeah the list is empty'); // Dont remove this code, its working as a disguised async....
+  //   print('yeah the list is empty');
+  //   print('yeah the list is empty');
+  //   int index = 0;
+  //   TakenSeat_metro takenSeat = Provider.of<TakenSeat_metro>(context, listen: false);
+  //   List stuff = takenSeat.seatList[index].seat;
+  //   if (takenSeat.seatList[0].seat != null) {
+  //     if (stuff.contains(widget.index + 1)) {
+  //       setState(() {
+  //         widget.taken = true;
+  //       });
+  //     }
+  //   } else {
+  //     print('yeah the list is empty'); // also this....dont remove this
+  //   }
 
-    // TODO: implement initState
-    super.initState();
-  }
+  //   // TODO: implement initState
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -56,21 +54,21 @@ class _SeatState extends State<Seat_metro> {
             ? null
             : () {
                 setState(() {
-                  if (widget.seatColor == Colors.white) {
+                  if (widget.seatColor == Colors.green) {
                     widget.seatColor = Colors.orange;
                     Provider.of<SeatNumberModel_metro>(context, listen: false)
                         .add(widget.index + 1);
                     Provider.of<SeatNumberModel_metro>(context, listen: false)
                         .addPrice(widget.index + 1);
-                    addSeat_metro(widget.index+1);
+                    // addSeat_metro(widget.index+1);
                   } else {
-                    widget.seatColor = Colors.white;
+                    widget.seatColor = Colors.green;
                     
                     Provider.of<SeatNumberModel_metro>(context, listen: false)
                         .remove(widget.index + 1);
                     Provider.of<SeatNumberModel_metro>(context, listen: false)
                         .reducePrice(widget.index + 1);
-                    removeSeat_metro(widget.index+1);
+                    // removeSeat_metro(widget.index+1);
                   }
                 });
               },

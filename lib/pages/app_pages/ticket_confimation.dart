@@ -14,52 +14,18 @@ class TicketView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = AppLayout.getSize(context);
     return Scaffold(
-      backgroundColor: Colors.black,
+      appBar: AppBar(
+        leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: const Icon(Icons.arrow_back)),
+      ),
       body: Stack(children: [
+        
         Positioned(
-          right: AppLayout.getWidth(24),
-          top: AppLayout.getHeight(740),
-          left: AppLayout.getWidth(20),
-          child: Center(
-            child: Container(
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(
-                  colors: [Colors.purple, Colors.blue],
-                  begin: Alignment.bottomLeft,
-                  end: Alignment.topRight,
-                ),
-                // border: Border.all(
-                //   color: Colors.blue,
-                // ),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Colors.black,
-                    blurRadius: 5.0,
-                  ),
-                ],
-                borderRadius: BorderRadius.circular(10),
-              ),
-              height: AppLayout.getHeight(50),
-              width: AppLayout.getWidth(400),
-              child: ElevatedButton(
-                onPressed: () => Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: ((context) => TicketView(
-                              location: location,
-                            )))),
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.transparent,
-                ),
-                child: const Text("PAYMENT"),
-              ),
-            ),
-          ),
-        ),
-        Positioned(
-            top: AppLayout.getHeight(90),
+            top: AppLayout.getHeight(20),
             right: AppLayout.getWidth(25),
             left: AppLayout.getWidth(20),
             child: Container(
@@ -72,7 +38,7 @@ class TicketView extends StatelessWidget {
               height: AppLayout.getHeight(300),
             )),
         Positioned(
-            top: AppLayout.getHeight(390),
+            top: AppLayout.getHeight(320),
             right: AppLayout.getWidth(25),
             left: AppLayout.getWidth(20),
             child: Material(
@@ -162,7 +128,7 @@ class TicketView extends StatelessWidget {
                                   style: const TextStyle(
                                       fontWeight: FontWeight.bold,
                                       fontSize: 15,
-                                      color: Colors.orange))
+                                      ))
                             ],
                           ),
                         )
@@ -321,7 +287,7 @@ class TicketView extends StatelessWidget {
                                               style: const TextStyle(
                                                   fontWeight: FontWeight.bold,
                                                   fontSize: 15,
-                                                  color: Colors.orange),
+                                                 ),
                                             )
                                           ],
                                         ),
@@ -334,7 +300,25 @@ class TicketView extends StatelessWidget {
                       ),
                     );
                   }),
-            ))
+            )
+            ),
+            Positioned(
+          right: AppLayout.getWidth(24),
+          top: AppLayout.getHeight(600),
+          left: AppLayout.getWidth(20),
+          child: Center(
+            child: ElevatedButton(
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: ((context) => TicketView(
+                            location: location,
+                          )))),
+              
+              child: const Text("PAYMENT"),
+            ),
+          ),
+        ),
       ]),
     );
   }

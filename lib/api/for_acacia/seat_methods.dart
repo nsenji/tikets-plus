@@ -1,75 +1,60 @@
-import 'package:cinema_tikets/models/model_List_of_taken_seats_for_acacia/acacia_list.dart';
-import 'package:cinema_tikets/models/other_models/movie_model.dart';
-import 'package:cinema_tikets/notifiers/for_acacia/movie_notifier.dart';
-import 'package:cinema_tikets/notifiers/for_acacia/taken_seat_notifier.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 
 
 
-getMovie(MovieNotifier movieNotifier) async {
-  QuerySnapshot snapshot =
-      await FirebaseFirestore.instance.collection('Movies').get();
+// getMovie(MovieNotifier movieNotifier) async {
+//   QuerySnapshot snapshot =
+//       await FirebaseFirestore.instance.collection('Movies').get();
 
-  List<Movie> movieList = [];
+//   List<Movie> movieList = [];
 
-  for (var document in snapshot.docs) {
-    Movie movie = Movie.fromMap(document);
-    movieList.add(movie);
-  }
+//   for (var document in snapshot.docs) {
+//     Movie movie = Movie.fromMap(document);
+//     movieList.add(movie);
+//   }
 
-  movieNotifier.movieList = movieList;
-}
-
-//
-
-// addSeat(stuff) {
-//   // Add a new document with a generated id.
-//   final data = {"name": stuff};
-
-//   FirebaseFirestore.instance
-//       .collection("Seats")
-//       .doc('82TvfV6vIksgjITayEy0')
-//       .update(data);
+//   movieNotifier.movieList = movieList;
 // }
 
-getSeat(TakenSeat takenSeat) async {
-  QuerySnapshot snapshot =
-      await FirebaseFirestore.instance.collection('Seats').get();
 
-  List<SeatNumber> seatList = [];
-  dynamic value;
 
-  for (var element in snapshot.docs) {
-    {
-      SeatNumber seatNumber = SeatNumber.fromMap(element);
-      seatList.add(seatNumber);
-    }
-  }
+// getSeat(TakenSeat takenSeat) async {
+//   QuerySnapshot snapshot =
+//       await FirebaseFirestore.instance.collection('Seats').get();
 
-  takenSeat.seatList = seatList;
-}
+//   List<SeatNumber> seatList = [];
+//   dynamic value;
 
-addSeat(int index) async {
-  final washingtonRef = FirebaseFirestore.instance
-      .collection("Seats")
-      .doc("82TvfV6vIksgjITayEy0");
+//   for (var element in snapshot.docs) {
+//     {
+//       SeatNumber seatNumber = SeatNumber.fromMap(element);
+//       seatList.add(seatNumber);
+//     }
+//   }
 
-// Atomically add a new region to the "regions" array field.
-  washingtonRef.update({
-    "name": FieldValue.arrayUnion([index]),
-  });
-}
+//   takenSeat.seatList = seatList;
+// }
 
-removeSeat(int index) async {
-  final washingtonRef = FirebaseFirestore.instance
-      .collection("Seats")
-      .doc("82TvfV6vIksgjITayEy0");
+// addSeat(int index) async {
+//   final washingtonRef = FirebaseFirestore.instance
+//       .collection("Seats")
+//       .doc("82TvfV6vIksgjITayEy0");
 
-  washingtonRef.update({
-    "name": FieldValue.arrayRemove([index]),
-  });
-}
+// // Atomically add a new region to the "regions" array field.
+//   washingtonRef.update({
+//     "name": FieldValue.arrayUnion([index]),
+//   });
+// }
+
+// removeSeat(int index) async {
+//   final washingtonRef = FirebaseFirestore.instance
+//       .collection("Seats")
+//       .doc("82TvfV6vIksgjITayEy0");
+
+//   washingtonRef.update({
+//     "name": FieldValue.arrayRemove([index]),
+//   });
+// }
 
 
  

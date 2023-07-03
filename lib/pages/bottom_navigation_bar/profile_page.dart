@@ -1,4 +1,3 @@
-import 'package:cinema_tikets/api/for_acacia/seat_methods.dart';
 import 'package:cinema_tikets/notifiers/for_acacia/movie_notifier.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +14,7 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     MovieNotifier movieNotifier =
         Provider.of<MovieNotifier>(context, listen: false);
-    getMovie(movieNotifier);
+    // getMovie(movieNotifier);
     // TODO: implement initStateO 
     super.initState();
   }
