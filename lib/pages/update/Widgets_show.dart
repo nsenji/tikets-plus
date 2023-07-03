@@ -1,12 +1,20 @@
-import 'package:cinema_tikets/Custom_widgets/filter_chip.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 
+import '../../Custom_widgets/filter_chip.dart';
 import '../../Custom_widgets/movie_card.dart';
+import '../../Custom_widgets/pine_logo.dart';
 import '../../Custom_widgets/red_button.dart';
 
-class Home extends StatelessWidget {
-  const Home({Key? key}) : super(key: key);
+class MyWidget extends StatefulWidget {
+  const MyWidget({super.key});
 
+  @override
+  State<MyWidget> createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,6 +22,10 @@ class Home extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
+            Pine(),
+            SizedBox(
+              height: 30,
+            ),
             Button(
               text: 'Testing',
               onpressed: () {},
